@@ -1,3 +1,5 @@
+require('./config/config');
+
 // The server is responsible for the routes only
 // libary imports
 const express = require('express');
@@ -10,6 +12,7 @@ var {User} = require('./models/user');
 var {authenticate} = require('./middleware/authenticate');
 
 var app = express();
+const port = process.env.PORT;
 //add middleware using bodyparser returns a function sending json to the app 
 app.use(bodyParser.json());
 
@@ -61,9 +64,9 @@ app.delete('/users/me/token', authenticate, (req,res) => {
 });
 
 
-//for Heroku
-const PORT = process.env.PORT || 5000;
 //Call back to know when the server is running
-app.listen(PORT, () => {
-    console.log(`Started on port ${PORT}`)
-});
+app.listen(port, () => {
+    console.log(`Started up at port ${port}`);
+  });
+  
+  module.exports = {app};
