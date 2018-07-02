@@ -1,3 +1,4 @@
+require('dotenv').config();
 require('./config/config');
 
 // The server is responsible for the routes only
@@ -16,7 +17,7 @@ const port = process.env.PORT;
 //add middleware using bodyparser returns a function sending json to the app 
 app.use(bodyParser.json());
 
-app.post('/users', (req, res) => {
+app.post('/register', (req, res) => {
     let body = _.pick(req.body, ['name','email','password'])
     let user = new User(body);
 
