@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('./config/config');
+// require('./config/config');
 
 // The server is responsible for the routes only
 // libary imports
