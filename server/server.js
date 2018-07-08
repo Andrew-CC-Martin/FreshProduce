@@ -11,6 +11,8 @@ const _ = require('lodash')
 var {mongoose} = require('./db/mongoose.js');
 var {User} = require('./models/user');
 var {authenticate} = require('./middleware/authenticate');
+const {ObjectID} = require('mongodb');
+
 
 var app = express();
 const port = process.env.PORT;
@@ -56,6 +58,24 @@ app.post('/users/login', (req, res) => {
         res.status(400).send(e);
     });
 });
+
+app.get('/users/:id', (req, res) => {
+    var id = req.params.id;
+  
+    if (!ObjectID.isValid(id)) {
+      return res.status(404).send();
+    }
+  
+    User.findById(id).then((user) => {
+      if (!user) {
+        return res.status(404).send();
+      }
+  
+      res.send({user});
+    }).catch((e) => {
+      res.status(400).send();
+    });
+  });
 
 app.delete('/users/me/token', authenticate, (req,res) => {
     req.user.removeToken(req.token).then(() => {
