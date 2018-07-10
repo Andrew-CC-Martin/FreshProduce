@@ -24,7 +24,7 @@ class Login extends Component {
   
       const { email, password } = this.state;
   
-      axios.post('users/login', { email, password })
+      axios.post(`${process.env.REACT_APP_API_URL}/users/login`, { email, password })
         .then((result) => {
           console.log(result.data)
           localStorage.setItem('jwtToken', result.data._id);
@@ -33,6 +33,7 @@ class Login extends Component {
           console.log(localStorage)
         })
         .catch((e) => {
+          `${process.env.REACT_APP_API_URL}/users/login`
           let msg = e.response.data
           if(e.response.status === 400) {
             this.setState({ message: msg  });

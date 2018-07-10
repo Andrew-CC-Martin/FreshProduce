@@ -6,6 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const _ = require('lodash')
+const cors = require('cors')
 
 //local imports
 var {mongoose} = require('./db/mongoose.js');
@@ -18,6 +19,7 @@ var app = express();
 const port = process.env.PORT;
 //add middleware using bodyparser returns a function sending json to the app 
 app.use(bodyParser.json());
+app.use(cors({origin: '*'}));
 
 app.post('/register', (req, res) => {
     let body = _.pick(req.body, ['name','email','password'])
@@ -25,8 +27,8 @@ app.post('/register', (req, res) => {
 
     user.save().then((user) => {
         return user.generateAuthToken();
-    }).then((token) => {
-        res.header('x-auth', token).send(user);
+    }).then((token) => {        
+        res.json(Object.assign({ token }, { _id: user._id, email: user.email, name: user.name }))
     }).catch((e) => {
         res.status(400).send("User already exists");
     });
@@ -51,7 +53,8 @@ app.post('/users/login', (req, res) => {
     let body = _.pick(req.body, ['email','password']);
     User.findByCredentials(body.email, body.password).then((user) => {
         return user.generateAuthToken().then((token) => {
-            res.header('x-auth', token).send(user);
+            res.json(Object.assign({ token }, { _id: user.id, email: user.email, name: user.name }))
+            // res.header('x-auth', token).send(user);
         });
     }).catch((e) => {
         console.log(e)
