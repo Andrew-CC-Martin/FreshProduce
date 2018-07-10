@@ -31,18 +31,21 @@ class App extends Component {
 
   handleRegister = user => {
     console.log(user);
-
+    console.log(user.password);
+    if (user.password !== user.confirmPassword) {
+      this.setState({ message: 'Password does not match!' })
+      console.log(this.state.message)
+    } else {
     const { name, email, password, confirmPassword } = user;
     // const { history } = this.props;
-    console.log(localStorage);
+    console.log(user);
 
     axios
       .post(`${process.env.REACT_APP_API_URL}/register`, { name, email, password })
       .then(result => {
-        console.dir(result.data)
         localStorage.setItem('jwtToken', result.data._id);
         const { name, email } = result.data;
-        this.setState({ name, email });
+        this.setState({ name, email, message : "" });
         // this.props.history.push('/login')
       })
       .catch(e => {
@@ -51,7 +54,8 @@ class App extends Component {
           this.setState({ message: msg });
         }
       });
-  };
+  }
+};
 
   render() {
     console.log(this.state);
@@ -69,6 +73,11 @@ class App extends Component {
               Logout
             </button>
           )}
+          {this.state.message !== '' &&
+            <div className="alert alert-warning alert-dismissible" role="alert">
+              {this.state.message}
+            </div>
+          }
           <h1>Fresh Produce</h1>
           <Switch>
             {/* <Route exact path='/menu' component={Header} /> */}
