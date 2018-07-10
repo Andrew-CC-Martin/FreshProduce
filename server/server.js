@@ -28,7 +28,7 @@ app.post('/register', (req, res) => {
     user.save().then((user) => {
         return user.generateAuthToken();
     }).then((token) => {        
-        res.json(Object.assign({ token }, { _id: user._id, email: user.email, name: user.name }))
+        res.json(Object.assign({ token }, { _id: user.id, email: user.email, name: user.name }))
     }).catch((e) => {
         res.status(400).send("User already exists");
     });

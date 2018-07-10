@@ -24,12 +24,10 @@ import './Login.css';
   
     handleSubmit(e) {
       e.preventDefault();
-      if (this.state.password !== this.state.confirmPassword){
-        this.setState({ message: 'Password does not match!'})
-      } else {
       this.props.onCreate(this.state)
+      console.log(this.state)
       }
-    }
+    
     // onSubmit = (e) => {
     //   e.preventDefault();
   
