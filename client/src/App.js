@@ -26,7 +26,7 @@ class App extends Component {
     console.log(localStorage, 'with');
     localStorage.removeItem('jwtToken');
     console.log(localStorage, 'deleted');
-    // window.location.reload();
+    window.location.assign('/');
   };
 
   handleRegister = user => {
@@ -34,12 +34,13 @@ class App extends Component {
 
     const { name, email, password, confirmPassword } = user;
     // const { history } = this.props;
-    console.log(user);
+    console.log(localStorage);
 
     axios
       .post(`${process.env.REACT_APP_API_URL}/register`, { name, email, password })
       .then(result => {
-        console.dir(result.headers)
+        console.dir(result.data)
+        localStorage.setItem('jwtToken', result.data._id);
         const { name, email } = result.data;
         this.setState({ name, email });
         // this.props.history.push('/login')
@@ -54,7 +55,7 @@ class App extends Component {
 
   render() {
     console.log(this.state);
-    console.log({ localStorage });
+    console.log(localStorage);
 
     return (
       <Router>

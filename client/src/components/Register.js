@@ -28,6 +28,7 @@ import './Login.css';
         this.setState({ message: 'Password does not match!'})
       } else {
       this.props.onCreate(this.state)
+      console.log(this.state)
       }
     }
     // onSubmit = (e) => {
