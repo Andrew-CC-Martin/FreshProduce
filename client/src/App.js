@@ -45,7 +45,7 @@ class App extends Component {
       .then(result => {
         localStorage.setItem('jwtToken', result.data._id);
         const { name, email } = result.data;
-        this.setState({ name, email, message : "" });
+        this.setState({ name, email, message: "" });
         // this.props.history.push('/login')
       })
       .catch(e => {
