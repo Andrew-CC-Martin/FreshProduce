@@ -12,9 +12,11 @@ class Profile extends React.Component {
     };
   }
   componentDidMount() {
+    console.log(localStorage)
     let userId = localStorage.jwtToken;
+    console.log(userId);
     axios
-      .get('/users/' + userId)
+      .get(`${ process.env.REACT_APP_API_URL }/users/` + userId)
       .then(res => {
         let name = res.data.user.name;
         let email = res.data.user.email;
@@ -25,7 +27,6 @@ class Profile extends React.Component {
       .catch(error => {
         if (error.response.status === 401) {
           // this.props.history.push("/login");
-          console.log(error);
         }
       });
   }

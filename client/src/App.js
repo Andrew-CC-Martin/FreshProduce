@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 // import { Redirect } from 'react-router-dom';
@@ -37,10 +37,12 @@ class App extends Component {
     console.log(user);
 
     axios
-      .post('/register', { name, email, password })
+      .post(`${process.env.REACT_APP_API_URL}/register`, { name, email, password })
       .then(result => {
+        console.dir(result.headers)
         const { name, email } = result.data;
         this.setState({ name, email });
+        // this.props.history.push('/login')
       })
       .catch(e => {
         let msg = e.response.data;
@@ -70,9 +72,17 @@ class App extends Component {
           <Switch>
             {/* <Route exact path='/menu' component={Header} /> */}
             <Route exact path="/" component={Home} />
+            <Route exact path='/register' render={() => 
+              !!this.state.name ? (
+                <Redirect to='/profile' />
+              ) : (
+                <Register
+                  details={this.state} onCreate={this.handleRegister}
+                />
+              )              
+            } />
             <Route exact path="/login" component={Login} />
-            {/* <Route path='/register' component={Register} /> */}
-            <Route
+            {/* <Route
               exact
               path="/register"
               render={() =>
@@ -85,7 +95,7 @@ class App extends Component {
                   />
                 )
               }
-            />
+            // /> */}
             <Route
               exact
               path="/profile"
