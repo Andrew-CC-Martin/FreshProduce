@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Lost from './components/Lost';
+import Catalogue from "./components/Catalogue";
 
 class App extends Component {
   constructor(props) {
@@ -82,6 +83,7 @@ class App extends Component {
           <Switch>
             {/* <Route exact path='/menu' component={Header} /> */}
             <Route exact path="/" component={Home} />
+            <Route exact path="/catalogue" component={Catalogue} />
             <Route exact path='/register' render={() => 
               !!this.state.name ? (
                 <Redirect to='/profile' />
