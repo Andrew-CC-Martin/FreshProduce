@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 // import { Redirect } from 'react-router-dom';
@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Lost from './components/Lost';
+import Catalogue from "./components/Catalogue";
 
 class App extends Component {
   constructor(props) {
@@ -26,21 +27,27 @@ class App extends Component {
     console.log(localStorage, 'with');
     localStorage.removeItem('jwtToken');
     console.log(localStorage, 'deleted');
-    // window.location.reload();
+    window.location.assign('/');
   };
 
   handleRegister = user => {
     console.log(user);
-
+    console.log(user.password);
+    if (user.password !== user.confirmPassword) {
+      this.setState({ message: 'Password does not match!' })
+      console.log(this.state.message)
+    } else {
     const { name, email, password, confirmPassword } = user;
     // const { history } = this.props;
     console.log(user);
 
     axios
-      .post('/register', { name, email, password })
+      .post(`${process.env.REACT_APP_API_URL}/register`, { name, email, password })
       .then(result => {
+        localStorage.setItem('jwtToken', result.data._id);
         const { name, email } = result.data;
-        this.setState({ name, email });
+        this.setState({ name, email, message: "" });
+        // this.props.history.push('/login')
       })
       .catch(e => {
         let msg = e.response.data;
@@ -48,11 +55,12 @@ class App extends Component {
           this.setState({ message: msg });
         }
       });
-  };
+  }
+};
 
   render() {
     console.log(this.state);
-    console.log({ localStorage });
+    console.log(localStorage);
 
     return (
       <Router>
@@ -66,31 +74,43 @@ class App extends Component {
               Logout
             </button>
           )}
+          {this.state.message !== '' &&
+            <div className="alert alert-warning alert-dismissible" role="alert">
+              {this.state.message}
+            </div>
+          }
           <h1>Fresh Produce</h1>
           <Switch>
             {/* <Route exact path='/menu' component={Header} /> */}
             <Route exact path="/" component={Home} />
+            <Route exact path="/catalogue" component={Catalogue} />
+            <Route exact path='/register' render={() => 
+              !!this.state.name ? (
+                <Redirect to='/profile' />
+              ) : (
+                <Register
+                  details={this.state} onCreate={this.handleRegister}
+                />
+              )              
+            } />
             <Route exact path="/login" component={Login} />
-            {/* <Route path='/register' component={Register} /> */}
             <Route
               exact
-              path="/register"
+              path="/profile"
               render={() =>
-                !!this.state.name ? (
-                  <Profile details={this.state} />
+                !!localStorage.jwtToken ? (
+                  <Profile />
                 ) : (
-                  <Register
-                    details={this.state}
-                    onCreate={this.handleRegister}
+                  <Login
                   />
                 )
               }
             />
-            <Route
+            {/* <Route
               exact
               path="/profile"
               render={props => <Profile details={this.state} />}
-            />
+            /> */}
             <Route component={Lost} />
           </Switch>
         </div>
