@@ -92,25 +92,23 @@ class App extends Component {
               )              
             } />
             <Route exact path="/login" component={Login} />
-            {/* <Route
-              exact
-              path="/register"
-              render={() =>
-                !!this.state.name ? (
-                  <Profile details={this.state} />
-                ) : (
-                  <Register
-                    details={this.state}
-                    onCreate={this.handleRegister}
-                  />
-                )
-              }
-            // /> */}
             <Route
               exact
               path="/profile"
-              render={props => <Profile details={this.state} />}
+              render={() =>
+                !!localStorage.jwtToken ? (
+                  <Profile />
+                ) : (
+                  <Login
+                  />
+                )
+              }
             />
+            {/* <Route
+              exact
+              path="/profile"
+              render={props => <Profile details={this.state} />}
+            /> */}
             <Route component={Lost} />
           </Switch>
         </div>
