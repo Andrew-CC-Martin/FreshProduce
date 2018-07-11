@@ -12,6 +12,8 @@ class Product extends React.Component {
         <div className="product-picture" style={style} ></div>
         <div className="Product-info">
           {this.props.name}
+          <br></br>
+          {`Price: $${this.props.price}/${this.props.uom}`}
         </div>
       </div>
     )
