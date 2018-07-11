@@ -27,17 +27,14 @@ class Catalogue extends React.Component {
   }
 
   render () {
-    console.log(this.state.products)
     console.dir(this.state.products)
-    // const products = [{id: 1, imgUrl: "https://i5.walmartimages.ca/images/Enlarge/580/6_r/875806_R.jpg"}]
-    // const products = [{id: 2, name: "banana", imgUrl: "https://i5.walmartimages.ca/images/Enlarge/580/6_r/875806_R.jpg"}]
 
     return (
       <div>
       <h1>Hello World</h1>
       <div className="products">
         {this.state.products.map((product) => {
-          // return <Product key={this.state.product.id} imgUrl={product.imgUrl} name={product.name}/>
+          return <Product key={product.id} imgUrl={product.img_path} name={product.name}/>
         })}
       </div>
       </div>
