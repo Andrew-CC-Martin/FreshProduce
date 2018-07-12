@@ -10,6 +10,7 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Lost from './components/Lost';
 import Catalogue from "./components/Catalogue";
+import UsersList from "./components/UsersList";
 
 class App extends Component {
   constructor(props) {
@@ -44,10 +45,11 @@ class App extends Component {
     axios
       .post(`${process.env.REACT_APP_API_URL}/register`, { name, email, password })
       .then(result => {
-        localStorage.setItem('jwtToken', result.data._id);
+        localStorage.setItem('jwtToken', result.data.token);
+        localStorage.setItem('id', result.data._id);
         const { name, email } = result.data;
         this.setState({ name, email, message: "" });
-        // this.props.history.push('/login')
+        window.location.reload();
       })
       .catch(e => {
         let msg = e.response.data;
@@ -106,11 +108,18 @@ class App extends Component {
                 )
               }
             />
-            {/* <Route
+            <Route
               exact
-              path="/profile"
-              render={props => <Profile details={this.state} />}
-            /> */}
+              path="/users"
+              render={() =>
+                localStorage.id === '5b45e9f80424e149086d17d9' ? (
+                  <UsersList />
+                ) : (
+                  <Lost
+                  />
+                )
+              }
+            />
             <Route component={Lost} />
           </Switch>
         </div>
