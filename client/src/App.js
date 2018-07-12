@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+  Link
+} from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
-// import { Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Lost from './components/Lost';
-import Catalogue from "./components/Catalogue";
-import UsersList from "./components/UsersList";
+import Catalogue from './components/Catalogue';
+import UsersList from './components/UsersList';
 
 class App extends Component {
   constructor(props) {
@@ -35,30 +40,33 @@ class App extends Component {
     console.log(user);
     console.log(user.password);
     if (user.password !== user.confirmPassword) {
-      this.setState({ message: 'Password does not match!' })
-      console.log(this.state.message)
+      this.setState({ message: 'Password does not match!' });
+      console.log(this.state.message);
     } else {
-    const { name, email, password, confirmPassword } = user;
-    // const { history } = this.props;
-    console.log(user);
+      const { name, email, password, confirmPassword } = user;
+      console.log(user);
 
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/register`, { name, email, password })
-      .then(result => {
-        localStorage.setItem('jwtToken', result.data.token);
-        localStorage.setItem('id', result.data._id);
-        const { name, email } = result.data;
-        this.setState({ name, email, message: "" });
-        window.location.reload();
-      })
-      .catch(e => {
-        let msg = e.response.data;
-        if (e.response.status === 400) {
-          this.setState({ message: msg });
-        }
-      });
-  }
-};
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/register`, {
+          name,
+          email,
+          password
+        })
+        .then(result => {
+          localStorage.setItem('jwtToken', result.data.token);
+          localStorage.setItem('name', result.data.name);
+          const { name, email } = result.data;
+          this.setState({ name, email, message: '' });
+          window.location.reload();
+        })
+        .catch(e => {
+          let msg = e.response.data;
+          if (e.response.status === 400) {
+            this.setState({ message: msg });
+          }
+        });
+    }
+  };
 
   render() {
     console.log(this.state);
@@ -69,55 +77,46 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Header />
-            {/* <Link to='/Menu'>Menu</Link> */}
           </header>
           {localStorage.getItem('jwtToken') && (
             <button className="btn btn-primary" onClick={this.logout}>
               Logout
             </button>
           )}
-          {this.state.message !== '' &&
+          {this.state.message !== '' && (
             <div className="alert alert-warning alert-dismissible" role="alert">
               {this.state.message}
             </div>
-          }
+          )}
           <h1>Fresh Produce</h1>
           <Switch>
-            {/* <Route exact path='/menu' component={Header} /> */}
             <Route exact path="/" component={Home} />
             <Route exact path="/catalogue" component={Catalogue} />
-            <Route exact path='/register' render={() => 
-              !!this.state.name ? (
-                <Redirect to='/profile' />
-              ) : (
-                <Register
-                  details={this.state} onCreate={this.handleRegister}
-                />
-              )              
-            } />
+            <Route
+              exact
+              path="/register"
+              render={() =>
+                !!this.state.name ? (
+                  <Redirect to="/profile" />
+                ) : (
+                  <Register
+                    details={this.state}
+                    onCreate={this.handleRegister}
+                  />
+                )
+              }
+            />
             <Route exact path="/login" component={Login} />
             <Route
               exact
               path="/profile"
-              render={() =>
-                !!localStorage.jwtToken ? (
-                  <Profile />
-                ) : (
-                  <Login
-                  />
-                )
-              }
+              render={() => (!!localStorage.jwtToken ? <Profile /> : <Login />)}
             />
             <Route
               exact
               path="/users"
               render={() =>
-                localStorage.id === '5b45e9f80424e149086d17d9' ? (
-                  <UsersList />
-                ) : (
-                  <Lost
-                  />
-                )
+                localStorage.name === 'admin' ? <UsersList /> : <Lost />
               }
             />
             <Route component={Lost} />
