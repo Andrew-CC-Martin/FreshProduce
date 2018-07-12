@@ -8,19 +8,20 @@ const bodyParser = require('body-parser');
 const _ = require('lodash')
 const cors = require('cors')
 
-//local imports
+//Local imports
 var {mongoose} = require('./db/mongoose.js');
 var {User} = require('./models/user');
 var {authenticate} = require('./middleware/authenticate');
 const {ObjectID} = require('mongodb');
 
-
+//External imports
 var app = express();
 const port = process.env.PORT;
 //add middleware using bodyparser returns a function sending json to the app 
 app.use(bodyParser.json());
 app.use(cors({origin: '*'}));
 
+// Register a user
 app.post('/register', (req, res) => {
     let body = _.pick(req.body, ['name','email','password'])
     let user = new User(body);
@@ -34,7 +35,7 @@ app.post('/register', (req, res) => {
     });
 });
 
-// list of users
+//list of users
 app.get('/users', (req,res) => {
     User.find().then((users) => {
         res.send({users});
@@ -43,12 +44,7 @@ app.get('/users', (req,res) => {
     })
 });
 
-//private route to test if a user already in our db will get access
-app.get('/users/me', authenticate, (req, res) => {
-    res.send(req.user)
-});
-
-//Sign in route
+//Sign in a user
 app.post('/users/login', (req, res) => {
     let body = _.pick(req.body, ['email','password']);
     User.findByCredentials(body.email, body.password).then((user) => {
@@ -62,6 +58,7 @@ app.post('/users/login', (req, res) => {
     });
 });
 
+//Request a user by id
 app.get('/users/:id', (req, res) => {
     var id = req.params.id;
   
@@ -80,10 +77,23 @@ app.get('/users/:id', (req, res) => {
     });
   });
 
-app.delete('/users/me/token', authenticate, (req,res) => {
-    req.user.removeToken(req.token).then(() => {
-        res.status(200).send();
-    }, () => {
+//Delete a user by id
+app.delete('/users/:id', (req, res) => {
+    var id = req.params.id;
+
+    if (!ObjectID.isValid(id)) {
+        return res.status(404).send();
+    }
+
+    User.findOneAndRemove({
+        _id: id,
+    }).then((user) => {
+        if (!user) {
+            return res.status(404).send();
+        }
+
+        res.send({ user });
+    }).catch((e) => {
         res.status(400).send();
     });
 });

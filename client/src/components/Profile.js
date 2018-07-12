@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 
-// hereeee
-
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +11,7 @@ class Profile extends React.Component {
   }
   componentDidMount() {
     console.log(localStorage)
-    let userId = localStorage.jwtToken;
+    let userId = localStorage.id;
     console.log(userId);
     axios
       .get(`${ process.env.REACT_APP_API_URL }/users/` + userId)

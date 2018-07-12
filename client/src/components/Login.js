@@ -27,7 +27,8 @@ class Login extends Component {
       axios.post(`${process.env.REACT_APP_API_URL}/users/login`, { email, password })
         .then((result) => {
           console.log(result.data)
-          localStorage.setItem('jwtToken', result.data._id);
+          localStorage.setItem('jwtToken', result.data.token);
+          localStorage.setItem('id', result.data._id);
           this.setState({ message: '' });
           // this.props.history.push('/')
           window.location.assign('/');
