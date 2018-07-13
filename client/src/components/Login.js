@@ -29,9 +29,11 @@ class Login extends Component {
         console.log(result.data);
         localStorage.setItem('jwtToken', result.data.token);
         localStorage.setItem('name', result.data.name);
+        localStorage.setItem('id', result.data._id);
         this.setState({ message: '' });
-        // this.props.history.push('/')
-        window.location.assign('/');
+        window.location.reload();
+        this.props.history.push('/')
+        // window.location.assign('/');
         console.log(localStorage);
       })
       .catch(e => {
