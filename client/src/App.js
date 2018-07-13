@@ -95,7 +95,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/catalogue" component={Catalogue} />
-            <Route exact path="/update" component={UpdateUser} />
+            <Route exact path="/update/:id" component={UpdateUser} />
             <Route
               exact
               path="/register"
