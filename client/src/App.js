@@ -32,6 +32,8 @@ class App extends Component {
   logout = () => {
     console.log(localStorage, 'with');
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('name');
+    localStorage.removeItem('id');
     console.log(localStorage, 'deleted');
     window.location.assign('/');
   };
@@ -55,6 +57,7 @@ class App extends Component {
         .then(result => {
           localStorage.setItem('jwtToken', result.data.token);
           localStorage.setItem('name', result.data.name);
+          localStorage.setItem('id', result.data._id);
           const { name, email } = result.data;
           this.setState({ name, email, message: '' });
           window.location.reload();
@@ -71,7 +74,7 @@ class App extends Component {
   render() {
     console.log(this.state);
     console.log(localStorage);
-
+    console.log(process.env.REACT_APP_HOST_ADMIN)
     return (
       <Router>
         <div className="App">
@@ -116,7 +119,7 @@ class App extends Component {
               exact
               path="/users"
               render={() =>
-                localStorage.name === 'admin' ? <UsersList /> : <Lost />
+                localStorage.id === process.env.REACT_APP_HOST_ADMIN ? <UsersList /> : <Lost />
               }
             />
             <Route component={Lost} />

@@ -77,6 +77,28 @@ app.get('/users/:id', (req, res) => {
     });
   });
 
+  //Update User
+  app.patch('/users/:id', (req, res) => {
+    var id = req.params.id;
+    var body = _.pick(req.body, ['name', 'email']);
+  
+    if (!ObjectID.isValid(id)) {
+      return res.status(404).send();
+    }
+  
+    User.findOneAndUpdate({_id: id}, {$set: body}, {new: true}).then((user) => {
+      if (!user) {
+        return res.status(404).send();
+      }
+  
+      res.send({user});
+    }).catch((e) => {
+      res.status(400).send();
+    })
+  });
+  
+  
+
 //Delete a user by id
 app.delete('/users/:id', (req, res) => {
     var id = req.params.id;
