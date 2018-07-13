@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-class Profile extends React.Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,6 +61,7 @@ class Profile extends React.Component {
                   <td>{this.state.email}</td>
                   <td>company</td>
                 </tr>
+                <Link to={`/update/${localStorage.id}`} class="btn btn-success">Edit Profile</Link>&nbsp;
               </tbody>
             </table>
           </div>
