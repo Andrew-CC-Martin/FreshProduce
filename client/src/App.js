@@ -15,6 +15,7 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Lost from './components/Lost';
 import Catalogue from './components/Catalogue';
+import UpdateUser from './components/UpdateUser';
 import UsersList from './components/UsersList';
 
 class App extends Component {
@@ -74,7 +75,6 @@ class App extends Component {
   render() {
     console.log(this.state);
     console.log(localStorage);
-    console.log(process.env.REACT_APP_HOST_ADMIN)
     return (
       <Router>
         <div className="App">
@@ -95,6 +95,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/catalogue" component={Catalogue} />
+            <Route exact path="/update/:id" component={UpdateUser} />
             <Route
               exact
               path="/register"
