@@ -12,10 +12,11 @@ class UpdateUser extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${ process.env.REACT_APP_API_URL }/users/`+localStorage.id)
+    // console.log(this.props)
+    axios.get(`${ process.env.REACT_APP_API_URL }/users/`+this.props.match.params.id)
       .then(res => {
-        this.setState({ user: res.data });
-        console.log(this.state.user.user._id);
+        this.setState({ user: res.data.user });
+        console.log(this.state.user);
       });
   }
 
@@ -29,15 +30,17 @@ class UpdateUser extends Component {
     e.preventDefault();
 
     const { name, email } = this.state.user;
-
-    axios.put(`${ process.env.REACT_APP_API_URL }`+this.props.match.params.id, { name, email })
+    console.log(this.state.user)
+    console.log(this.props.match)
+    axios.patch(`${ process.env.REACT_APP_API_URL }/users/`+this.props.match.params.id, { name, email })
       .then((result) => {
-        this.props.history.push("/profile"+this.props.match.params.id)
+
+      console.log(result)
+        this.props.history.push("/profile")
       });
   }
 
   render() {
-    console.log(this.state.user)
     return (
       <div class="container">
         <div class="panel panel-default">
@@ -50,11 +53,11 @@ class UpdateUser extends Component {
             <h4><Link to={`/profile/${this.state.user._id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> User List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
-                <label for="isbn">Name:</label>
+                <label for="name">Name:</label>
                 <input type="text" class="form-control" name="name" value={this.state.user.name} onChange={this.onChange} placeholder="Name" />
               </div>
               <div class="form-group">
-                <label for="title">email:</label>
+                <label for="email">email:</label>
                 <input type="email" class="form-control" name="email" value={this.state.user.email} onChange={this.onChange} placeholder="Email" />
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
