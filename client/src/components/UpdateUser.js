@@ -12,7 +12,8 @@ class UpdateUser extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.props)
+    console.log(this.props)
+    console.log(localStorage)
     axios.get(`${ process.env.REACT_APP_API_URL }/users/`+this.props.match.params.id)
       .then(res => {
         this.setState({ user: res.data.user });
@@ -30,15 +31,18 @@ class UpdateUser extends Component {
     e.preventDefault();
 
     const { name, email } = this.state.user;
-    console.log(this.state.user)
-    console.log(this.props.match)
+    // console.log(this.state.user)
+    // console.log(this.props.match)
+    if (this.state.user._id === localStorage.id) {
     axios.patch(`${ process.env.REACT_APP_API_URL }/users/`+this.props.match.params.id, { name, email })
       .then((result) => {
 
       console.log(result)
         this.props.history.push("/profile")
       });
-  }
+  } else {
+    this.props.history.push("/unauthorized")
+  }}
 
   render() {
     return (

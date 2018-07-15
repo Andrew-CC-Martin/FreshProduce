@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const _ = require('lodash')
 const bcrypt = require('bcryptjs');
 
-//Drivers + admin
+
 const UserSchema = new mongoose.Schema({
         name: {
             type: String
@@ -117,6 +117,7 @@ UserSchema.pre('save', function (next){
 
 UserSchema.methods.removeToken = function (token) {
     let user = this;
+    console.log('the token', token)
 
     return user.update({
         $pull: {
