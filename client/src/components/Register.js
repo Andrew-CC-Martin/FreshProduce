@@ -14,7 +14,6 @@ import './Login.css';
       }
       this.handleSubmit = this.handleSubmit.bind(this)
 
-
     }
     onChange = (e) => {
       const state = this.state
@@ -27,29 +26,6 @@ import './Login.css';
       this.props.onCreate(this.state)
       console.log(this.state)
       }
-    
-    // onSubmit = (e) => {
-    //   e.preventDefault();
-  
-    //   const { name, email, password, confirmPassword } = this.state;
-    //   // const { history } = this.props;
-    //   if (this.state.password !== this.state.confirmPassword){
-    //     this.setState({ message: 'Password does not match!'})
-    //   } else {
-    //   axios.post('/register', { name, email, password })
-    //     .then((result) => {
-    //       const { name, email } = result.data
-    //       this.setState({ name, email })
-    //       // this.props.history.push('/profile', this.state.name);
-    //       props.onCreate()
-    //     console.log(result)
-    //     }).catch((e) => {
-    //       let msg = e.response.data
-    //       if(e.response.status === 400) {
-    //         this.setState({ message: msg  });
-    //       }
-    //     });
-    // }}
   
     render () {
       const { name, email, password, confirmPassword, message } = this.state;

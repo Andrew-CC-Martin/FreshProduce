@@ -26,21 +26,38 @@ class App extends Component {
       email: '',
       password: '',
       confirmPassword: '',
-      message: ''
+      message: '',
+      token: ''
     };
   }
 
   logout = () => {
-    console.log(localStorage, 'with');
+    this.setState({token: ''})
+    // console.log(this.state)
+    // console.log(localStorage, 'with');
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('name');
-    localStorage.removeItem('id');
-    console.log(localStorage, 'deleted');
+    // localStorage.removeItem('id');
+    // console.log(localStorage, 'deleted');
     window.location.assign('/');
+    axios
+        .delete(`${process.env.REACT_APP_API_URL}/users/token/`+ localStorage.id)
+        .then(result => {
+          // console.log(result.data)
+          // console.log(this.state)
+          window.location.reload();
+        })
+        .catch(e => {
+          let msg = e.response.data;
+          if (e.response.status === 400) {
+            this.setState({ message: msg });
+          }
+        })
   };
 
   handleRegister = user => {
     console.log(user);
+    console.log(this.props)
     console.log(user.password);
     if (user.password !== user.confirmPassword) {
       this.setState({ message: 'Password does not match!' });
@@ -56,11 +73,13 @@ class App extends Component {
           password
         })
         .then(result => {
+          console.log(result.data)
           localStorage.setItem('jwtToken', result.data.token);
           localStorage.setItem('name', result.data.name);
           localStorage.setItem('id', result.data._id);
-          const { name, email } = result.data;
-          this.setState({ name, email, message: '' });
+          const { name, email, token } = result.data;
+          this.setState({ name, email, token, message: '' });
+          console.log(this.state)
           window.location.reload();
         })
         .catch(e => {
