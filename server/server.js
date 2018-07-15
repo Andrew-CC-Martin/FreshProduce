@@ -30,6 +30,7 @@ app.post('/register', (req, res) => {
         return user.generateAuthToken();
     }).then((token) => {        
         res.json(Object.assign({ token }, { _id: user.id, email: user.email, name: user.name }))
+        console.log('hi register', user)
     }).catch((e) => {
         res.status(400).send("User already exists");
     });
@@ -96,6 +97,26 @@ app.get('/users/:id', (req, res) => {
       res.status(400).send();
     })
   });
+
+//Sign out User
+app.delete('/users/token/:id', (req, res) => {
+    var id = req.params.id;
+    console.log('token',id)
+    if (!ObjectID.isValid(id)) {
+        return res.status(404).send();
+    }
+    
+    User.findById(id)
+    .then((user) => { user.removeToken(user.tokens[0].token).then(() => {
+        console.log('without token',user)
+        res.status(200).send();
+    }, () => {
+        res.status(400).send();
+    })
+}).catch((e) => {
+        res.status(400).send();
+     })
+  });
   
   
 
@@ -113,13 +134,12 @@ app.delete('/users/:id', (req, res) => {
         if (!user) {
             return res.status(404).send();
         }
-
+        console.log('token',user)
         res.send({ user });
     }).catch((e) => {
         res.status(400).send();
     });
 });
-
 
 //Call back to know when the server is running
 app.listen(port, () => {
