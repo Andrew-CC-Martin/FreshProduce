@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, Input, Label, Button } from 'reactstrap'
+import axios from 'axios';
 
 
 class  ContactUs extends Component {
@@ -20,15 +21,19 @@ class  ContactUs extends Component {
     //   console.log(this.state)
     }
     
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
         const { name, email, message } = this.state;
-        console.log(this.state)
+        const form = await axios.post(`${process.env.REACT_APP_API_URL}/user/form`, {
+            name,
+            email,
+            message
+        })
     }
 
     render() { 
         return (
-            <Form onSubmit={this.handleSubmit} style={{width: '600px', marginLeft: '400px'}} >
+            <Form onSubmit={this.handleSubmit} style={{width: '600px', marginLeft: '20%'}} >
                 <FormGroup>
                     <Label for="name">Name</Label>
                     <Input
