@@ -111,7 +111,7 @@ class App extends Component {
               {this.state.message}
             </div>
           )}
-          <h1>Fresh Produce</h1>
+          
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/catalogue" component={Catalogue} />
