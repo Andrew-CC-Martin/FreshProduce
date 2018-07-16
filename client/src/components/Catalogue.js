@@ -1,6 +1,7 @@
 import React from 'react';
 import Product from './Product.js'
 import CatalogueTitle from './CatalogueTitle'
+import './Catalogue.css'
 // import Axios from '../../node_modules/axios';
 
 class Catalogue extends React.Component {
