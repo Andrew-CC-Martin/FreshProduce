@@ -21,14 +21,34 @@ class  Contactus extends Component {
     //   console.log(this.state)
     }
     
-    async handleSubmit(e) {
+    // async handleSubmit(e) {
+    //     e.preventDefault();
+    //     const { name, email, message } = this.state;
+    //     const form = await axios.post(`${process.env.REACT_APP_API_URL}/contactus`, {
+    //         name,
+    //         email,
+    //         message
+    //     })
+    //     this.props.history.push('/')
+    // }
+
+
+    handleSubmit= (e) => {
         e.preventDefault();
         const { name, email, message } = this.state;
-        // const form = await axios.post(`${process.env.REACT_APP_API_URL}/user/form`, {
-        //     name,
-        //     email,
-        //     message
-        // })
+        axios.post(`${process.env.REACT_APP_API_URL}/contactus`, {
+            name,
+            email,
+            message
+        }).then((response) => {
+            if (response.data.msg === 'success'){
+                alert("Message Sent."); 
+                this.resetForm()
+            }else if(response.data.msg === 'fail'){
+                alert("Message failed to send.")
+            }
+        })
+        this.props.history.push('/')
     }
 
     render() { 
@@ -46,7 +66,7 @@ class  Contactus extends Component {
                     <Input
                         type="email"
                         name="email"
-                        onChange={this.handleChange} />
+                        onChange={this.handleChange} required />
                 </FormGroup>
                 <FormGroup>
                     <Label for="message">Message</Label>
