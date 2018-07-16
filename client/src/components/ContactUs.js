@@ -3,10 +3,32 @@ import {Form, FormGroup, Input, Label, Button } from 'reactstrap'
 
 
 class  ContactUs extends Component {
-    state = {  }
+    constructor () {
+    super();
+    this.state = { 
+        name: '',
+        email: '',
+        message: ''
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+}
+
+    handleChange = (e) => {
+      const state = this.state
+      state[e.target.name] = e.target.value;
+      this.setState(state);
+    //   console.log(this.state)
+    }
+    
+    handleSubmit(e) {
+        e.preventDefault();
+        const { name, email, message } = this.state;
+        console.log(this.state)
+    }
+
     render() { 
         return (
-            <Form>
+            <Form onSubmit={this.handleSubmit} style={{width: '600px', marginLeft: '400px'}} >
                 <FormGroup>
                     <Label for="name">Name</Label>
                     <Input
@@ -28,8 +50,8 @@ class  ContactUs extends Component {
                         name="message"
                         onChange={this.handleChange} />
                 </FormGroup>
-                <button>Submit</button>
-            </Form>
+                <Button type='submit'>Submit</Button>
+            </Form >
           );
     }
 }
