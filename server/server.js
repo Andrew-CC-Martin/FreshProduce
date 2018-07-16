@@ -5,8 +5,9 @@ require('dotenv').config();
 // libary imports
 const express = require('express');
 const bodyParser = require('body-parser');
-const _ = require('lodash')
-const cors = require('cors')
+const _ = require('lodash');
+const cors = require('cors');
+const nodemailer = require('nodemailer')
 
 //Local imports
 var {mongoose} = require('./db/mongoose.js');
@@ -140,6 +141,48 @@ app.delete('/users/:id', (req, res) => {
         res.status(400).send();
     });
 });
+
+//User ContactUs form request
+app.post('/user/form', (req, res) => {
+    console.log(req.body)
+    nodemailer.createTestAccount((err, account) => {
+        const htmlEmail = `
+        <h3> Contact Details </h3>
+        <ul>
+            <li>Name: ${req.body.name} </li>
+            <li>Name: ${req.body.email} </li>
+            </ul>
+            <h3>Message</h3>
+            <p>${req.body.message} </p>
+        `
+    
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
+        auth: {
+            user: 'ad2vomuvyvrn6h7j@ethereal.email',
+            pass: 'ytgnUvSNdcFHASNfmK'
+        }
+    })
+
+    let mailOptions = {
+        from: 'test@testaccount.com',
+        to: 'ad2vomuvyvrn6h7j@ethereal.email',
+        replyTo: 'test@testaccount.com',
+        subject: 'New Ticket',
+        text: req.body.message,
+        html: htmlEmail
+    }
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId);
+        // Preview only available when sending through an Ethereal account
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    })
+})
+})
 
 //Call back to know when the server is running
 app.listen(port, () => {
