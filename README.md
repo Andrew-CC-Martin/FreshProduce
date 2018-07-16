@@ -1,10 +1,37 @@
 # Fresh Produce - CoderAcademy Project 
-This is the README for the FreshProduce website built for the Food Forum, as part of the CoderAcademy group project. This is a live document. 
+This is the README for the FreshProduce website built for the Food Forum, as part of the CoderAcademy group project. This is a document is subject to revisions as the project progresses. 
 
-### Who is your client? 
+## Table of Contents
+### [1. Who is your Client](#q1)
+### [2. What is your client’s need (i.e. challenge) that you will be addressing in your project?](#q2)
+### [3. Describe the client’s current setup and data.](#q3)
+### [4. Describe the project will you be conducting and how your App will address the client’s needs.](#q4)
+### [5. Identify and describe the software (including databases) to be used in your App.](#q5)
+### [6. Identify and describe the network setup you will use in your development.](#q6)
+### [7. Identify and describe the infrastructure (i.e. hardware) that your App will run on.](#q7)
+### [8. Describe the architecture of your App.](#q8)
+### [9. Explain the different high-level components (abstractions) in your App.](#q9)
+### [10. Detail any third party services that your App will use.](#q10)
+### [11. Identify the database to be used in your app and provide a justification for your choice.](#q11)
+### [12. Discuss the database relations to be implemented.](#q12)
+### [13. Provide your database schema design.](#q13)
+### [14. Provide User stories for your App.](#q14)
+### [15. Provide Wireframes for your App.](#q15)
+### [16. Describe the way Tasks are being allocated and tracked in your project.](#q16)
+### [17. Discuss how Agile methodology is being implemented in your App.](#q17)
+### [18. Provide an overview and description of your Source control process.](#q18)
+### [19. Provide an overview and description of your Testing process.](#q19)
+### [20. Discuss and analyse requirements related to information system security.](#q20)
+### [21. Discuss methods you will use to protect information and data.](#q21)
+### [22. Research what your legal obligations are in relation to handling user data.](#q22) 
+
+***
+
+
+### <a id="q1"></a>1. Who is your client? 
 Our client is “Food Forum”, a fresh produce wholesaler operating out of Canberra, ACT. They currently have a website, [The Food Forum - Home](http://www.thefoodforum.com.au/) which acts as a landing page for marketing purposes. 
 
-### What is your client’s need (i.e. challenge) that you will be addressing in your project?
+### <a id="q2"></a>2. What is your client’s need (i.e. challenge) that you will be addressing in your project?
 * Our client wants to sell their produce online.
 * They want their users to be able to place orders online.
 * Their users are typically restaurants, hospitals and other food related businesses. 
@@ -15,17 +42,16 @@ Our client is “Food Forum”, a fresh produce wholesaler operating out of Canb
 * Users need to place and update orders quickly as they are time poor. 
 * Users need to setup returns/rejects or open a ticket to discrepancies. 
 
-### Describe the client’s current setup and data.
-*Shows a complete understanding of the current (pre project) state of the client’s set up and data as is relevant to the project*
-* The client currently has a website that acts displays the produce and services they offer. It acts primarily as a marketing website for the business and generate leads. 
+###  <a id="q3"></a>3. Describe the client’s current setup and data.
+
+* The client currently has a website that displays the produce and services they offer. It acts primarily as a marketing website for the business and generates leads. 
 * There is no data captured as a part of this website, however the business does have other systems which take in data. 
 * There is an internal database which tracks prices and products on offer. It does not track the exact quantity or volumes that are currently available, however it does track whether an item is currently in or out of stock. 
 * There are many manual processes as part of the operation, such as paper sheets which show the delivery information for truck drivers and other order-related documents that are manually reconciled between different team members. 
 * For the scope of this project, the key data that we will be requiring access to is the product information. This will be made available to us via the API, per the architecture diagram. 
 
 
-### Describe the project will you be conducting and how your App will address the client’s needs.
-*Complete discussion of the project including a demonstration of a full understanding of how it will meet the client’s needs*
+### <a id="q4"></a>4. Describe the project will you be conducting and how your App will address the client’s needs.
 
 Our goal for this project is to create a digital sales channel for Food Forum, similar to a Woolworths online or Harris Farms online. The key requirements for our client is for their customers to place orders online. The project has three main components which are required to meet these requirements. 
 1. A client management system, which allows customer’s of Food Forum, such as restaurants and hospitals, to have their own profile where they can login, and manage their details (e.g. address).
@@ -34,8 +60,8 @@ Our goal for this project is to create a digital sales channel for Food Forum, s
 These are the three high level components that are required for customers to find and transact on produce items in an online or digital environment. It covers the process from selecting items, to collecting items and finally shipping the item to the customer. 
 <img width="602" alt="appcomponents" src="https://user-images.githubusercontent.com/35912668/42721427-26ee4b46-877e-11e8-8223-5042d1d63242.png">
 
-### Identify and describe the software (including databases) to be used in your App.
-*Complete and detailed description of the software and database used in the app*
+### <a id="q5"></a>5. Identify and describe the software (including databases) to be used in your App.
+
 * React components for the front end. [React - A JavaScript library for building user interfaces](https://reactjs.org/). This is a framework created by facebook that we will be using to design the UI for our client-side application. 
 * We will be using NodeJS to build our server-side application, as it is fast, scalable and asynchronous it is beneficial for our platform. [Node.js](https://nodejs.org/en/)
 * Express is used as our framework for NodeJS, it provides our application with quick and effective routing and endpoints for our purposes. [Express - Node.js web application framework](http://expressjs.com/)
@@ -48,17 +74,18 @@ These are the three high level components that are required for customers to fin
 * Postman is service that allows our development team to make API calls to our server-side application, which provides a method for the team to test different RESTful endpoints. https://www.getpostman.com/
 * JEST and enzyme is used to test our application. JEST the main testing tool for javascript and integrates well into the TDD process. Whilst, Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse a React component’s output. [Jest · 🃏 Delightful JavaScript Testing](https://jestjs.io/)[Jest · Enzyme](http://airbnb.io/enzyme/docs/guides/jest.html)
 * 3T is a GUI tool for MongoDB, which our development team has been using as part of our development process. It allows us to write faster queries in an easy-to-read manner.[Studio3T](https://studio3t.com/)
+* JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA. [JWT](https://jwt.io/)
+* dotenv is our npm packages that allows us to store and retrieve environment variables such as the mongoURI, JWT tokens and ports. [dotenv](https://www.npmjs.com/package/dotenv)
 
-### Identify and describe the network setup you will use in your development.
-*Gives a complete description of the networks and methods used to make connections*
+### <a id="q6"></a>6. Identify and describe the network setup you will use in your development.
+
 Our MERN app uses several technologies in its network setup in order for us to be on production. 
-
-Locally, we have our React (client-side) application running on port 3000, whilst our Node(server-side) is running on port 5000. We are also using Postman locally to test our API routes in our development environment. 
+Locally, we have our React (client-side) application running on port 3000, whilst our Node(server-side) is running on port 5000. We are also using Postman locally to test our API routes in our development environment. In order for these networks to work, we leverage the routing framework provided by Express.  
 
 In order for our application to be deployed we are using Mlab and Zeit. Mlab, provides Database-as-a-service for MongoDB. Within the Mlab configuration we have used the AWS as the storage provider. We have setup environment variables for production so that the Mlab database will store our MongoDB database. Our Mlab database is in the North Virginia AWS location. 
 
 Zeit [ZEIT](https://zeit.co/) is our deployment service for both our client and server. 
-* For the server side defining env variables.  Our current deployment process is as follows. 
+* For the server side,our current deployment process is as follows. 
 	1. For the server side app, we connect Mlab into production via the address (MONGODB_URI) of the Mlab - mongoDB server.  
 	2. Pass through environment variables to Zeit such as the MONGODB_URI and our JWT secret which is required for logins. 
 	3. Using the Zeit Now shell this creates the deployment URL for our server side application. 
@@ -68,31 +95,29 @@ Zeit [ZEIT](https://zeit.co/) is our deployment service for both our client and 
 	3. Now Shell will create the production URL. 
 
 
-### Identify and describe the infrastructure (i.e. hardware) that your App will run on.
-*Shows a full understanding of the infrastructure that will be needed to run the app*
-Whilst our application does not directly use any hardware, we are dependent on some hardware of our third party providers. As our mongoDB server is hosted on AWS via mLab, it does use Intel Xeon type processors. 
+### <a id="q7"></a>7. Identify and describe the infrastructure (i.e. hardware) that your App will run on.
 
-### Describe the architecture of your App.
-*Shows almost flawless understanding of the high level structure of the app*
-Overall we aim to have a microservices architecture, with each component that we build being modular. This means that we can swap out each piece and still have the application function. For example, if we switch out our CMS systems that we have built, to another system like Zendesk. By having the microservices architecture we are able to do this more easily and re-deploy faster. Similarly, by having our server-side application broken away, any changes or new technologies that we leverage in future on our server-side application won't require as many changes or configurations in the client-side. 
+Whilst our application does not directly use any hardware, we are dependent on some hardware of our third party providers. As our mongoDB server is hosted on AWS via mLab, our dependant hardware can be assumed as AWS hardware. Therefore, our hardware includes the use of Intel Xeon type processors, which power AWS. Furthermore, AWS uses a customized Broadcom Tomahawk ASIC for their routers which allow for a total flow-through of 3.2 terabits.
 
-Our app architecture is broken into two main systems, server and client. Our server-side application has a MongoDB (NoSQL) database, with the Express package providing the server-side routing. The server side code is all written in nodeJS. Our MongoDB database leverages Mongoose as an ORM, which subsequently interfaces with our Models. In our application our models are quite thin, and only stores user and company profile information. Express provides RESTful routing for our server routes, and information such as user and profile data, is passed via these routes to our client side application. 
+### <a id="q8"></a>8. Describe the architecture of your App.
 
-Our client-side application is built predominately with the react framework. 
+Overall we aim to have a microservices architecture, with each component that we build being modular. This means that we can swap out each piece and still have the application function. For example, we are able to switch out our CMS to another service like Zendesk, with minimal downtime if we maintain the microservices architecture. Similarly, by having our server-side application broken away, any changes or new technologies that we leverage in future on our server-side application won't require as many changes or configurations in the client-side. 
 
-Our application is also heavily reliant on a external API from Food Forum which provides our application with product information that is populated in our catalogue. This affects our architecture as our application is not responsible for storing the product information. If our application were to manage product information as well, then errors such as stock level mis-matches could occur as there are two different databases of the same information. By having product information coming from one database and accessing via an API removes this potential risk. 
+<img width="811" alt="app architecture" src="https://user-images.githubusercontent.com/35912668/42731626-618066d2-8854-11e8-82ed-02fd1ed189d0.png">
+
+Our app architecture is broken into two main systems, server and client. Our server-side application has a MongoDB (NoSQL) database, with the Express package providing the server-side routing. The server side code is all written in nodeJS. Our MongoDB database leverages Mongoose as an ORM, which subsequently interfaces with our models. In our application our models are quite thin, and only stores user and company profile information. Express provides RESTful routing for our server routes, and information such as user and profile data, is passed via these routes to our client side application. 
+
+Our client-side application is built predominately with the react framework. Our application is also heavily reliant on a external API from Food Forum which provides our application with product information that is populated in our catalogue. This affects our architecture as our application is not responsible for storing the product information. If our application were to manage product information as well, then errors such as stock level mis-matches could occur as there are two different databases of the same information. By having product information coming from one database and accessing via an API removes this potential risk. 
 
 
 
-### Explain the different high-level components (abstractions) in your App.
-*Precisely explains and shows understanding of the different high-level components of the app*
+### <a id="q9"></a>9. Explain the different high-level components (abstractions) in your App.
 
 <img width="602" alt="appcomponents" src="https://user-images.githubusercontent.com/35912668/42721427-26ee4b46-877e-11e8-8223-5042d1d63242.png">
 Per the image above, our application has two high level components in our server-side application. It has an external API connection to access production information. It also has a connection to a MongoDB database. 
 Whilst on our client-side application there are main components. The first, a client management system which provides functionality for our customers and administrative team to manage their own accounts and profiles. The second, a Product catalogue and landing page which displays all available products for our customers as well as a search/filtering functionality. The third and final component is our cart and ordering component. This component provides customers to store all their desired items in a shopping cart, then create and pay for their order. 
 
-### Detail any third party services that your App will use.
-*Includes a complete and detailed description of third party services used in the app*
+### <a id="q10"></a>10. Detail any third party services that your App will use.
 
 ** React components for the front end. [React - A JavaScript library for building user interfaces](https://reactjs.org/). This is a framework created by facebook that we will be using to design the UI for our client-side application. 
 * We will be using NodeJS to build our server-side application, as it is fast, scalable and asynchronous it is beneficial for our platform. [Node.js](https://nodejs.org/en/)
@@ -106,10 +131,26 @@ Whilst on our client-side application there are main components. The first, a cl
 * Postman is service that allows our development team to make API calls to our server-side application, which provides a method for the team to test different RESTful endpoints. https://www.getpostman.com/
 * JEST and enzyme is used to test our application. JEST the main testing tool for javascript and integrates well into the TDD process. Whilst, Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse a React component’s output. [Jest · 🃏 Delightful JavaScript Testing](https://jestjs.io/)[Jest · Enzyme](http://airbnb.io/enzyme/docs/guides/jest.html)
 * 3T is a GUI tool for MongoDB, which our development team has been using as part of our development process. It allows us to write faster queries in an easy-to-read manner.[Studio3T](https://studio3t.com/)
+* JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA. [JWT](https://jwt.io/)
+* dotenv is our npm packages that allows us to store and retrieve environment variables such as the mongoURI, JWT tokens and ports. [dotenv](https://www.npmjs.com/package/dotenv)
 
+### <a id="q11"></a>11. Identify the database to be used in your app and provide a justification for your choice
 
-### Provide User stories for your App.
-*Over 15 well thought out and relevant user stories provided*
+We will be using the MongoDB noSQL database as its structure allows it to store non-transactional information like user profiles in a more scalable manner. MongoDB is also schema less which a collection can hold various documents. This provides us with a better structure of a single object and also no complex joins. Furthermore the conversion of application objects to database objects are not needed. If we had transactional or 'ledger-like' information such as financial data, we would have opted for other databases such as Postgresql, which handle this data better. However as we are only storing user-related or user management type data, a MongoDB database is the better choice.
+
+There were initial plans to put the shopping cart data into our MongoDB database, however we opted to put this information into local storage within the browser. As shopping carts are not objects that are required to persist for a long period of time, we opted to use a data storage option that reflected this nature of shopping carts.
+
+### <a id="q12"></a>12. Discuss the database relations to be implemented
+
+Per our ERD (see question 13), we only have one document in our MongoDB database. This is the User document. The purpose of this user table is to capture all the details about the user or the company. This table reflects the MVP that we will currently build. We are confident that at a minimum, a company, name, address and phone number are the mandatory fields that will be stored on our platform apart from email and password. We have a high confidence that delivery instructions will also be included based on our timelines and have included it in our design today. As mentioned previously, we are not storing product information within our platform and have not created a design for it. Nor are we storing shopping cart or order details in our MongoDB server, instead it is contained within local storage on the client side. 
+
+### <a id="q13"></a>13. Provide your database schema design
+
+See question 12 for the explanation of the ERD.
+<img width="274" alt="erd" src="https://user-images.githubusercontent.com/35912668/42721861-337be3b2-8785-11e8-8f2f-7172299384ff.png">
+
+### <a id="q14"></a>14. Provide User stories for your App.
+
 #### As a buyer, I want to create my account on the website to store my recurring information.	
 A user can create their own account, with the following fields.
 * Email
@@ -119,7 +160,6 @@ A user's account will be linked to their company profile, which has the followin
 * password
 * company name
 * address
-* saved billing details
 #### As a buyer, I want to update my account details on the website so I can adjust any details that I have 	
 Buyer needs to update the following fields. 
 A user needs to edit the same details that they can create as a general rule.
@@ -192,68 +232,95 @@ Products on the catalogue will be listed alphabetically by default. There will b
 #### As a buyer, I want to view specials or seasons products, so I can reduce my costs for certain products 	
 The home page will also display a list of specials or seasonal products. This will highlight any promotions that are currently appearing for the customers. 
 
-### Provide Wireframes for your App.
-*More than five detailed and well designed wireframes provided, for several different screen sizes (as required for the app)*
+### <a id="q15"></a>15. Provide Wireframes for your App.
 
-## Desktop Home
+
+#### Desktop Home
 <img width="1100" alt="desktop_homepage" src="https://user-images.githubusercontent.com/35912668/42721560-2327c404-8780-11e8-9cf2-dbda55a5c5a7.png">
-## Desktop Specials
+
+#### Desktop Specials
 <img width="1101" alt="desktop_specials" src="https://user-images.githubusercontent.com/35912668/42721564-3430ac48-8780-11e8-9583-6459b7ba3369.png">
-## Desktop Signin
+
+#### Desktop Signin
 <img width="1110" alt="desktop_signin" src="https://user-images.githubusercontent.com/35912668/42721569-48c5e402-8780-11e8-8605-7d6cd8921327.png">
-## Desktop Detailed View
+
+#### Desktop Detailed View
 <img width="1082" alt="desktop_detailedview" src="https://user-images.githubusercontent.com/35912668/42721572-56fca358-8780-11e8-86dc-f97115cd8aba.png">
-## Desktop Order Confirmation
+
+#### Desktop Order Confirmation
 <img width="1099" alt="desktop_orderconfirmation" src="https://user-images.githubusercontent.com/35912668/42721577-6820ef90-8780-11e8-996f-b7e14b54f4a5.png">
-## Desktop Shipping Details
+
+#### Desktop Shipping Details
 <img width="1101" alt="desktop_shipping" src="https://user-images.githubusercontent.com/35912668/42721579-77410e24-8780-11e8-8639-e2b04c257ae1.png">
-## Desktop Cart
+
+#### Desktop Cart
 <img width="1107" alt="desktop_cart" src="https://user-images.githubusercontent.com/35912668/42721581-8846b778-8780-11e8-9e06-df5808efbe5d.png">
-## Mobile Cart Confirm
+
+#### Mobile Cart Confirm
 <img width="198" alt="mobile_cartconfirm" src="https://user-images.githubusercontent.com/35912668/42721647-90505784-8781-11e8-9d29-aa48e9c91775.png">
-## Mobile Catalogue
+
+#### Mobile Catalogue
 <img width="184" alt="mobile_catalogue" src="https://user-images.githubusercontent.com/35912668/42721650-9e85b42a-8781-11e8-8a2d-dc2babe72080.png">
-## Mobile Detailed View
+
+#### Mobile Detailed View
 <img width="329" alt="mobile_detailedview" src="https://user-images.githubusercontent.com/35912668/42721656-c53998ca-8781-11e8-97fe-1b8242f0df26.png">
-## Mobile Edit Cart
+
+#### Mobile Edit Cart
 <img width="115" alt="mobile_editcart" src="https://user-images.githubusercontent.com/35912668/42721664-e10bab7e-8781-11e8-985b-542c9d4d484d.png">
-## Mobile Edit Profile
+
+#### Mobile Edit Profile
 <img width="113" alt="mobile_editprofile" src="https://user-images.githubusercontent.com/35912668/42721667-eb2ac716-8781-11e8-8693-69d49646e1e3.png">
-## Mobile Landing Page Specials
+
+#### Mobile Landing Page Specials
 <img width="246" alt="mobile_landingspecials" src="https://user-images.githubusercontent.com/35912668/42721670-f949200e-8781-11e8-91a0-2d7110c98e82.png">
 
-### Describe the way Tasks are being allocated and tracked in your project. 
-*Shows significant planning for how tasks are tracked and distributed amongst team members, including a full description of the process and of the tools used*
+### <a id="q16"></a>16. Describe the way Tasks are being allocated and tracked in your project. 
+
 Tasks are being allocated based on the team’s interests, strengths and weaknesses. We will be balancing tasks so that we can leverage each other’s strengths across project management, front-end, back-end, architecture and design. However, we are also conscious that we need to improve our weaknesses so we are ensuring that tasks are also allocated so that each team member works on something where they are not strong, but ensure we are providing the appropriate level of support to each other. 
 
 We are tracking our tasks in Jira and Confluence. We have attached screenshots of how we are using these products. 
 
-### Confluence Goals
+#### Confluence Goals
+
 We have outlined project goals in our main confluence space, providing an overall high level picture for the team to work towards. 
+
 <img width="1079" alt="confluence space goal" src="https://user-images.githubusercontent.com/35912668/42721763-98d62f26-8783-11e8-88a8-a583d590d8a5.png">
 
-### Confluence and Jira
+#### Confluence and Jira
+
 Within the same confluence page we have links to open user stories which need to be tasked to the team. Having one main page with all this information allows us to see how we are tracking towards the high level goals of the project for Food Forum. 
+
 <img width="1086" alt="confluence space jira link" src="https://user-images.githubusercontent.com/35912668/42721766-a9cbc458-8783-11e8-889d-6a3d7de9fcb8.png">
 
+#### Subpages in Confluence
 
-### Subpages in Confluence
-Within confluence we have setup sub pages for each of the three high level components so that we can dive down into another layer of detail. This includes workflow diagrams that affect the whole component and the user stories related to that component. Here we can also rank what are the 'must have' stories and what are the 'should have' stories for this project. This allows us to further time manage what features can be completed. 
+Within confluence we have setup sub pages for each of the three high level components so that we can dive down into another layer of detail. This includes workflow diagrams that affect the whole component and the user stories related to that component. Here we can also rank what are the 'must have' stories and what are the 'should have' stories for this project. This allows us to further time manage what features can be completed.
+ 
 <img width="1085" alt="page board" src="https://user-images.githubusercontent.com/35912668/42721769-ca016f34-8783-11e8-9487-43d29e2e7dc8.png">
 
-### Jira Kanban Board
-Finally, we have a kanban board which tracks the status of each story. Within each user story item we also detail any sub tasks or relevant details. 
+#### Jira Kanban Board
+
+Finally, we have a kanban board which tracks the status of each story. Within each user story item we also detail any sub tasks or relevant details.
+
 <img width="1330" alt="kanban board" src="https://user-images.githubusercontent.com/35912668/42721774-d8bba760-8783-11e8-928e-2935da34c2ae.png">
 
 
-### Discuss how Agile methodology is being implemented in your App.
-*Meets D with at least 15 user stories and meetings from regular scrum and client meetings held to this point*
-We are having regular meetings with our client, as evidenced by the three questionnaires. We are conscious that as we develop these products we may not have the full picture, therefore we develop and iterate over multiple MVPs. We leverage Confluence, a documenting collaboration tool, to plan out ‘must have’ and ‘should have’ features. This allows us to build upon our user stories in each release and continue improving our product. Whilst making it available to customers to test and allow us developers to receive feedback. 
+### <a id="q17"></a>17. Discuss how Agile methodology is being implemented in your App.
+
+We have three questionnaires with our client in order to fact find and constantly iterate as problems arise.
+<img width="759" alt="cq1top" src="https://user-images.githubusercontent.com/35912668/42730969-bcb89208-8846-11e8-82eb-65dc37c08e31.png">
+
+<img width="745" alt="cq1bottom" src="https://user-images.githubusercontent.com/35912668/42730975-cebb0b8e-8846-11e8-94f4-a0e00ab18186.png">
+
+<img width="709" alt="cq2" src="https://user-images.githubusercontent.com/35912668/42730978-db0e8f46-8846-11e8-84c4-9f8dea37d4e7.png">
+
+<img width="704" alt="cq3" src="https://user-images.githubusercontent.com/35912668/42730981-ea98f776-8846-11e8-8113-12318c32f7f5.png">
+
+ We are conscious that as we develop these products we may not have the full picture, therefore we develop and iterate over multiple MVPs. We leverage Confluence, a documenting collaboration tool, to plan out ‘must have’ and ‘should have’ features. This allows us to build upon our user stories in each release and continue improving our product. Whilst making it available to customers to test and allow us developers to receive feedback. 
 
 We have planning our user stories with Jira, which integrates well with Confluence. It provides us the granularity in tracking the progress of our development on a Kanban board, whilst providing us with a higher level view of which abstracted component we are building (CMS, cart or orders). See the images in the previous question above for further details
 
-### Provide an overview and description of your Source control process.
-*Meets D criteria and demonstrates frequent commits, merges and pull requests from all team members up to the point of this submission*
+### <a id="q18"></a>18. Provide an overview and description of your Source control process.
 
 Our daily git flow on Github is shown in our diagram attached
 <img width="810" alt="git flow" src="https://user-images.githubusercontent.com/35912668/42721785-15d5470a-8784-11e8-8c13-200b0f8f7c07.png">
@@ -264,8 +331,11 @@ b. Towards the end of the day, we move our feature work into our Dev branch in p
 2. Assuming all of our new code has been committed in our local development branch. We perform a rebase from our corp account into our local master. This pulls any new code that other developers may have already committed into our User Local Master. The rebase also places our current development code on top of the new code we just pulled from CORP. If the rebase does not automatically sync, then we work through and approve any amendments necessary. Finally, after this process we push this new code onto our User’s GitHub account (a forked repo from CORP). 
 3. The final step we create a pull request to pull the information in the forked repo into the corp repo. This request will be approved by another team member before finalising the pull. 
 
-### Provide an overview and description of your Testing process.
-*Meets D with tests documented or defined for all user stories, extensive use of unit testing on code completed thus far, and well organized test results*
+An example of our team's frequent merges and pulls can be seen in the below screenshot of our repo. 
+<img width="1089" alt="git example" src="https://user-images.githubusercontent.com/35912668/42730580-3e8a274e-883b-11e8-842e-f476554c265e.png">
+
+### <a id="q19"></a>19. Provide an overview and description of your Testing process.
+
 For our testing we will be using JEST for tests on the front and back end. In addition to JEST we are also using enzyme to test our react components. In most cases we are following the ‘red, green, refactor’ approach to TDD with these testing frameworks. We are also using Postman to mimic API calls and test the server requests. We have attached screenshots of some of the tests we currently have in place and their outputs. 
 <img width="880" alt="app_test_js" src="https://user-images.githubusercontent.com/35912668/42721806-a65d5f2e-8784-11e8-9572-ad3ac1acc5ec.png">
 <img width="979" alt="product tests" src="https://user-images.githubusercontent.com/35912668/42721811-b7c08d90-8784-11e8-8a90-508cda8e8615.png">
@@ -275,25 +345,25 @@ For our testing we will be using JEST for tests on the front and back end. In ad
 ![post_register](https://user-images.githubusercontent.com/35912668/42721836-e9a04f9e-8784-11e8-8c4f-2cbf6f6b03fb.png)
 
 
-### Discuss and analyse requirements related to information system security. 
-*Meets D with evidence that options were discussed with the client and agreement was reached*
+### <a id="q20"></a>20. Discuss and analyse requirements related to information system security. 
 
+We had discussions with the client as seen in question 17(9th point in Questionnaire 1), around current data and information security policies. Currently, they do not have policies in place as they do not have much of their business online. The findings of our infosec standing are below following these discussions.
 Overall our requirements for storing data are lower than the overage business due to the location of our services and also the data types we store. 
 
 We are not affected by General Data Protection Regulation (GDPR) today as all of our customers and services provided are in southern regional NSW. As there is a low likelihood and an inability to service customers located in the EU,  we have not addressed GDPR today. 
 
- This application will not store any Personally Identifiable Information (PII). PII includes data fields such as, National ID number, Passport number, Visa permit number, Driver's license number, Bank and credit/debit card numbers, Disability status, Ethnicity,  and Gender.  The only data we take is name, email, password, company name, and company address, some of this will need to be protected. Payment information will also need to be secured. 
+This application will not store any Personally Identifiable Information (PII). PII includes data fields such as, National ID number, Passport number, Visa permit number, Driver's license number, Bank and credit/debit card numbers, Disability status, Ethnicity,  and Gender.  The only data we take is name, email, password, company name, and company address, some of this will need to be protected. Payment information will also need to be secured. 
 
 
-### Discuss methods you will use to protect information and data. 
-*Meets D with clear documentation on the specific methods that will be used for this project to protect information and data and why these methods were chosen*
+### <a id="q21"></a>21. Discuss methods you will use to protect information and data. 
 
 The first method of data security that we are using is data limitation. We limit the data we keep in the application and only ask for what we need. For example, we could store ABNs and other company data in this e-commerce website, however as it is not strictly required as it is stored elsewhere in Food Forum’s business and can be retrieved there when required. 
 
 As mentioned previously, password security and encryption is critical for this application. We are using the Bcrpyt npm package [bcrypt  -  npm](https://www.npmjs.com/package/bcrypt)to hash the password. 
 
-### Research what your legal obligations are in relation to handling user data.
-*Meets D with evidence of discussion of findings with the client and agreement on approach to be used to meet legal obligations*
+We are also using JSON Web Tokens (JWT) when we are transmitting information. JWTs were used for authentication as it can securely identify each user as they login to our system. By using JWTs we will ensure that users cannot access data that is not their own, for example userA cannot see userB's data. 
+
+### <a id="q22"></a>22. Research what your legal obligations are in relation to handling user data.
 
 Per our first questionnaire with the client, we confirmed the client currently did not have any data policies in place. They are open to suggestion for any suggestions we have in place. 
 
@@ -303,18 +373,5 @@ We are not affected by General Data Protection Regulation (GDPR) today as all of
 
 
 
-### Identify the database to be used in your app and provide a justification for your choice
-*Full discussion of the database used, including an excellent assessment of the pros and cons of this type of database*
-We will be using the Mongo DB noSQL database as its schema allows it to store non-transactional information like user profiles in a more scalable manner. 
 
-There was initial plans to put the shopping cart data into our MongoDB database, however we opted to put this information into local storage within the browser. As shopping carts are not objects that are required to persist for a long period of time, we opted to use a data storage option that reflected this nature of shopping carts.
-
-###  Discuss the database relations to be implemented
-*Provides a full discussion of the database relations, with reference to the ERD*
-
-Per our ERD. We only have one document in our MongoDB database. This is the User document. The purpose of this user table is to capture all the details about the user or the company. This table reflects the MVP that we will currently build. We are confident that at a minimum a company, name, address and phone number are the mandatory fields that will be stored on our platform apart from email and password. We have a high confidence that delivery instructions will also be included based on our timelines and have included it in our schema design today. As mentioned previously, we are not storing product information within our platform and have not created a schema design for it. Nor are we storing shopping cart or order details in our MongoDB server, instead it is contained within local storage on the client side. 
-### Provide your database schema design
-*Flawless,complex, complete, and well thought through ERDs provided.*
-
-<img width="274" alt="erd" src="https://user-images.githubusercontent.com/35912668/42721861-337be3b2-8785-11e8-8f2f-7172299384ff.png">
 
