@@ -17,7 +17,8 @@ import Lost from './components/Lost';
 import Catalogue from './components/Catalogue';
 import UpdateUser from './components/UpdateUser';
 import UsersList from './components/UsersList';
-import ContactUs from './components/ContactUs';
+import Contactus from './components/Contactus';
+import UserInvoice from './components/UserInvoice';
 
 class App extends Component {
   constructor(props) {
@@ -116,7 +117,8 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/catalogue" component={Catalogue} />
             <Route exact path="/update/:id" component={UpdateUser} />
-            <Route exact path="/contactus/" component={ContactUs} />
+            <Route exact path="/contactus" component={Contactus} />
+            <Route exact path="/user/inv" component={UserInvoice} />
             <Route
               exact
               path="/register"
