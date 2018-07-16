@@ -142,15 +142,17 @@ app.delete('/users/:id', (req, res) => {
     });
 });
 
-//Send email to users
-app.post('/user/inv', (req, res) => {
-    console.log(req.body)
-    // nodemailer.createTestAccount((err, account) => {
+
+
+//Contact us option from users
+app.post('/contactus', (req, res) => {
+    // console.log(req.body)
         const htmlEmail = `
         <h3> Contact Details </h3>
         <ul>
-            <li>Name: ${req.body.name} </li>
-            </ul>
+        <li>Name: ${req.body.name} </li>
+        <li>Email: ${req.body.email} </li>
+        </ul>
             <h3>Message</h3>
             <p>${req.body.message} </p>
         `
@@ -160,16 +162,16 @@ app.post('/user/inv', (req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: process.env.EMAIL,
+            user: process.env.EMAIL_COMPANY,
             pass: process.env.PASS
         }
     });
 
     let mailOptions = {
         from: 'andresrgal@zoho.com',
-        to: 'andyrgallo@gmail.com',
-        replyTo: 'andresrgal@zoho.com',
-        subject: 'Your Envoice',
+        to: 'andresrgal@zoho.com',
+        replyTo: req.body.email,
+        subject: req.body.email,
         text: req.body.message,
         html: htmlEmail
     }
@@ -177,11 +179,50 @@ app.post('/user/inv', (req, res) => {
         if (error) {
             return console.log(error);
         }
-        console.log('Message sent: %s', info.messageId);
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+        console.log('Message sent: %s', info.messageId, info.response);
+            res.send('ok')
     })
 })
-// })
+
+//User option to send invoice to email
+app.post('/user/inv', (req, res) => {
+    // console.log(req.body)
+        const htmlEmail = `
+        <h3> Invoice Details </h3>
+        <ul>
+            <li>Email: ${req.body.email} </li>
+            </ul>
+            <h3>Invoice Component</h3>
+            <p>Products Ordered</p>
+        `
+    
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.zoho.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: process.env.EMAIL_COMPANY,
+            pass: process.env.PASS
+        }
+    });
+
+    let mailOptions = {
+        from: process.env.EMAIL_COMPANY,
+        to: process.env.EMAIL_USER,
+        replyTo: process.env.EMAIL_COMPANY,
+        subject: 'Your Envoice',
+        text: 'INVOICE COMPONENT',
+        html: htmlEmail
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId, info.response);
+            res.send('ok')
+        // console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    });
+});
 
 //Call back to know when the server is running
 app.listen(port, () => {
