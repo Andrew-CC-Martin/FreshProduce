@@ -20,6 +20,7 @@ import UsersList from './components/UsersList';
 import UserInvoice from './components/UserInvoice';
 import ContactUs from './components/ContactUs';
 import Cart from './components/Cart'
+import { get } from 'https';
 
 class App extends Component {
   constructor(props) {
@@ -30,8 +31,33 @@ class App extends Component {
       password: '',
       confirmPassword: '',
       message: '',
-      token: ''
+      token: '',
+      // cartObject: App.getCart(),
     };
+    // console.log(`cart contents: ${this.state.cartObject}`)
+  }
+
+  //Static method to retrieve the cart from local storage and convert into a javascript object.
+  //Can be called from any file by importing App.js, and then calling App.getCart()
+  static getCart = () => {
+    JSON.parse(localStorage.getItem('cart')) || [];
+  }
+
+  //test which adds items to cart from seed data from a gist api
+  componentDidMount() {
+    const url = "https://rawgit.com/stemshell/08096765346fe5d61ad1d70de7185bc6/raw/7a9f3d0606d183e5a3120c400517f3292a53cf8e/cart.json"
+    
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          cartObject: data
+         })
+        // console.log(this.state.cartObject)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   logout = () => {
@@ -95,8 +121,8 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state);
-    console.log(localStorage);
+    // // console.log(this.state);
+    // console.log(localStorage);
     return (
       <Router>
         <div className="App">

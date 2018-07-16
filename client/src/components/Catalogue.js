@@ -2,6 +2,7 @@ import React from 'react';
 import Product from './Product.js'
 import CatalogueTitle from './CatalogueTitle'
 import './Catalogue.css'
+import App from '../App.js';
 // import Axios from '../../node_modules/axios';
 
 class Catalogue extends React.Component {
@@ -22,6 +23,7 @@ class Catalogue extends React.Component {
         this.setState({
           products: data
          })
+        //  console.log(App.getCart())
       })
       .catch(err => {
         console.log(err)
@@ -29,12 +31,11 @@ class Catalogue extends React.Component {
   }
 
   render () {
-    console.dir(this.state.products)
-
     return (
         <div>
           <CatalogueTitle title="Fruit" />
           <div className="catalogue">
+            {/* {console.log(this.state.products)} */}
             {this.state.products.map((product) => {
               if(product.group_name === "fruit") {
                 return <Product key={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} />
