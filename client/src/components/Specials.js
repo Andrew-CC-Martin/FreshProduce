@@ -1,5 +1,6 @@
 import React from 'react';
 import Product from './Product';
+import './Specials.css';
 
 class Specials extends React.Component {
     constructor (props) {
