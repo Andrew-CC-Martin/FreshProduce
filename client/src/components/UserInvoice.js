@@ -8,9 +8,9 @@ class  UserInvoice extends Component {
     super();
     this.state = { 
         name: '',
-        message: ''
+        email: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
 }
 
     handleChange = (e) => {
@@ -20,14 +20,21 @@ class  UserInvoice extends Component {
     //   console.log(this.state)
     }
     
-    async handleSubmit(e) {
+    handleSubmit= (e) => {
         e.preventDefault();
-        const { name, email, message } = this.state;
-        const form = await axios.post(`${process.env.REACT_APP_API_URL}/user/inv`, {
+        const { name, email } = this.state;
+        axios.post(`${process.env.REACT_APP_API_URL}/user/inv`, {
             name,
             email,
-            message
+        }).then((response) => {
+            if (response.data.msg === 'success'){
+                alert("Message Sent."); 
+                this.resetForm()
+            }else if(response.data.msg === 'fail'){
+                alert("Message failed to send.")
+            }
         })
+        this.props.history.push('/')
     }
 
     render() { 
@@ -41,11 +48,15 @@ class  UserInvoice extends Component {
                         onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="message">Message</Label>
+                    <Label for="eamail">Email</Label>
                     <Input
-                        type="textarea"
-                        name="message"
+                        type="email"
+                        name="email"
                         onChange={this.handleChange} />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="message">INVOICE COMPONENT</Label>
+                    
                 </FormGroup>
                 <Button type='submit'>Submit</Button>
             </Form >
