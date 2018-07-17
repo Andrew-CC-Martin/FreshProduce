@@ -21,6 +21,7 @@ import UserInvoice from './components/UserInvoice';
 import ContactUs from './components/ContactUs';
 import Cart from './components/Cart'
 import { get } from 'https';
+import Order from './components/Order';
 
 class App extends Component {
   constructor(props) {
@@ -167,7 +168,7 @@ class App extends Component {
             <Route exact path="/user/inv" component={UserInvoice} />
             <Route exact path="/contactus/" component={ContactUs} />
             <Route exact path="/cart" component={Cart} />
-            
+            <Route exact path="/order" component={Order} />
             <Route
               exact
               path="/register"
