@@ -1,6 +1,9 @@
 import React from "react";
 import './Order.css';
 import Login from './Login';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
 const fakeAuth = {
     isAuthenticated: false,
@@ -38,8 +41,14 @@ class Order extends React.Component {
     render() {
         return (
             <div>
-                <Login />
                 <form>
+                <TextField
+                    id="firstName"
+                    label="First Name"
+                    value={this.state.firstName}
+                    onChange={e => this.change(e)}
+                    margin="normal"
+                    />
                     <input
                         name="firstName"
                         placeholder="First Name"
