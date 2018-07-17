@@ -1,9 +1,8 @@
-import React from 'react'
-
+import React from 'react' 
 class CartFooter extends React.Component {
   render () {
     return (
-      <div>cart footer</div>
+      <div>button: continue shopping button: finalise order</div>
     )
   }
 }

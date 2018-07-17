@@ -19,7 +19,7 @@ class Product extends React.Component {
   handleSubmit(event) {
     alert(`you added ${this.state.value} ${this.props.name} (${this.props.id}) to the cart`)
     console.log(`product id is ${this.props.id}`)
-    App.addToCart(this.props.id, this.state.value)
+    App.addToCart(this.props.id, this.state.value, this.props.name, this.props.price)
     // this.props.key
     // cartObject += this.state.value
     event.preventDefault()
