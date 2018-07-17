@@ -32,32 +32,39 @@ class App extends Component {
       confirmPassword: '',
       message: '',
       token: '',
-      // cartObject: App.getCart(),
+      cartObject: App.getCart()
     };
-    // console.log(`cart contents: ${this.state.cartObject}`)
   }
 
   //Static method to retrieve the cart from local storage and convert into a javascript object.
   //Can be called from any file by importing App.js, and then calling App.getCart()
   static getCart = () => {
-    JSON.parse(localStorage.getItem('cart')) || [];
+    return (JSON.parse(localStorage.getItem('cart')) || [])
   }
 
-  //test which adds items to cart from seed data from a gist api
-  componentDidMount() {
-    const url = "https://rawgit.com/stemshell/08096765346fe5d61ad1d70de7185bc6/raw/7a9f3d0606d183e5a3120c400517f3292a53cf8e/cart.json"
-    
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          cartObject: data
-         })
-        // console.log(this.state.cartObject)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+  static emptyCart = () => {
+    localStorage.removeItem('cart')
+  }
+
+  static addToCart = (id, quantity) => {
+    if(typeof quantity != "number") {
+      quantity = Number(quantity)
+    }
+    let cartObject = App.getCart()
+    let alreadyInCart = cartObject.some(item => {
+      return item.id === id
+    })
+    if(alreadyInCart) {
+      for(let i = 0; i < cartObject.length; i++) {
+        if(cartObject[i].id === id) {
+          cartObject[i].quantity += quantity
+        }
+      }
+    } else {
+      cartObject.push({id: id, quantity: quantity})
+    }
+    localStorage.removeItem('cart')
+    localStorage.setItem('cart', JSON.stringify(cartObject))
   }
 
   logout = () => {
@@ -147,6 +154,7 @@ class App extends Component {
             <Route exact path="/user/inv" component={UserInvoice} />
             <Route exact path="/contactus/" component={ContactUs} />
             <Route exact path="/cart" component={Cart} />
+            
             <Route
               exact
               path="/register"

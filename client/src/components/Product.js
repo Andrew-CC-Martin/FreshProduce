@@ -1,23 +1,34 @@
 import React from 'react'
 import './Product.css'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import App from '../App'
 
 class Product extends React.Component {
-  addToCart = item => {
-    let input = document.forms[0].querySelectorAll('input')
-    console.log(document.forms[0])
-    // console.log(input)
-    // localStorage.cart = JSON.stringify(Array.from(document.forms[0].querySelectorAll('input')).map((el) => el.value))
+  constructor(props) {
+    super(props)
+    this.state = {value: 1}
 
-    // if(cartObject)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value})
+  }
+
+  handleSubmit(event) {
+    alert(`you added ${this.state.value} ${this.props.name} (${this.props.id}) to the cart`)
+    console.log(`product id is ${this.props.id}`)
+    App.addToCart(this.props.id, this.state.value)
+    // this.props.key
+    // cartObject += this.state.value
+    event.preventDefault()
   }
 
   render () {
     const style = {
       backgroundImage: `url("${this.props.imgUrl}")`
     }
-
-
 
     return (
       <div className="product">
@@ -26,9 +37,9 @@ class Product extends React.Component {
           {this.props.name}
           <br></br>
           {`Price: $${this.props.price}/${this.props.uom}`}
-          <Form>
+          <Form onSubmit={this.handleSubmit}>
             <FormGroup>
-              <Input type="select" name="select" id="exampleSelect">
+              <Input type="select" name="select" value={this.state.value} onChange={this.handleChange} >
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -51,7 +62,8 @@ class Product extends React.Component {
                 <option>20</option>
               </Input>
             </FormGroup>
-            <Button onClick={ this.addToCart }>Add to Cart</Button>
+            <input type="submit" value="Add to cart" />
+            {/* <Button value={item} onClick={ () => App.addToCart(item) }>Add to Cart</Button> */}
           </Form>
         </div>
       </div>
