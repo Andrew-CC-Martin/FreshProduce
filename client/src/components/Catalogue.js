@@ -10,9 +10,15 @@ class Catalogue extends React.Component {
     super(props)
     this.state = {
       products: [],
-      selectedProduct: null
+      selectedProduct: null,
+      term: ''
     }
+    this.searchHandler = this.searchHandler.bind(this);
   }
+    searchHandler(e){
+    this.setState({ term: e.target.value.toLowerCase() })
+  }
+
 
   componentDidMount() {
     const url = "https://rawgit.com/stemshell/ed489a4e0fe8703fab32fb31f2099654/raw/f231961cbd3e78f08530d8066d750a6364f21152/products.json"
@@ -31,12 +37,19 @@ class Catalogue extends React.Component {
   }
 
   render () {
+    const {term} = this.state
+    const filteredProducts = this.state.products.filter(product => product.name.toLowerCase().includes(this.state.term));
+    console.log(filteredProducts)
     return (
         <div>
+          <form>
+            <label htmlFor="search">Search for Product: </label>
+            <input type='text' onChange={this.searchHandler} value={term} />
+          </form>
           <CatalogueTitle title="Fruit" />
           <div className="catalogue">
             {/* {console.log(this.state.products)} */}
-            {this.state.products.map((product) => {
+            {filteredProducts.map((product) => {
               if(product.group_name === "fruit") {
                 return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} />
                 
@@ -46,7 +59,7 @@ class Catalogue extends React.Component {
 
           <CatalogueTitle title="Vegetables" />
           <div className="catalogue">
-            {this.state.products.map((product) => {
+            {filteredProducts.map((product) => {
               if(product.group_name === "vegetable") {
                 return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} />
               }
@@ -55,7 +68,7 @@ class Catalogue extends React.Component {
 
           <CatalogueTitle title="Meat" />
           <div className="catalogue">
-            {this.state.products.map((product) => {
+            {filteredProducts.map((product) => {
               if((product.group_name === "beef") || (product.group_name === "chicken")) {
                 return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} />
               }
@@ -64,7 +77,7 @@ class Catalogue extends React.Component {
 
           <CatalogueTitle title="Seafood" />
           <div className="catalogue">
-            {this.state.products.map((product) => {
+            {filteredProducts.map((product) => {
               if(product.group_name === "fish") {
                 return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} />
               }
