@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 
 class Login extends Component {
   constructor(props) {
@@ -48,6 +53,7 @@ class Login extends Component {
   render() {
     const { email, password, message } = this.state;
     return (
+
       <div className="container">
         <form className="form-signin" onSubmit={this.onSubmit}>
           {message !== '' && (
@@ -59,7 +65,29 @@ class Login extends Component {
           <label htmlFor="inputEmail" className="sr-only">
             Email address
           </label>
-          <input
+          <TextField 
+            id="email"
+            name="email"
+            label="Email Address"
+            value={email}
+            onChange={this.onChange}
+            required
+            margin="normal"
+          />
+          <TextField
+            id="password-input"
+            label="Password"
+            name="password"
+            type="password"
+            value={password}
+            onChange={this.onChange}
+            required
+            margin="normal"
+          />
+            <Button color="light" type="submit">
+              Login
+              </Button>
+          {/* <input
             type="email"
             className="form-control"
             placeholder="Email address"
@@ -82,7 +110,7 @@ class Login extends Component {
           />
           <button className="btn btn-lg btn-primary btn-block" type="submit">
             Login
-          </button>
+          </button> */}
           <p>
             <Link to="/forgotpass" className='forgot-pass-link message'>Forgot Password?</Link>
           </p>
