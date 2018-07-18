@@ -23,13 +23,13 @@ class Cart extends React.Component {
     event.preventDefault()
   }
 
-  deleteRow(id, event) {
+  deleteRow(id) {
     App.removeItem(id)
     this.setState({cartObject: App.getCart()})
   }
 
   //increases quantity of item #id by 1
-  addOne(id, event) {
+  addOne(id) {
     let cartObject = App.getCart()
     for(let i = 0; i < cartObject.length; i++) {
       if(cartObject[i].id === id) {
@@ -40,11 +40,13 @@ class Cart extends React.Component {
     this.setState({cartObject: App.getCart()})
   }
 
-  removeOne(id, event) {
+  removeOne(id) {
     let cartObject = App.getCart()
     for(let i = 0; i < cartObject.length; i++) {
       if(cartObject[i].id === id) {
-        cartObject[i].quantity -= 1
+        if(cartObject[i].quantity != 1) {
+          cartObject[i].quantity -= 1
+        }
       }
     }
     App.saveCart(cartObject)
