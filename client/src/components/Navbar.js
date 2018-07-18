@@ -1,12 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+
+const isLoggedIn = localStorage.jwtToken !== undefined ? true : false;
+
 
 const styles = {
   root: {
@@ -21,47 +31,114 @@ const styles = {
   },
 };
 
-function ButtonAppBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            Food Forum
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+class MenuAppBar extends React.Component {
+  state = {
+    auth: true,
+    anchorEl: null,
+  };
+
+  handleChange = (event, checked) => {
+    this.setState({ auth: checked });
+  };
+
+  handleMenu = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  render() {
+    const { classes } = this.props;
+    const { auth, anchorEl } = this.state;
+    const open = Boolean(anchorEl);
+
+    return (
+      <div>
+        <FormGroup>
+          {/* <FormControlLabel
+            control={
+              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
+            }
+            label={auth ? 'Logout' : 'Login'}
+          /> */}
+        </FormGroup>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              aria-owns={open ? 'menu-appbar' : null}
+              aria-haspopup="true"
+              onClick={this.handleMenu}
+              color="inherit"
+            >
+            <MenuIcon/>
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={open}
+              onClose={this.handleClose}
+            >
+              <MenuItem onClick={this.handleClose}><Link to='/'>Home</Link></MenuItem>
+              <MenuItem onClick={this.handleClose}><Link to='/catalogue'>Catalogue</Link></MenuItem>  
+              {!isLoggedIn ?
+              <MenuItem onClick={this.handleClose}><Link to='/login'>Login</Link></MenuItem>: '' }
+              {!isLoggedIn?
+              <MenuItem onClick={this.handleClose}><Link to='/register'>Register</Link></MenuItem>: ''}
+              {!isLoggedIn?
+              <MenuItem onClick={this.handleClose}><Link to='/profile'>Profile</Link></MenuItem>:''}
+            </Menu>
+            <Typography variant="title" color="inherit" >
+              SUPER DUPER 
+            </Typography>
+            {/* {auth && (
+              // <div>
+              //   <IconButton
+              //     aria-owns={open ? 'menu-appbar' : null}
+              //     aria-haspopup="true"
+              //     onClick={this.handleMenu}
+              //     color="inherit"
+              //   >
+              //     <AccountCircle />
+              //   </IconButton>
+              //   <Menu
+              //     id="menu-appbar"
+              //     anchorEl={anchorEl}
+              //     anchorOrigin={{
+              //       vertical: 'top',
+              //       horizontal: 'right',
+              //     }}
+              //     transformOrigin={{
+              //       vertical: 'top',
+              //       horizontal: 'right',
+              //     }}
+              //     open={open}
+              //     onClose={this.handleClose}
+              //   >
+              //     <MenuItem onClick={this.handleClose}><Link to='/login'>Login</Link></MenuItem>
+              //     <MenuItem onClick={this.handleClose}><Link to='/register'>Register</Link></MenuItem>
+              //     <MenuItem onClick={this.handleClose}><Link to='/profile'>Profile</Link></MenuItem>
+              //   </Menu>
+              // </div>
+            )} */}
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
-
-
-{/* <div>
-        
-<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-<DropdownToggle caret>
-  Menu
-</DropdownToggle>
-<DropdownMenu>
-  <DropdownItem ><Link to='/'>Home</Link></DropdownItem>
-  {!isLoggedIn ?
-        <DropdownItem header><Link to='/login'>Login</Link></DropdownItem> : ''}
-  {!isLoggedIn ?
-  <DropdownItem ><Link to='/register'>Register</Link></DropdownItem> : ''}
-  <DropdownItem divider />
-  {isLoggedIn ?
-      <DropdownItem ><Link to='/profile'>Profile</Link></DropdownItem> : ''}
-</DropdownMenu>
-</Dropdown>
-</div> */}
-ButtonAppBar.propTypes = {
+MenuAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ButtonAppBar);
+export default MenuAppBar

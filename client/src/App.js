@@ -157,8 +157,9 @@ class App extends Component {
       <Router>
         <MuiThemeProvider theme={theme}>
         <div className="App">
-          <header className="App-header">
-            <Header />
+          <header>
+            {/* <Header /> */}
+           <Navbar />
           </header>
           {localStorage.getItem('jwtToken') && (
             <button className="btn btn-primary" onClick={this.logout}>
