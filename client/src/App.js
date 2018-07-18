@@ -17,8 +17,10 @@ import Lost from './components/Lost';
 import Catalogue from './components/Catalogue';
 import UpdateUser from './components/UpdateUser';
 import UsersList from './components/UsersList';
-import Contactus from './components/Contactus';
 import UserInvoice from './components/UserInvoice';
+import ContactUs from './components/ContactUs';
+import Cart from './components/Cart'
+import { get } from 'https';
 
 class App extends Component {
   constructor(props) {
@@ -29,8 +31,40 @@ class App extends Component {
       password: '',
       confirmPassword: '',
       message: '',
-      token: ''
+      token: '',
+      cartObject: App.getCart()
     };
+  }
+
+  //Static method to retrieve the cart from local storage and convert into a javascript object.
+  //Can be called from any file by importing App.js, and then calling App.getCart()
+  static getCart = () => {
+    return (JSON.parse(localStorage.getItem('cart')) || [])
+  }
+
+  static emptyCart = () => {
+    localStorage.removeItem('cart')
+  }
+
+  static addToCart = (id, quantity, name, price) => {
+    if(typeof quantity != "number") {
+      quantity = Number(quantity)
+    }
+    let cartObject = App.getCart()
+    let alreadyInCart = cartObject.some(item => {
+      return item.id === id
+    })
+    if(alreadyInCart) {
+      for(let i = 0; i < cartObject.length; i++) {
+        if(cartObject[i].id === id) {
+          cartObject[i].quantity += quantity
+        }
+      }
+    } else {
+      cartObject.push({id: id, quantity: quantity, name: name, price: price})
+    }
+    localStorage.removeItem('cart')
+    localStorage.setItem('cart', JSON.stringify(cartObject))
   }
 
   logout = () => {
@@ -94,8 +128,8 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state);
-    console.log(localStorage);
+    // // console.log(this.state);
+    // console.log(localStorage);
     return (
       <Router>
         <div className="App">
@@ -117,8 +151,10 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/catalogue" component={Catalogue} />
             <Route exact path="/update/:id" component={UpdateUser} />
-            <Route exact path="/contactus" component={Contactus} />
             <Route exact path="/user/inv" component={UserInvoice} />
+            <Route exact path="/contactus/" component={ContactUs} />
+            <Route exact path="/cart" component={Cart} />
+            
             <Route
               exact
               path="/register"

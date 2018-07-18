@@ -4,7 +4,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 
 const isLoggedIn = localStorage.jwtToken !== undefined ? true : false;
 // Last
-console.log(isLoggedIn)
+// console.log(isLoggedIn)
 // this.logout = this.logout.bind(this)
 class Header extends Component {
   constructor() {
