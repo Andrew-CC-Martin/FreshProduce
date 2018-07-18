@@ -1,0 +1,48 @@
+.form {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.2), 0 5px 5px 0 rgba(0,0,0,.24);
+}
+
+.form button {
+    text-transform: uppercase;
+    background: #007bff;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.form button, .form input {
+    border: 0;
+    padding: 15px;
+    outline: 0;
+    width: 60%;
+}
+
+.form input {
+    margin: 0 0 15px;
+    background: #f2f2f2;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #353536;
+}
+
+.back {
+    display: flex;
+    margin-top: 20px;
+    max-width: 50px;
+    color:#007bff;
+}
+
+/* mobile responsive */
+/* @media screen and (min-width: 420px) */
+.forgot-pass-page {
+    width: 90%;
+    padding: 2% 0 0;
+    margin: auto;
+}
