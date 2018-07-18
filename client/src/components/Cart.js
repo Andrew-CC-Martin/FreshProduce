@@ -12,17 +12,45 @@ class Cart extends React.Component {
     }
   }
 
-  // toggle() {
-  //   this.setState(prevState => ({
-  //     dropdownOpen: !prevState.dropdownOpen
-  //   }));
-  //   // this.setState({cartObject: App.getCart()})
-  // }
+  handleChange(event) {
+    this.setState({value: event.target.value})
+  }
+
+  handleSubmit(event) {
+    alert(`you added ${this.state.value} ${this.props.name} to the cart`)
+    console.log(`product id is ${this.props.id}`)
+    App.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl)
+    event.preventDefault()
+  }
 
   deleteRow(id, event) {
     App.removeItem(id)
     this.setState({cartObject: App.getCart()})
   }
+
+  //increases quantity of item #id by 1
+  addOne(id, event) {
+    let cartObject = App.getCart()
+    for(let i = 0; i < cartObject.length; i++) {
+      if(cartObject[i].id === id) {
+        cartObject[i].quantity += 1
+      }
+    }
+    App.saveCart(cartObject)
+    this.setState({cartObject: App.getCart()})
+  }
+
+  removeOne(id, event) {
+    let cartObject = App.getCart()
+    for(let i = 0; i < cartObject.length; i++) {
+      if(cartObject[i].id === id) {
+        cartObject[i].quantity -= 1
+      }
+    }
+    App.saveCart(cartObject)
+    this.setState({cartObject: App.getCart()})
+  }
+
 
   render () {
     let cartOutput
@@ -34,7 +62,7 @@ class Cart extends React.Component {
       cartOutput = 
         <div>
           {this.state.cartObject.map(item => {
-            return <CartItem key={item.id} cartObject={item} deleteRow={this.deleteRow.bind(this)} />
+            return <CartItem key={item.id} cartObject={item} deleteRow={this.deleteRow.bind(this)} addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} />
           })}
         </div>
     }
