@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
-import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
   class Register extends React.Component {
     constructor(props) {
@@ -41,48 +37,7 @@ import Button from '@material-ui/core/Button';
                 { message }
               </div>
             }
-            <TextField 
-            id="name"
-            name="name"
-            label="Name"
-            value={name}
-            onChange={this.onChange}
-            required
-            margin="normal"
-            />
-            <TextField 
-            id="email"
-            name="email"
-            label="Email Address"
-            value={email}
-            onChange={this.onChange}
-            required
-            margin="normal"
-            />
-            <TextField 
-            id="password"
-            name="password"
-            label="Password"
-            type="password"
-            value={password}
-            onChange={this.onChange}
-            required
-            margin="normal"
-            />
-            <TextField 
-            id="confirmPassword"
-            name="confirmPassword"
-            label="Confirm Password"
-            type="password"
-            value={confirmPassword}
-            onChange={this.onChange}
-            required
-            margin="normal"
-            />
-             <Button color="light" type="submit">
-              Register
-              </Button>
-            {/* <h5><Link to='/'>HomePage</Link></h5>
+            <h5><Link to='/'>HomePage</Link></h5>
             <h2 className="form-signin-heading">Register</h2>
             <label htmlFor="inputName" className="sr-only">Name</label>
             <input type="text" className="form-control" placeholder="Name" name="name" value={name} onChange={this.onChange} required/>
@@ -92,7 +47,7 @@ import Button from '@material-ui/core/Button';
             <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.onChange} required/>
             <label htmlFor="inputConfirmPassword" className="sr-only">Password</label>
             <input type="password" className="form-control" placeholder="Confirm Password" name="confirmPassword" value={confirmPassword} onChange={this.onChange} required/>
-            <button className="btn btn-lg btn-primary btn-block" type="submit">Register</button> */}
+            <button className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
           </form>
         </div>
       );

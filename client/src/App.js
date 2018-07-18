@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {MuiThemeProvider, createMuiTheme }from '@material-ui/core/styles/';
 import {
   BrowserRouter as Router,
   Route,
@@ -22,11 +21,6 @@ import UserInvoice from './components/UserInvoice';
 import ContactUs from './components/ContactUs';
 import Cart from './components/Cart'
 import { get } from 'https';
-import Order from './components/Order';
-import Footer from './components/Footer'
-import Navbar from './components/Navbar'
-
-const theme = createMuiTheme();
 
 class App extends Component {
   constructor(props) {
@@ -149,17 +143,11 @@ class App extends Component {
   render() {
     // // console.log(this.state);
     // console.log(localStorage);
-    console.log(this.state);
-    console.log(localStorage);
-
     return (
-      
       <Router>
-        <MuiThemeProvider theme={theme}>
         <div className="App">
-          <header>
-            {/* <Header /> */}
-           <Navbar />
+          <header className="App-header">
+            <Header />
           </header>
           {localStorage.getItem('jwtToken') && (
             <button className="btn btn-primary" onClick={this.logout}>
@@ -179,7 +167,7 @@ class App extends Component {
             <Route exact path="/user/inv" component={UserInvoice} />
             <Route exact path="/contactus/" component={ContactUs} />
             <Route exact path="/cart" component={Cart} />
-            <Route exact path="/order" component={Order} />
+            
             <Route
               exact
               path="/register"
@@ -209,14 +197,10 @@ class App extends Component {
             />
             <Route component={Lost} />
           </Switch>
-          <Footer />
         </div>
-        </MuiThemeProvider>
       </Router>
-     
     );
   }
-
 }
 
 export default App;
