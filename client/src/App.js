@@ -20,6 +20,7 @@ import UsersList from './components/UsersList';
 import UserInvoice from './components/UserInvoice';
 import ContactUs from './components/ContactUs';
 import Cart from './components/Cart'
+import ForgotPass from './components/ForgotPass'
 import { get } from 'https';
 
 class App extends Component {
@@ -36,8 +37,8 @@ class App extends Component {
     };
   }
 
-  //Static methods for CRUD operations on cart, to and from local storage
-  //Can be called from any file by importing App.js, and then calling eg App.getCart()
+  //Static method to retrieve the cart from local storage and convert into a javascript object.
+  //Can be called from any file by importing App.js, and then calling App.getCart()
   static getCart = () => {
     return (JSON.parse(localStorage.getItem('cart')) || [])
   }
@@ -46,21 +47,7 @@ class App extends Component {
     localStorage.removeItem('cart')
   }
 
-  static removeItem = id => {
-    let cartObject = App.getCart()
-    for(let i = 0; i < cartObject.length; i++) {
-      if(cartObject[i].id === id) {
-        cartObject.splice(i, 1)
-      }
-    }
-    App.saveCart(cartObject)
-  }
-
-  static saveCart = cartObject => {
-    localStorage.setItem('cart', JSON.stringify(cartObject))
-  }
-
-  static addToCart = (id, quantity, name, price, imgUrl) => {
+  static addToCart = (id, quantity, name, price) => {
     if(typeof quantity != "number") {
       quantity = Number(quantity)
     }
@@ -75,9 +62,10 @@ class App extends Component {
         }
       }
     } else {
-      cartObject.push({id: id, quantity: quantity, name: name, price: price, imgUrl: imgUrl})
+      cartObject.push({id: id, quantity: quantity, name: name, price: price})
     }
-    App.saveCart(cartObject)
+    localStorage.removeItem('cart')
+    localStorage.setItem('cart', JSON.stringify(cartObject))
   }
 
   logout = () => {
@@ -94,7 +82,7 @@ class App extends Component {
         .then(result => {
           // console.log(result.data)
           // console.log(this.state)
-          window.location.reload();
+          window.location.assign('/');
         })
         .catch(e => {
           let msg = e.response.data;
@@ -167,6 +155,7 @@ class App extends Component {
             <Route exact path="/user/inv" component={UserInvoice} />
             <Route exact path="/contactus/" component={ContactUs} />
             <Route exact path="/cart" component={Cart} />
+            <Route exact path="/forgotpass" component={ForgotPass} />
             
             <Route
               exact

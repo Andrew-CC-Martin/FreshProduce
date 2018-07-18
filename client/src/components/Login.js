@@ -84,6 +84,9 @@ class Login extends Component {
             Login
           </button>
           <p>
+            <Link to="/forgotpass" className='forgot-pass-link message'>Forgot Password?</Link>
+          </p>
+          <p>
             Not a member?{' '}
             <Link to="/register">
               <span

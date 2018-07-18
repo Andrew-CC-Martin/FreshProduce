@@ -50,11 +50,10 @@ class UpdateUser extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              EDIT USER
+              Update Your Details
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to={`/profile/${this.state.user._id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> User List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="name">Name:</label>
