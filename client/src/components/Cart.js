@@ -12,18 +12,29 @@ class Cart extends React.Component {
     }
   }
 
+  // toggle() {
+  //   this.setState(prevState => ({
+  //     dropdownOpen: !prevState.dropdownOpen
+  //   }));
+  //   // this.setState({cartObject: App.getCart()})
+  // }
+
+  deleteRow(id, event) {
+    App.removeItem(id)
+    this.setState({cartObject: App.getCart()})
+  }
+
   render () {
-    console.log(this.state.cartObject[0].id)
     let cartOutput
-    if(!this.state.cartObject) {
-      cartOutput = (
+    if(this.state.cartObject.length === 0) {
+      cartOutput = 
         <h2>Cart is empty</h2>
-      )
+      
     } else {
       cartOutput = 
         <div>
           {this.state.cartObject.map(item => {
-            return <CartItem key={item.id} cartObject={item} />
+            return <CartItem key={item.id} cartObject={item} deleteRow={this.deleteRow.bind(this)} />
           })}
         </div>
     }
@@ -45,7 +56,7 @@ class Cart extends React.Component {
             </thead>
           </Table>
           {cartOutput}
-          <CartFooter />
+          <CartFooter total={this.state.cartObject.reduce((total, item) => total + (item.price * item.quantity), 0)} />
         </div>
     )
   }

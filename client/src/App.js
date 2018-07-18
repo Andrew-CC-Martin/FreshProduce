@@ -36,8 +36,8 @@ class App extends Component {
     };
   }
 
-  //Static method to retrieve the cart from local storage and convert into a javascript object.
-  //Can be called from any file by importing App.js, and then calling App.getCart()
+  //Static methods for CRUD operations on cart, to and from local storage
+  //Can be called from any file by importing App.js, and then calling eg App.getCart()
   static getCart = () => {
     return (JSON.parse(localStorage.getItem('cart')) || [])
   }
@@ -46,7 +46,21 @@ class App extends Component {
     localStorage.removeItem('cart')
   }
 
-  static addToCart = (id, quantity, name, price) => {
+  static removeItem = id => {
+    let cartObject = App.getCart()
+    for(let i = 0; i < cartObject.length; i++) {
+      if(cartObject[i].id === id) {
+        cartObject.splice(i, 1)
+      }
+    }
+    App.saveCart(cartObject)
+  }
+
+  static saveCart = cartObject => {
+    localStorage.setItem('cart', JSON.stringify(cartObject))
+  }
+
+  static addToCart = (id, quantity, name, price, imgUrl) => {
     if(typeof quantity != "number") {
       quantity = Number(quantity)
     }
@@ -61,10 +75,9 @@ class App extends Component {
         }
       }
     } else {
-      cartObject.push({id: id, quantity: quantity, name: name, price: price})
+      cartObject.push({id: id, quantity: quantity, name: name, price: price, imgUrl: imgUrl})
     }
-    localStorage.removeItem('cart')
-    localStorage.setItem('cart', JSON.stringify(cartObject))
+    App.saveCart(cartObject)
   }
 
   logout = () => {
