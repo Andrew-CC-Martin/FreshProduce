@@ -159,7 +159,6 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Header />
-            <Navbar />
           </header>
           {localStorage.getItem('jwtToken') && (
             <button className="btn btn-primary" onClick={this.logout}>

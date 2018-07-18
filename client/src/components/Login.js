@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +21,7 @@ class Login extends Component {
     const state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
+    console.dir(e);
   };
 
   onSubmit = e => {
@@ -66,6 +68,7 @@ class Login extends Component {
           </label>
           <TextField 
             id="email"
+            name="email"
             label="Email Address"
             value={email}
             onChange={this.onChange}
@@ -75,6 +78,8 @@ class Login extends Component {
           <TextField
             id="password-input"
             label="Password"
+            name="password"
+            type="password"
             value={password}
             onChange={this.onChange}
             required
@@ -83,7 +88,7 @@ class Login extends Component {
             <Button color="light" type="submit">
               Login
               </Button>
-          <input
+          {/* <input
             type="email"
             className="form-control"
             placeholder="Email address"
@@ -106,7 +111,7 @@ class Login extends Component {
           />
           <button className="btn btn-lg btn-primary btn-block" type="submit">
             Login
-          </button>
+          </button> */}
           <p>
             Not a member?{' '}
             <Link to="/register">
