@@ -12,18 +12,59 @@ class Cart extends React.Component {
     }
   }
 
+  handleChange(event) {
+    this.setState({value: event.target.value})
+  }
+
+  handleSubmit(event) {
+    alert(`you added ${this.state.value} ${this.props.name} to the cart`)
+    console.log(`product id is ${this.props.id}`)
+    App.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl)
+    event.preventDefault()
+  }
+
+  deleteRow(id) {
+    App.removeItem(id)
+    this.setState({cartObject: App.getCart()})
+  }
+
+  //increases quantity of item #id by 1
+  addOne(id) {
+    let cartObject = App.getCart()
+    for(let i = 0; i < cartObject.length; i++) {
+      if(cartObject[i].id === id) {
+        cartObject[i].quantity += 1
+      }
+    }
+    App.saveCart(cartObject)
+    this.setState({cartObject: App.getCart()})
+  }
+
+  removeOne(id) {
+    let cartObject = App.getCart()
+    for(let i = 0; i < cartObject.length; i++) {
+      if(cartObject[i].id === id) {
+        if(cartObject[i].quantity != 1) {
+          cartObject[i].quantity -= 1
+        }
+      }
+    }
+    App.saveCart(cartObject)
+    this.setState({cartObject: App.getCart()})
+  }
+
+
   render () {
-    console.log(this.state.cartObject[0].id)
     let cartOutput
-    if(!this.state.cartObject) {
-      cartOutput = (
+    if(this.state.cartObject.length === 0) {
+      cartOutput = 
         <h2>Cart is empty</h2>
-      )
+      
     } else {
       cartOutput = 
         <div>
           {this.state.cartObject.map(item => {
-            return <CartItem key={item.id} cartObject={item} />
+            return <CartItem key={item.id} cartObject={item} deleteRow={this.deleteRow.bind(this)} addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} />
           })}
         </div>
     }
@@ -45,7 +86,7 @@ class Cart extends React.Component {
             </thead>
           </Table>
           {cartOutput}
-          <CartFooter />
+          <CartFooter total={this.state.cartObject.reduce((total, item) => total + (item.price * item.quantity), 0)} />
         </div>
     )
   }
