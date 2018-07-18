@@ -13,6 +13,7 @@ class Header extends Component {
     this.state = {
       dropdownOpen: false
     };
+  
   }
 
   toggle() {
@@ -26,25 +27,23 @@ class Header extends Component {
   render () {
     return (
       <div>
-        <div>
-
-</div>
-      <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-      <DropdownToggle caret>
-        Menu
-      </DropdownToggle>
-      <DropdownMenu>
-        <DropdownItem ><Link to='/'>Home</Link></DropdownItem>
-        {!isLoggedIn ?
-              <DropdownItem header><Link to='/login'>Login</Link></DropdownItem> : ''}
-        {!isLoggedIn ?
-        <DropdownItem ><Link to='/register'>Register</Link></DropdownItem> : ''}
-        <DropdownItem divider />
-        {isLoggedIn ?
-            <DropdownItem ><Link to='/profile'>Profile</Link></DropdownItem> : ''}
-      </DropdownMenu>
-    </Dropdown>
-</div>
+        
+        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <DropdownToggle caret>
+          Menu
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem ><Link to='/'>Home</Link></DropdownItem>
+          {!isLoggedIn ?
+                <DropdownItem header><Link to='/login'>Login</Link></DropdownItem> : ''}
+          {!isLoggedIn ?
+          <DropdownItem ><Link to='/register'>Register</Link></DropdownItem> : ''}
+          <DropdownItem divider />
+          {isLoggedIn ?
+              <DropdownItem ><Link to='/profile'>Profile</Link></DropdownItem> : ''}
+        </DropdownMenu>
+      </Dropdown>
+      </div>
     
 
 
