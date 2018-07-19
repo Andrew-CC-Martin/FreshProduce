@@ -9,6 +9,8 @@ const _ = require('lodash');
 const cors = require('cors');
 const nodemailer = require('nodemailer')
 const crypto = require('crypto');
+const async = require('async');
+
 
 //Local imports
 var {mongoose} = require('./db/mongoose.js');
@@ -228,17 +230,21 @@ app.post('/user/inv', (req, res) => {
 //User forgot password route
 //Used crypto from node to generate a 20 byte random buf and then convert to hex.
 app.post('/forgot', function(req, res, next) {
+    console.log(req.body)
     async.waterfall([
       function(done) {
         crypto.randomBytes(20, function(err, buf) {
           var token = buf.toString('hex');
+          console.log('token --', token)
           done(err, token);
         });
       },
       function(token, done) {
         User.findOne({ email: req.body.email }, function(err, user) {
           if (!user) {
-            req.flash('error', 'No account with that email address exists.');
+              console.log('no user')
+              console.log(err)
+            // req.flash('error', 'No account with that email address exists.');
             return res.redirect('/forgot');
           }
   //Want to set a expire time to generated token.
