@@ -1,6 +1,9 @@
 import React from 'react';
 import Product from './Product';
 import './Specials.css';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
 
 class Specials extends React.Component {
     constructor (props) {
@@ -28,11 +31,20 @@ class Specials extends React.Component {
     render() {
         return(
             <div className="specials">
+            <Card>
+                <CardMedia>
                 {this.state.products.map((product)=> {
                     if(product.on_special) {
-                        return <Product key={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} />
+                        return <Product 
+                        key={product.id} 
+                        imgUrl={product.img_path} 
+                        name={product.name} 
+                        uom={product.uom} 
+                        price={product.unit_sell_price} />
                     }
-                })}    
+                })} 
+                </CardMedia>
+            </Card>
             </div>
         )
     }
