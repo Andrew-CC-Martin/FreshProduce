@@ -25,8 +25,7 @@ class ForgotPass extends React.Component {
   handleSubmit= (e) => {
       e.preventDefault();
       const { email } = this.state;
-    //   axios.post(`${process.env.REACT_APP_API_URL}/user/inv`, {
-    //       name,
+    //   axios.post(`${process.env.REACT_APP_API_URL}/forgot`, {
     //       email,
     //   }).then((response) => {
     //       if (response.data.msg === 'success'){
@@ -36,7 +35,7 @@ class ForgotPass extends React.Component {
     //           alert("Message failed to send.")
     //       }
     //   })
-      this.props.history.push('/')
+    //   this.props.history.push('/login')
   }
 
   render(){
