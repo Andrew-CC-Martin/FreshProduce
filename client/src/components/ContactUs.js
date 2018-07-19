@@ -6,7 +6,7 @@ import axios from 'axios';
 class  Contactus extends Component {
     constructor () {
     super();
-    this.state = { 
+    this.state = {
         name: '',
         email: '',
         message: ''
@@ -20,7 +20,7 @@ class  Contactus extends Component {
       this.setState(state);
     //   console.log(this.state)
     }
-    
+
     // async handleSubmit(e) {
     //     e.preventDefault();
     //     const { name, email, message } = this.state;
@@ -42,7 +42,7 @@ class  Contactus extends Component {
             message
         }).then((response) => {
             if (response.data.msg === 'success'){
-                alert("Message Sent."); 
+                alert("Message Sent.");
                 this.resetForm()
             }else if(response.data.msg === 'fail'){
                 alert("Message failed to send.")
@@ -51,7 +51,7 @@ class  Contactus extends Component {
         this.props.history.push('/')
     }
 
-    render() { 
+    render() {
         return (
             <Form onSubmit={this.handleSubmit} style={{width: '600px', marginLeft: '30%'}} >
                 <FormGroup>
@@ -80,5 +80,72 @@ class  Contactus extends Component {
           );
     }
 }
- 
+
 export default Contactus;
+
+
+
+
+/* material design UI
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Input from "@material-ui/core/Input";
+
+const styles = {
+  card: {
+    minWidth: 275
+  }
+};
+
+function SimpleCard(props) {
+  const { classes } = props;
+  const bull = <span className={classes.bullet}>•</span>;
+
+  return (
+    <div>
+      <Card className={classes.card}>
+        <CardContent>
+          <Input
+            defaultValue="Hello world" //autofill information
+            className={classes.input}
+            inputProps={{
+              'aria-label': 'Description',
+            }}
+          />
+
+          <hr></hr>
+          <Input
+            placeholder="Message"
+            className={classes.input}
+            inputProps={{
+              'aria-label': 'Description',
+            }}
+          />
+        </CardContent>
+        <CardActions>
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
+            className={classes.button}
+          >
+            Confirm
+          </Button>
+        </CardActions>
+      </Card>
+    </div>
+  );
+}
+
+SimpleCard.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(SimpleCard);
+*/
