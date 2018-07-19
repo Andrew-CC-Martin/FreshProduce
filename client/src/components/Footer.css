@@ -1,0 +1,12 @@
+.footercontent {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact {
+flex-basis: 25%;
+}
+
+.hours {
+    flex-basis: 25%;
+}
