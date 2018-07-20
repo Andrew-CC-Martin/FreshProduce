@@ -24,7 +24,7 @@ import ContactUs from './components/ContactUs';
 import Cart from './components/Cart'
 import ForgotPass from './components/ForgotPass'
 import { get } from 'https';
-import Order from './components/Order';
+import Checkout from './components/Checkout';
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 
@@ -172,7 +172,7 @@ class App extends Component {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/forgotpass" component={ForgotPass} />
             
-            <Route exact path="/order" component={Order} />
+            <Route exact path="/checkout" component={Checkout} />
             <Route
               exact
               path="/register"
