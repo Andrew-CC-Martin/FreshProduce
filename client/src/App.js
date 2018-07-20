@@ -145,6 +145,8 @@ class App extends Component {
       
       <Router>
         <div className="App">
+        //create this div so that footer is separate - necessary for sticky footer
+        <div className="App-main-content">
           <CssBaseline />
           <header>
             {/* <Header /> */}
@@ -200,7 +202,10 @@ class App extends Component {
             />
             <Route component={Lost} />
           </Switch>
-          <Footer />
+          </div>
+          <div className="App-footer">
+            <Footer />
+          </div>
         </div>
       </Router>
      
