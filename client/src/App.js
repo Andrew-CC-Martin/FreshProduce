@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {MuiThemeProvider, createMuiTheme }from '@material-ui/core/styles/';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   BrowserRouter as Router,
   Route,
@@ -143,8 +144,8 @@ class App extends Component {
     return (
       
       <Router>
-        <MuiThemeProvider theme={theme}>
         <div className="App">
+          <CssBaseline />
           <header>
             {/* <Header /> */}
            <Navbar />
@@ -201,7 +202,6 @@ class App extends Component {
           </Switch>
           <Footer />
         </div>
-        </MuiThemeProvider>
       </Router>
      
     );

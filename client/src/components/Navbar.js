@@ -81,14 +81,6 @@ class MenuAppBar extends React.Component {
 
     return (
       <div>
-        <FormGroup>
-          {/* <FormControlLabel
-            control={
-              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          /> */}
-        </FormGroup>
         <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -131,38 +123,38 @@ class MenuAppBar extends React.Component {
 
             </Menu>
             <Typography variant="title" color="inherit" >
-              SUPER DUPER 
+              Food Forum
             </Typography>
-            {/* {auth && (
-              // <div>
-              //   <IconButton
-              //     aria-owns={open ? 'menu-appbar' : null}
-              //     aria-haspopup="true"
-              //     onClick={this.handleMenu}
-              //     color="inherit"
-              //   >
-              //     <AccountCircle />
-              //   </IconButton>
-              //   <Menu
-              //     id="menu-appbar"
-              //     anchorEl={anchorEl}
-              //     anchorOrigin={{
-              //       vertical: 'top',
-              //       horizontal: 'right',
-              //     }}
-              //     transformOrigin={{
-              //       vertical: 'top',
-              //       horizontal: 'right',
-              //     }}
-              //     open={open}
-              //     onClose={this.handleClose}
-              //   >
-              //     <MenuItem onClick={this.handleClose}><Link to='/login'>Login</Link></MenuItem>
-              //     <MenuItem onClick={this.handleClose}><Link to='/register'>Register</Link></MenuItem>
-              //     <MenuItem onClick={this.handleClose}><Link to='/profile'>Profile</Link></MenuItem>
-              //   </Menu>
-              // </div>
-            )} */}
+            {/* {auth && ( */}
+              {/* <div>
+                <IconButton
+                  aria-owns={open ? 'menu-appbar' : null}
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={open}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={this.handleClose}><Link to='/login'>Login</Link></MenuItem>
+                  <MenuItem onClick={this.handleClose}><Link to='/register'>Register</Link></MenuItem>
+                  <MenuItem onClick={this.handleClose}><Link to='/profile'>Profile</Link></MenuItem>
+                </Menu>
+              </div> */}
+            {/* )} */}
           </Toolbar>
         </AppBar>
       </div>

@@ -5,30 +5,33 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia';
 import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import Button from '@material-ui/core/Button';
+
 import CardActions from '@material-ui/core/CardActions';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
+
 import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+
 // import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 import App from '../App'
 
 class Product extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {value: 1}
+    this.state = {value: 0}
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value})
+    const value = +event.target.value
+    if(isNaN(value) || value < 0 || value%1 !== 0  ) {
+      this.setState({value: this.state.value})
+    } else {
+      this.setState({value})
+
+    }
   }
 
   handleSubmit(event) {
@@ -53,10 +56,13 @@ class Product extends React.Component {
         <Card>
           <CardMedia>
           <div className="product-picture" style={style} ></div>
+          <br />
           </CardMedia>
           <CardContent>
             <div className="Product-info">
               {this.props.name}
+            </div>
+            <div>
               {`Price: $${this.props.price}/${this.props.uom}`}
             </div>
           </CardContent>
@@ -69,7 +75,7 @@ class Product extends React.Component {
                   value= {this.state.value}
                   onChange={this.handleChange}
                   InputProps={{
-                    startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+                    startAdornment: <InputAdornment position="start">{this.props.uom}</InputAdornment>,
                   }}
               />
             </FormControl>  
