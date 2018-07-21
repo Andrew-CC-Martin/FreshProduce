@@ -23,6 +23,7 @@ import UserInvoice from './components/UserInvoice';
 import ContactUs from './components/ContactUs';
 import Cart from './components/Cart'
 import ForgotPass from './components/ForgotPass'
+import ResetPass from './components/ResetPass'
 import { get } from 'https';
 import Checkout from './components/Checkout';
 import Footer from './components/Footer'
@@ -89,6 +90,7 @@ class App extends Component {
         .then(result => {
           // console.log(result.data)
           // console.log(this.state)
+          localStorage.removeItem('id');
           window.location.assign('/');
         })
         .catch(e => {
@@ -171,6 +173,7 @@ class App extends Component {
             <Route exact path="/contactus/" component={ContactUs} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/forgotpass" component={ForgotPass} />
+            <Route exact path="/reset/:token" component={ResetPass} />
             
             <Route exact path="/checkout" component={Checkout} />
             <Route
