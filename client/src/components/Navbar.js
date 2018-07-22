@@ -64,6 +64,7 @@ class MenuAppBar extends React.Component {
         .then(result => {
           // console.log(result.data)
           // console.log(this.state)
+          localStorage.removeItem('id');
           window.location.assign('/');
         })
         .catch(e => {

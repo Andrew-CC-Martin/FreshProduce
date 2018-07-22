@@ -89,9 +89,9 @@ app.get('/users/:id', (req, res) => {
 
   //Update User
   app.patch('/users/:id', (req, res) => {
+    console.log(req.body)
     var id = req.params.id;
     var body = _.pick(req.body, ['name', 'email']);
-  
     if (!ObjectID.isValid(id)) {
       return res.status(404).send();
     }
@@ -312,8 +312,6 @@ User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt
 })
 //post new password from user
 app.post('/reset/:token', function(req, res) {
-    // let body = _.pick(req.params, ['password']);
-    console.log('body---', req.headers)
     async.waterfall([
         function(done) {
             User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
@@ -321,25 +319,19 @@ app.post('/reset/:token', function(req, res) {
                     return res.redirect('back');
                 }
                 console.log('req body=====', req.body)
-                user.password = req.body.password;
-                user.resetPasswordToken = undefined;
-                user.resetPasswordExpires = undefined;
-                console.log('new user details///////', user)
-                console.log('reset user pass -------', res.params)
-                
-          user.save().then((user) => {
-              console.log('user after save ++++', user)
-            return user.generateAuthToken();
-        }).then((token) => {        
-            res.json(Object.assign({ token }, { _id: user.id, email: user.email, name: user.name, password: user.password }))
-            console.log('hi password reset', user)
-        }).catch((e) => {
-            res.status(400).send("User already exists");
-        })
-        });
-      },
+                if (req.body.password === req.body.confirmPassword){
+                    user.password = req.body.password;
+                    user.resetPasswordToken = undefined;
+                    user.resetPasswordExpires = undefined;
+                    console.log('new user details///////', user)
+                    user.save(function(err) {
+                        done(err, user);
+                        console.log('save ---  ', user)
+                    });
+                }
+            });
+        },
       function(user, done) {
-
         let transporter = nodemailer.createTransport({
             host: 'smtp.zoho.com',
             port: 465,
@@ -362,7 +354,7 @@ app.post('/reset/:token', function(req, res) {
         });
       }
     ], function(err) {
-      res.redirect('/');
+      res.render('redirect');
     });
   });
 
