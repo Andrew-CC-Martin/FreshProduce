@@ -11,6 +11,7 @@ const Home = (props) => {
         </div>
         <div className="AboutUs">
           <h2> About Us </h2>
+          <br />
           <div className="aboutbox">
             <h2> Our Story </h2>
             <p> For three generations Food Forum have been passionately supplying the people of Canberra with 
@@ -40,7 +41,7 @@ const Home = (props) => {
               crafted an expanded product range. </p>
           </div>
         </div>
-        <div>
+        <div className="specials">
           <Specials />
           
         </div>

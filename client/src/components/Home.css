@@ -1,13 +1,22 @@
-.homebanner{
+.homebanner {
     height: 90vh;
     width: 100vw;
-    background-image: url("../images/lukas-budimaier-93293-unsplash-min.jpg")
+    background-image: url("../images/lukas-budimaier-93293-unsplash-min.jpg");
 }
+
+
 
 .aboutbox {
     width: 50vw;
     height: 50vh;
 }
 .AboutUs {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center ; 
 }
+
+.specials {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  }

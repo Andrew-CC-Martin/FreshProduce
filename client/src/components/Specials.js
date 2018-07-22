@@ -30,8 +30,8 @@ class Specials extends React.Component {
     }
     render() {
         return(
-            <div className="specials">
-            <Card>
+            <div className>
+            {/* <Card> */}
                 <CardMedia>
                 {this.state.products.map((product)=> {
                     if(product.on_special) {
@@ -44,7 +44,7 @@ class Specials extends React.Component {
                     }
                 })} 
                 </CardMedia>
-            </Card>
+            {/* </Card> */}
             </div>
         )
     }
