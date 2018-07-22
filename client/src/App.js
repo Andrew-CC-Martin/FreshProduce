@@ -83,14 +83,14 @@ class App extends Component {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('name');
     // localStorage.removeItem('id');
-    // console.log(localStorage, 'deleted');
+    console.log(localStorage, 'deleted');
     axios
     .delete(`${process.env.REACT_APP_API_URL}/users/token/`+ localStorage.id)
     .then(result => {
       // console.log(result.data)
-      // console.log(this.state)
+      console.log(this.state)
       localStorage.removeItem('id');
-      window.location.assign('/');
+      console.log(localStorage);
     })
     .catch(e => {
       let msg = e.response.data;
@@ -98,7 +98,7 @@ class App extends Component {
         this.setState({ message: msg });
       }
     })
-    window.location.assign('/');
+    // window.location.assign('/');
   };
 
   handleRegister = user => {

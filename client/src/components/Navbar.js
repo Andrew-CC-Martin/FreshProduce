@@ -64,7 +64,6 @@ class MenuAppBar extends React.Component {
       // console.log(result.data)
       // console.log(this.state)
       localStorage.removeItem('id');
-      window.location.assign('/');
     })
     .catch(e => {
       let msg = e.response.data;
@@ -72,7 +71,7 @@ class MenuAppBar extends React.Component {
         this.setState({ message: msg });
       }
     })
-    window.location.assign('/');
+    // window.location.assign('/');
   };
 
   render() {
