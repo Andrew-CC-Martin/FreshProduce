@@ -147,7 +147,6 @@ class App extends Component {
       
       <Router>
         <div className="App">
-        //create this div so that footer is separate - necessary for sticky footer
         <div className="App-main-content">
           <CssBaseline />
           <header>
