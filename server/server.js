@@ -10,6 +10,9 @@ const cors = require('cors');
 const nodemailer = require('nodemailer')
 const crypto = require('crypto');
 const async = require('async');
+// const flash = require('express-flash-notification');
+// const cookieParser = require('cookie-parser');
+// const session = require('express-session');
 
 
 //Local imports
@@ -30,6 +33,10 @@ app.use(cors({origin: '*'}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
+//flash setup
+// app.use(cookieParser());
+// app.use(session(sess));
+// app.use(flash(app));
 
 // Register a user
 app.post('/register', (req, res) => {
@@ -328,6 +335,9 @@ app.post('/reset/:token', function(req, res) {
                         done(err, user);
                         console.log('save ---  ', user)
                     });
+                } else {
+                    // res.send("Passwords do not match.");
+                    return res.redirect('back');
                 }
             });
         },
