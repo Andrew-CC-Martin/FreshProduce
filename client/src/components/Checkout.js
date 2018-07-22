@@ -1,9 +1,9 @@
 import React from "react";
-import './Order.css';
 import Login from './Login';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import CheckoutTable from './CheckoutTable'
 
 const fakeAuth = {
     isAuthenticated: false,
@@ -18,7 +18,7 @@ const fakeAuth = {
 }
 
 
-class Order extends React.Component {
+class Checkout extends React.Component {
     state = {
         firstName: '',
         lastName: '',
@@ -41,6 +41,7 @@ class Order extends React.Component {
     render() {
         return (
             <div>
+                <CheckoutTable />
                 <form>
                 <TextField
                     id="firstName"
@@ -97,4 +98,4 @@ class Order extends React.Component {
     }
 }
 
-export default Order
+export default Checkout

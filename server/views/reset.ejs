@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+	<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-RfekGV6fZXMN1XYz5oPc4N/0IDvTM1Nt6Xciam6v0Al+glvRJ2mhnsr2S6tH/qM8" crossorigin="anonymous">
+</head>
+<body style='margin:2rem'>
+		<legend style='padding-left:250px; padding-bottom:30px'>Food Forum</legend>
+<div class="row">
+	<div class="col-md-10">
+		<form action="/reset/<%= token %>" method="POST" >
+		  <legend style='padding-left:15px'>Reset Password</legend>
+		  <div class="form-group">
+				<label for="password" class="col-sm-4 col-form-label">New Password</label>
+				<div class="col-sm-6">
+					<input type="password" name="password" value="" placeholder="New password" autofocus="autofocus" class="form-control"/>
+				</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="confirm" class="col-sm-4 col-form-label">Confirm Password</label>
+				<div class="col-sm-6">
+					<input type="password" name="confirmPassword" value="" placeholder="Confirm password" class="form-control"/>
+				</div>
+			</div>
+		  <div class="form-group" style='padding-left:15px'>
+		    <button type="submit" class="btn btn-primary">Update Password</button>
+		  </div>
+		</form>
+	</div>
+</div>
+</body>

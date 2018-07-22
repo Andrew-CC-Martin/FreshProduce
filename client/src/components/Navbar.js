@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -49,6 +50,31 @@ class MenuAppBar extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  logout = () => {
+    this.setState({token: ''})
+    // console.log(this.state)
+    // console.log(localStorage, 'with');
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('name');
+    // localStorage.removeItem('id');
+    // console.log(localStorage, 'deleted');
+    window.location.assign('/');
+    axios
+        .delete(`${process.env.REACT_APP_API_URL}/users/token/`+ localStorage.id)
+        .then(result => {
+          // console.log(result.data)
+          // console.log(this.state)
+          localStorage.removeItem('id');
+          window.location.assign('/');
+        })
+        .catch(e => {
+          let msg = e.response.data;
+          if (e.response.status === 400) {
+            this.setState({ message: msg });
+          }
+        })
+  };
+
   render() {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
@@ -56,14 +82,6 @@ class MenuAppBar extends React.Component {
 
     return (
       <div>
-        <FormGroup>
-          {/* <FormControlLabel
-            control={
-              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          /> */}
-        </FormGroup>
         <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -88,48 +106,57 @@ class MenuAppBar extends React.Component {
               open={open}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleClose}><Link to='/'>Home</Link></MenuItem>
-              <MenuItem onClick={this.handleClose}><Link to='/catalogue'>Catalogue</Link></MenuItem>  
+              <MenuItem onClick={this.handleClose}><Link to='/' className="link">Home</Link></MenuItem>
+              <MenuItem onClick={this.handleClose}><Link to='/contactus' className="link">ContactUs</Link></MenuItem>  
+              <MenuItem onClick={this.handleClose}><Link to='/catalogue' className="link">Catalogue</Link></MenuItem>  
               {!isLoggedIn ?
-              <MenuItem onClick={this.handleClose}><Link to='/login'>Login</Link></MenuItem>: '' }
+              <MenuItem onClick={this.handleClose}><Link to='/login' className="link">Login</Link></MenuItem>: '' }
               {!isLoggedIn?
-              <MenuItem onClick={this.handleClose}><Link to='/register'>Register</Link></MenuItem>: ''}
-              {!isLoggedIn?
-              <MenuItem onClick={this.handleClose}><Link to='/profile'>Profile</Link></MenuItem>:''}
+              <MenuItem onClick={this.handleClose}><Link to='/register' className="link">Register</Link></MenuItem>: ''}
+              {isLoggedIn?
+              <MenuItem onClick={this.handleClose}><Link to='/profile' className="link">Profile</Link></MenuItem>:''}
+              {isLoggedIn?
+              <MenuItem onClick={this.handleClose}> {localStorage.getItem('jwtToken') && (
+                <button onClick={this.logout}>
+                  Logout
+                </button>
+              )}
+              </MenuItem>:''}
+
             </Menu>
             <Typography variant="title" color="inherit" >
-              SUPER DUPER 
+              Food Forum
             </Typography>
-            {/* {auth && (
-              // <div>
-              //   <IconButton
-              //     aria-owns={open ? 'menu-appbar' : null}
-              //     aria-haspopup="true"
-              //     onClick={this.handleMenu}
-              //     color="inherit"
-              //   >
-              //     <AccountCircle />
-              //   </IconButton>
-              //   <Menu
-              //     id="menu-appbar"
-              //     anchorEl={anchorEl}
-              //     anchorOrigin={{
-              //       vertical: 'top',
-              //       horizontal: 'right',
-              //     }}
-              //     transformOrigin={{
-              //       vertical: 'top',
-              //       horizontal: 'right',
-              //     }}
-              //     open={open}
-              //     onClose={this.handleClose}
-              //   >
-              //     <MenuItem onClick={this.handleClose}><Link to='/login'>Login</Link></MenuItem>
-              //     <MenuItem onClick={this.handleClose}><Link to='/register'>Register</Link></MenuItem>
-              //     <MenuItem onClick={this.handleClose}><Link to='/profile'>Profile</Link></MenuItem>
-              //   </Menu>
-              // </div>
-            )} */}
+            {/* {auth && ( */}
+              {/* <div>
+                <IconButton
+                  aria-owns={open ? 'menu-appbar' : null}
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={open}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={this.handleClose}><Link to='/login'>Login</Link></MenuItem>
+                  <MenuItem onClick={this.handleClose}><Link to='/register'>Register</Link></MenuItem>
+                  <MenuItem onClick={this.handleClose}><Link to='/profile'>Profile</Link></MenuItem>
+                </Menu>
+              </div> */}
+            {/* )} */}
           </Toolbar>
         </AppBar>
       </div>

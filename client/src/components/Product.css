@@ -7,6 +7,11 @@
 
 .product-picture {
   height: 200px;
-  background-size: cover;
+  width: 200px;
+  margin:  auto;
   background-position: center
+}
+
+.Product-info {
+  font-size: 36px;
 }

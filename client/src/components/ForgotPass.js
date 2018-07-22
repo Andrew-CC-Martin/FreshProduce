@@ -1,5 +1,6 @@
 import React from 'react';
 import './ForgotPass.css';
+import axios from 'axios';
 import { browserHistory } from 'react-router-dom';
 
 class ForgotPass extends React.Component {
@@ -17,25 +18,24 @@ class ForgotPass extends React.Component {
 
   handleChange = (e) => {
     const state = this.state
-    state[e.target.email] = e.target.value;
-    this.setState(state);
-  //   console.log(this.state)
+    this.setState({email: e.target.value});
   }
   
   handleSubmit= (e) => {
       e.preventDefault();
       const { email } = this.state;
-    //   axios.post(`${process.env.REACT_APP_API_URL}/forgot`, {
-    //       email,
-    //   }).then((response) => {
-    //       if (response.data.msg === 'success'){
-    //           alert("Message Sent."); 
-    //           this.resetForm()
-    //       }else if(response.data.msg === 'fail'){
-    //           alert("Message failed to send.")
-    //       }
-    //   })
-    //   this.props.history.push('/login')
+      console.log(this.state)
+      axios.post(`${process.env.REACT_APP_API_URL}/forgot`, {
+          email,
+      }).then((response) => {
+          if (response.data.msg === 'success'){
+              alert("Message Sent."); 
+              this.resetForm()
+          }else if(response.data.msg === 'fail'){
+              alert("Message failed to send.")
+          }
+      })
+      this.props.history.push('/')
   }
 
   render(){
