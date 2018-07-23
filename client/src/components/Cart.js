@@ -12,6 +12,7 @@ import TableFooter from '@material-ui/core/TableFooter'
 import Paper from '@material-ui/core/Paper';
 import Button from  '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 class Cart extends React.Component {
   constructor(props) {
@@ -83,10 +84,12 @@ class Cart extends React.Component {
               return (
                 <TableRow key={item.id.toString()}>
                   <TableCell>
+                    <Button onClick={event => this.deleteRow(item.id, event)} color="secondary" variant="contained">
+                      Remove
+                      <DeleteIcon />
+                    </Button>
+                  </TableCell> <TableCell>
                     <img src={item.imgUrl} style={style} />
-                  </TableCell>
-                  <TableCell>
-                    <Button onClick={event => this.deleteRow(item.id, event)} color="secondary" variant="contained">X</Button>
                   </TableCell>
                   <TableCell component="th" scope="row">
                     {item.name}
