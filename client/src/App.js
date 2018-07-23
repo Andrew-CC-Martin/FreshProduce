@@ -23,8 +23,9 @@ import UserInvoice from './components/UserInvoice';
 import ContactUs from './components/ContactUs';
 import Cart from './components/Cart'
 import ForgotPass from './components/ForgotPass'
+import ResetPass from './components/ResetPass'
 import { get } from 'https';
-import Order from './components/Order';
+import Checkout from './components/Checkout';
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 
@@ -82,21 +83,22 @@ class App extends Component {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('name');
     // localStorage.removeItem('id');
-    // console.log(localStorage, 'deleted');
-    window.location.assign('/');
+    console.log(localStorage, 'deleted');
     axios
-        .delete(`${process.env.REACT_APP_API_URL}/users/token/`+ localStorage.id)
-        .then(result => {
-          // console.log(result.data)
-          // console.log(this.state)
-          window.location.assign('/');
-        })
-        .catch(e => {
-          let msg = e.response.data;
-          if (e.response.status === 400) {
-            this.setState({ message: msg });
-          }
-        })
+    .delete(`${process.env.REACT_APP_API_URL}/users/token/`+ localStorage.id)
+    .then(result => {
+      // console.log(result.data)
+      console.log(this.state)
+      localStorage.removeItem('id');
+      console.log(localStorage);
+    })
+    .catch(e => {
+      let msg = e.response.data;
+      if (e.response.status === 400) {
+        this.setState({ message: msg });
+      }
+    })
+    // window.location.assign('/');
   };
 
   handleRegister = user => {
@@ -145,6 +147,7 @@ class App extends Component {
       
       <Router>
         <div className="App">
+        <div className="App-main-content">
           <CssBaseline />
           <header>
             {/* <Header /> */}
@@ -169,8 +172,9 @@ class App extends Component {
             <Route exact path="/contactus/" component={ContactUs} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/forgotpass" component={ForgotPass} />
+            <Route exact path="/reset/:token" component={ResetPass} />
             
-            <Route exact path="/order" component={Order} />
+            <Route exact path="/checkout" component={Checkout} />
             <Route
               exact
               path="/register"
@@ -200,7 +204,10 @@ class App extends Component {
             />
             <Route component={Lost} />
           </Switch>
-          <Footer />
+          </div>
+          <div className="App-footer">
+            <Footer />
+          </div>
         </div>
       </Router>
      

@@ -58,20 +58,20 @@ class MenuAppBar extends React.Component {
     localStorage.removeItem('name');
     // localStorage.removeItem('id');
     // console.log(localStorage, 'deleted');
-    window.location.assign('/');
     axios
-        .delete(`${process.env.REACT_APP_API_URL}/users/token/`+ localStorage.id)
-        .then(result => {
-          // console.log(result.data)
-          // console.log(this.state)
-          window.location.assign('/');
-        })
-        .catch(e => {
-          let msg = e.response.data;
-          if (e.response.status === 400) {
-            this.setState({ message: msg });
-          }
-        })
+    .delete(`${process.env.REACT_APP_API_URL}/users/token/`+ localStorage.id)
+    .then(result => {
+      // console.log(result.data)
+      // console.log(this.state)
+      localStorage.removeItem('id');
+    })
+    .catch(e => {
+      let msg = e.response.data;
+      if (e.response.status === 400) {
+        this.setState({ message: msg });
+      }
+    })
+    // window.location.assign('/');
   };
 
   render() {
@@ -106,6 +106,7 @@ class MenuAppBar extends React.Component {
               onClose={this.handleClose}
             >
               <MenuItem onClick={this.handleClose}><Link to='/' className="link">Home</Link></MenuItem>
+              <MenuItem onClick={this.handleClose}><Link to='/contactus' className="link">ContactUs</Link></MenuItem>  
               <MenuItem onClick={this.handleClose}><Link to='/catalogue' className="link">Catalogue</Link></MenuItem>  
               {!isLoggedIn ?
               <MenuItem onClick={this.handleClose}><Link to='/login' className="link">Login</Link></MenuItem>: '' }

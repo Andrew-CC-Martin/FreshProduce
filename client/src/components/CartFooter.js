@@ -10,7 +10,7 @@ class CartFooter extends React.Component {
     return (
       <div>
         <Button><Link to="/catalogue">continue shopping</Link></Button>
-        <Button><Link to="/order">finalise order</Link></Button>
+        <Button><Link to="/checkout">finalise order</Link></Button>
         <br/>total: ${this.props.total}
       </div>
     )
