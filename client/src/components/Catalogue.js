@@ -29,7 +29,7 @@ class Catalogue extends React.Component {
         this.setState({
           products: data
          })
-         console.log(this.state.products)
+        //  console.log(this.state.products)
       })
       .catch(err => {
         console.log(err)
@@ -39,7 +39,7 @@ class Catalogue extends React.Component {
   render () {
     const {term} = this.state
     const filteredProducts = this.state.products.filter(product => product.name.toLowerCase().includes(this.state.term));
-    console.log(filteredProducts)
+    // console.log(filteredProducts)
     return (
         <div>
           <form>

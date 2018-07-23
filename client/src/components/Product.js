@@ -42,8 +42,13 @@ class Product extends React.Component {
   }
 
   render () {
+    // const style = {
+    //   backgroundImage: `url("${this.props.imgUrl}")`
+    // }
+
     const style = {
-      backgroundImage: `url("${this.props.imgUrl}")`
+      height: 200,
+      width: 200
     }
 
     let numberArray = [...Array(20).keys()].map(i => i + 1)
@@ -55,8 +60,9 @@ class Product extends React.Component {
       <div className="product">
         <Card>
           <CardMedia>
-          <div className="product-picture" style={style} ></div>
-          <br />
+          {/* <div className="product-picture"></div> */}
+            <img src={this.props.imgUrl} style={style}/>
+            {/* <br /> */}
           </CardMedia>
           <CardContent>
             <div className="Product-info">
