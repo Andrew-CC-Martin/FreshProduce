@@ -107,8 +107,8 @@ class MenuAppBar extends React.Component {
               onClose={this.handleClose}
             >
               <MenuItem onClick={this.handleClose}><Link to='/' className="link">Home</Link></MenuItem>
-              <MenuItem onClick={this.handleClose}><Link to='/contactus' className="link">ContactUs</Link></MenuItem>  
-              <MenuItem onClick={this.handleClose}><Link to='/catalogue' className="link">Catalogue</Link></MenuItem>  
+              <MenuItem onClick={this.handleClose}><Link to='/contactus' className="link">ContactUs</Link></MenuItem>
+              <MenuItem onClick={this.handleClose}><Link to='/catalogue' className="link">Catalogue</Link></MenuItem>
               {!isLoggedIn ?
               <MenuItem onClick={this.handleClose}><Link to='/login' className="link">Login</Link></MenuItem>: '' }
               {!isLoggedIn?
@@ -165,7 +165,7 @@ class MenuAppBar extends React.Component {
 }
 
 MenuAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  //classes: PropTypes.object.isRequired,
 };
 
 export default MenuAppBar

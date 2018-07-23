@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -58,36 +57,37 @@ class  Contactus extends Component {
 
   render() {
       return (
-        <Card >
+        <Card>
           <CardContent>
             <Input
               type="name"
               defaultValue="{name}" //autofill information or put label
               placeholder="Name"
               onChange={this.handleChange}
-              fullWidth="true"
+              fullWidth={true}
             />
             <Input
               type="email"
               defaultValue="{email}"
               placeholder="Email"
               onChange={this.handleChange} required
-              fullWidth="true"
+              fullWidth={true}
             />
             <Input
               type="message"
               placeholder="Message"
               onChange={this.handleChange}
-              fullWidth="true"
-              multiline="true"
+              fullWidth={true}
+              multiline={true}
             />
           </CardContent>
-          <CardActions onSubmit={this.handleSubmit}>
+          <CardActions>
             <Button
               type="submit"
               variant="contained"
               color="primary"
-              fullWidth="true">
+              fullWidth={true}
+              onClick={this.handleSubmit}>
               Confirm
             </Button>
           </CardActions>
