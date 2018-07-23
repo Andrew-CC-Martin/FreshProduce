@@ -114,7 +114,13 @@ p {
     padding: 2em;
 }
 
+.specialscard {
+    display: flex; 
 
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap; 
+}
 
 /* Media Queries */
 

@@ -31,7 +31,7 @@ const styles = {
     flexGrow: 1,
   },
   menuButton: {
-    marginLeft: -12,
+    marginLeft: -20,
     marginRight: 20,
   },
 };

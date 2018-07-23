@@ -25,11 +25,13 @@ const Home = (props) => {
 
           <section id="section-b">
             <h2> Our Current Specials </h2> 
-          <div className="card">
+          <div className="specialscard">
             <Specials />
             <Specials />
             <Specials />
-
+            <Specials />
+            <Specials />
+            <Specials />
           </div>
           </section> 
           <section id="section-c">
