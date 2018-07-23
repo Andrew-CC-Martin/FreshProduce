@@ -15,7 +15,11 @@ import Button from '@material-ui/core/Button';
         email: '',
         password: '',
         confirmPassword: '',
-        message: ''
+        message: '',
+        company: '',
+        address: '',
+        deliveryInstructions: '',
+        phoneNumber: ''
       }
       this.handleSubmit = this.handleSubmit.bind(this)
 
@@ -33,7 +37,7 @@ import Button from '@material-ui/core/Button';
       }
   
     render () {
-      const { name, email, password, confirmPassword, message } = this.state;
+      const { name, email, password, confirmPassword, message, company, address, deliveryInstructions, phoneNumber } = this.state;
       return (
         <div className="register">
           <form className="form-user" onSubmit={this.handleSubmit}>
@@ -91,8 +95,48 @@ import Button from '@material-ui/core/Button';
             margin="normal"
             />
           </div>
+          <div className="field">
+            <TextField 
+            id="company"
+            name="company"
+            label="Company"
+            value={company}
+            onChange={this.onChange}
+            required
+            margin="normal"
+            />
+          </div>
+          <div className="field">
+            <TextField
+            id="address"
+            name="address"
+            label="Address"
+            value={address}
+            onChange={this.onChange}
+            required
+            margin="normal"
+            />
+          </div>
+          <div className="field">
+            <TextField
+            id="deliveryInstructions"
+            name="deliveryInstructions"
+            label="Delivery Instructions"
+            value={deliveryInstructions}
+            onChange={this.onChange}
+            margin="normal"
+            />
+            <TextField
+            id="phoneNumber"
+            name="phoneNumber"
+            label="Phone Number"
+            value={phoneNumber}
+            onChange={this.onChange}
+            margin="normal"
+            />
+          </div>
             <br />
-            <Button color="light" type="submit">
+             <Button color="light" type="submit">
               Register
               </Button>
             {/* <h5><Link to='/'>HomePage</Link></h5>

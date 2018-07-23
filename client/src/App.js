@@ -110,14 +110,18 @@ class App extends Component {
       this.setState({ message: 'Password does not match!' });
       console.log(this.state.message);
     } else {
-      const { name, email, password, confirmPassword } = user;
+      const { name, email, password, confirmPassword, company, address, deliveryInstructions, phoneNumber } = user;
       console.log(user);
 
       axios
         .post(`${process.env.REACT_APP_API_URL}/register`, {
           name,
           email,
-          password
+          password,
+          company,
+          address,
+          deliveryInstructions,
+          phoneNumber
         })
         .then(result => {
           console.log(result.data)
@@ -141,13 +145,14 @@ class App extends Component {
   render() {
     // // console.log(this.state);
     // console.log(localStorage);
-    console.log(this.state);
-    console.log(localStorage);
+    // console.log(this.state);
+    // console.log(localStorage);
 
     return (
       
       <Router>
         <div className="App">
+        {/* create this div so that footer is separate - necessary for sticky footer */}
         <div className="App-main-content">
           <CssBaseline />
           <header>

@@ -40,13 +40,13 @@ app.set('view engine', 'ejs');
 
 // Register a user
 app.post('/register', (req, res) => {
-    let body = _.pick(req.body, ['name','email','password'])
+    let body = _.pick(req.body, ['name','email','password', 'company', 'address', 'deliveryInstructions', 'phoneNumber'])
     let user = new User(body);
 
     user.save().then((user) => {
         return user.generateAuthToken();
     }).then((token) => {        
-        res.json(Object.assign({ token }, { _id: user.id, email: user.email, name: user.name }))
+        res.json(Object.assign({ token }, { _id: user.id, email: user.email, name: user.name, company: user.company, address: user.address, deliveryInstructions: user.deliveryInstructions, phoneNumber: user.phoneNumber }))
         console.log('hi register', user)
     }).catch((e) => {
         res.status(400).send("User already exists");
@@ -67,7 +67,7 @@ app.post('/users/login', (req, res) => {
     let body = _.pick(req.body, ['email','password']);
     User.findByCredentials(body.email, body.password).then((user) => {
         return user.generateAuthToken().then((token) => {
-            res.json(Object.assign({ token }, { _id: user.id, email: user.email, name: user.name }))
+            res.json(Object.assign({ token }, { _id: user.id, email: user.email, name: user.name, company: user.company, address: user.address, deliveryInstructions: user.deliveryInstructions, phoneNumber: user.phoneNumber }))
         });
     }).catch((e) => {
         console.log(e)
@@ -98,7 +98,7 @@ app.get('/users/:id', (req, res) => {
   app.patch('/users/:id', (req, res) => {
     console.log(req.body)
     var id = req.params.id;
-    var body = _.pick(req.body, ['name', 'email']);
+    var body = _.pick(req.body, ['name', 'email', 'company', 'address', 'deliveryInstructions']);
     if (!ObjectID.isValid(id)) {
       return res.status(404).send();
     }

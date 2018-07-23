@@ -36,9 +36,27 @@ const UserSchema = new mongoose.Schema({
             }
         }],
         resetPasswordToken: String,
-        resetPasswordExpires: Date
+        resetPasswordExpires: Date,
+        company: {
+            type: String,
+            required: true,
+            trim: true,
+            minlength: 3
+        },
+        address: {
+            type: String,
+            required: true,
+            minlength: 10
+        },
+        deliveryInstructions: {
+            type: String
+        },
+        phoneNumber: {
+            type: Number,
+            required: true,
+            minlength: 8
         }
-)
+})
 
 // Instance methods
 // To limit the number of attributes returned
@@ -47,7 +65,7 @@ UserSchema.methods.toJSON = function () {
     let user = this;
     let userObject = user.toObject();
 
-    return _.pick(userObject, ['_id', 'name', 'email'])
+    return _.pick(userObject, ['_id', 'name', 'email', 'company', 'address', 'deliveryInstructions', 'phoneNumber'])
 };
 
 UserSchema.methods.generateAuthToken = function () {

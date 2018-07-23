@@ -18,7 +18,7 @@ import App from '../App'
 
 class Product extends React.Component {
   constructor(props) {
-    super(props)
+    super(props) 
     this.state = {value: 0}
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
