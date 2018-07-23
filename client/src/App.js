@@ -194,10 +194,14 @@ class App extends Component {
             <Route exact path="/forgotpass" component={ForgotPass} />
             <Route exact path="/reset/:token" component={ResetPass} />
             
-            {/* <Route exact path="/checkout" component={Checkout} /> */}
-            <Route exact path="/checkout" render={() => {
+            {/* <Route exact path="/checkout" render={() => {
               return <Checkout someProps={this.state} />;
-            }} />
+            }} /> */}
+             <Route
+              exact
+              path="/checkout"
+              render={() => (!!localStorage.id ? <Checkout someProps={this.state}/> : <Login />)}
+            />
             <Route
               exact
               path="/register"
@@ -212,7 +216,12 @@ class App extends Component {
                 )
               }
             />
-            <Route exact path="/login" component={Login} />
+            {/* <Route exact path="/login" component={Login} /> */}
+            <Route
+              exact
+              path="/login"
+              render={() => (!!localStorage.cartObject ? <Checkout /> : <Login />)}
+            />
             <Route
               exact
               path="/profile"
