@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import {Form, FormGroup, Input, Label, Button } from 'reactstrap'
 import axios from 'axios';
 
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Input from "@material-ui/core/Input";
 
 class  Contactus extends Component {
-    constructor () {
+  constructor () {
     super();
-    this.state = { 
+    this.state = {
         name: '',
         email: '',
         message: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-}
+  }
 
-    handleChange = (e) => {
+  handleChange = (e) => {
       const state = this.state
       state[e.target.name] = e.target.value;
       this.setState(state);
     //   console.log(this.state)
-    }
-    
+  }
+
     // async handleSubmit(e) {
     //     e.preventDefault();
     //     const { name, email, message } = this.state;
@@ -33,52 +37,63 @@ class  Contactus extends Component {
     // }
 
 
-    handleSubmit= (e) => {
-        e.preventDefault();
-        const { name, email, message } = this.state;
-        axios.post(`${process.env.REACT_APP_API_URL}/contactus`, {
-            name,
-            email,
-            message
-        }).then((response) => {
-            if (response.data.msg === 'success'){
-                alert("Message Sent."); 
-                this.resetForm()
-            }else if(response.data.msg === 'fail'){
-                alert("Message failed to send.")
-            }
-        })
-        this.props.history.push('/')
-    }
+  handleSubmit= (e) => {
+      e.preventDefault();
+      const { name, email, message } = this.state;
+      axios.post(`${process.env.REACT_APP_API_URL}/contactus`, {
+          name,
+          email,
+          message
+      }).then((response) => {
+          if (response.data.msg === 'success'){
+              alert("Message Sent.");
+              this.resetForm()
+          }else if(response.data.msg === 'fail'){
+              alert("Message failed to send.")
+          }
+      })
+      this.props.history.push('/')
+  }
 
-    render() { 
-        return (
-            <Form onSubmit={this.handleSubmit} style={{width: '600px', marginLeft: '30%'}} >
-                <FormGroup>
-                    <Label for="name">Name</Label>
-                    <Input
-                        type="text"
-                        name="name"
-                        onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="email">Email</Label>
-                    <Input
-                        type="email"
-                        name="email"
-                        onChange={this.handleChange} required />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="message">Message</Label>
-                    <Input
-                        type="textarea"
-                        name="message"
-                        onChange={this.handleChange} />
-                </FormGroup>
-                <Button type='submit'>Submit</Button>
-            </Form >
-          );
-    }
+  render() {
+      return (
+        <Card>
+          <CardContent>
+            <Input
+              type="name"
+              defaultValue="{name}" //autofill information or put label
+              placeholder="Name"
+              onChange={this.handleChange}
+              fullWidth={true}
+            />
+            <Input
+              type="email"
+              defaultValue="{email}"
+              placeholder="Email"
+              onChange={this.handleChange} required
+              fullWidth={true}
+            />
+            <Input
+              type="message"
+              placeholder="Message"
+              onChange={this.handleChange}
+              fullWidth={true}
+              multiline={true}
+            />
+          </CardContent>
+          <CardActions>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth={true}
+              onClick={this.handleSubmit}>
+              Confirm
+            </Button>
+          </CardActions>
+        </Card>
+      );
+  }
 }
- 
+
 export default Contactus;
