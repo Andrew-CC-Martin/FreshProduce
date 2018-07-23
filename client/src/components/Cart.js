@@ -135,7 +135,8 @@ class Cart extends React.Component {
             </TableRow>
           </TableFooter>
         </Table>
-        <Button><Link to="/catalogue">continue shopping</Link></Button>
+        <Button>
+          <Link to="/catalogue">continue shopping</Link></Button>
         <Button><Link to="/checkout">finalise order</Link></Button>
       </Paper>
     )

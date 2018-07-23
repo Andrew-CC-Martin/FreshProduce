@@ -132,6 +132,7 @@ import Button from '@material-ui/core/Button';
             label="Phone Number"
             value={phoneNumber}
             onChange={this.onChange}
+            required
             margin="normal"
             />
           </div>
