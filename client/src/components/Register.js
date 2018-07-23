@@ -18,7 +18,8 @@ import Button from '@material-ui/core/Button';
         message: '',
         company: '',
         address: '',
-        delivery_instructions: ''
+        deliveryInstructions: '',
+        phoneNumber: ''
       }
       this.handleSubmit = this.handleSubmit.bind(this)
 
@@ -36,7 +37,7 @@ import Button from '@material-ui/core/Button';
       }
   
     render () {
-      const { name, email, password, confirmPassword, message, company, address, delivery_instructions } = this.state;
+      const { name, email, password, confirmPassword, message, company, address, deliveryInstructions, phoneNumber } = this.state;
       return (
         <div className="register">
           <form className="form-user" onSubmit={this.handleSubmit}>
@@ -118,10 +119,18 @@ import Button from '@material-ui/core/Button';
           </div>
           <div className="field">
             <TextField
-            id="deliery_instructions"
-            name="delivery_instructions"
+            id="deliveryInstructions"
+            name="deliveryInstructions"
             label="Delivery Instructions"
-            value={delivery_instructions}
+            value={deliveryInstructions}
+            onChange={this.onChange}
+            margin="normal"
+            />
+            <TextField
+            id="phoneNumber"
+            name="phoneNumber"
+            label="Phone Number"
+            value={phoneNumber}
             onChange={this.onChange}
             margin="normal"
             />

@@ -12,6 +12,7 @@ class UpdateUser extends Component {
   }
 
   componentDidMount() {
+    // console.log(this.props)
     axios.get(`${ process.env.REACT_APP_API_URL }/users/`+this.props.match.params.id)
       .then(res => {
         this.setState({ user: res.data.user });
@@ -63,8 +64,12 @@ class UpdateUser extends Component {
                 <input type="address" class="form-control" name="address" value={this.state.user.address} onChange={e => this.onChange(e)} placeholder="Address" />
               </div>
               <div class="form-group">
-                <label for="delivery_instructions">Delivery Instructions:</label>
-                <input type="delivery_instructions" class="form-control" name="delivery_instructions" value={this.state.user.delivery_instructions} onChange={e => this.onChange(e)} placeholder="Delivery Instructions" />
+                <label for="deliveryInstructions">Delivery Instructions:</label>
+                <input type="deliveryInstructions" class="form-control" name="deliveryInstructions" value={this.state.user.deliveryInstructions} onChange={e => this.onChange(e)} placeholder="Delivery Instructions" />
+              </div>
+              <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="phoneNumber" class="form-control" name="phoneNumber" value={this.state.user.phoneNumber} onChange={e => this.onChange(e)} placeholder="Phone Number" />
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>

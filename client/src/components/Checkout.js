@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import CheckoutTable from './CheckoutTable'
-// import 
+import axios from 'axios'
 
 const fakeAuth = {
     isAuthenticated: false,
@@ -20,16 +20,24 @@ const fakeAuth = {
 
 
 class Checkout extends React.Component {
-    state = {
-        firstName: '',
-        lastName: '',
-        companyName: '',
-        address: '',
-        phoneNumber: '',
-        email: ''
+    constructor(props) {
+        super(props)
+        this.state = {
+            user: {}
+        }
     }
 
-    change = e => {
+    componentDidMount() {
+        // console.log(this.props.match.params.id)
+        // console.log(this.props)
+        console.log(localStorage.id)
+        axios.get(`${ process.env.REACT_APP_API_URL }/users/`+localStorage.id )
+            .then(res => {
+            this.setState({ user: res.data.user });
+        });
+    }
+
+    onChange = e => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -40,6 +48,7 @@ class Checkout extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <div>
                 <div id="container">
@@ -47,53 +56,53 @@ class Checkout extends React.Component {
                 </div>
                 <CheckoutTable />
                 <form>
-                <TextField
+                {/* <TextField
                     id="firstName"
                     label="First Name"
-                    value={this.state.firstName}
-                    onChange={e => this.change(e)}
+                    value={this.state.user.firstName}
+                    onChange={e => this.onChnge(e)}
                     margin="normal"
-                    />
+                    /> */}
                     <input
-                        name="firstName"
-                        placeholder="First Name"
-                        value={this.state.firstName}
-                        onChange={e => this.change(e)}
+                        name="name"
+                        placeholder="Name"
+                        value={this.state.user.name}
+                        onChange={e => this.onChnge(e)}
                     />
                     <br/>
-                    <input
-                        name="lasttName"
-                        placeholder="Last Name"
-                        value={this.state.lastName}
-                        onChange={e => this.change(e)}
+                    {/* <input
+                        name="lastName"
+                        // placeholder="Last Name"
+                        value={this.state.user.lastName}
+                        onChange={e => this.onChnge(e)}
                     />
-                    <br/>
+                    <br/> */}
                     <input
                         name="companyName"
                         placeholder="Company Name"
-                        value={this.state.companyName}
-                        onchange={e => this.change(e)}
+                        value={this.state.user.company}
+                        // onChange={e => this.onChnge(e)}
                     />
                     <br/>
                     <input
                         name="address"
                         placeholder="Address"
-                        value={this.state.address}
-                        onchange={e => this.change(e)}
+                        value={this.state.user.address}
+                        onChange={e => this.onChnge(e)}
                     />
                     <br/>
                     <input
                         name="phoneNumber"
                         placeholder="Phone Number"
-                        value={this.state.phoneNumber}
-                        onchange={e => this.change(e)}
+                        value={this.state.user.phoneNumber}
+                        onChange={e => this.onChnge(e)}
                     />
                     <br/>
                     <input
                         name="email"
                         placeholder="Email"
-                        value={this.state.email}
-                        onchange={e => this.change(e)}
+                        value={this.state.user.email}
+                        onChange={e => this.onChnge(e)}
                     />
                     <button onClick={e => this.onSubmit(e)}> Submit </button>
                 </form>

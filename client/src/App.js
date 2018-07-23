@@ -110,7 +110,7 @@ class App extends Component {
       this.setState({ message: 'Password does not match!' });
       console.log(this.state.message);
     } else {
-      const { name, email, password, confirmPassword, company, address, delivery_instructions } = user;
+      const { name, email, password, confirmPassword, company, address, deliveryInstructions, phoneNumber } = user;
       console.log(user);
 
       axios
@@ -120,7 +120,8 @@ class App extends Component {
           password,
           company,
           address,
-          delivery_instructions
+          deliveryInstructions,
+          phoneNumber
         })
         .then(result => {
           console.log(result.data)
@@ -144,8 +145,8 @@ class App extends Component {
   render() {
     // // console.log(this.state);
     // console.log(localStorage);
-    console.log(this.state);
-    console.log(localStorage);
+    // console.log(this.state);
+    // console.log(localStorage);
 
     return (
       

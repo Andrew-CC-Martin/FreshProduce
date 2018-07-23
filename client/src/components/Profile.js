@@ -21,8 +21,9 @@ class Profile extends Component {
         let email = res.data.user.email;
         let company = res.data.user.company
         let address = res.data.user.address
-        let delivery_instructions = res.data.user.delivery_instructions
-        this.setState({ name: name, email: email, company: company, address: address, delivery_instructions: delivery_instructions });
+        let deliveryInstructions = res.data.user.deliveryInstructions
+        let phoneNumber = res.data.user.phoneNumber
+        this.setState({ name: name, email: email, company: company, address: address, deliveryInstructions: deliveryInstructions, phoneNumber: phoneNumber });
         console.log(res.data.user.name);
         console.log(this.state);
       })
@@ -58,6 +59,7 @@ class Profile extends Component {
                   <th>Company</th>
                   <th>Address</th>
                   <th>Delivery Instructions</th>
+                  <th>Phone Number</th>
                 </tr>
               </thead>
               <tbody>
@@ -66,7 +68,8 @@ class Profile extends Component {
                   <td>{this.state.email}</td>
                   <td>{this.state.company}</td>
                   <td>{this.state.address}</td>
-                  <td>{this.state.delivery_instructions}</td>
+                  <td>{this.state.deliveryInstructions}</td>
+                  <td>{this.state.phoneNumber}</td>
                 </tr>
                 <Link to={`/update/${localStorage.id}`} class="btn btn-success">Edit Profile</Link>&nbsp;
               </tbody>

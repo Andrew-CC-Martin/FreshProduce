@@ -48,11 +48,15 @@ const UserSchema = new mongoose.Schema({
             required: true,
             minlength: 10
         },
-        delivery_instructions: {
+        deliveryInstructions: {
             type: String
+        },
+        phoneNumber: {
+            type: Number,
+            required: true,
+            minlength: 8
         }
-        }
-)
+})
 
 // Instance methods
 // To limit the number of attributes returned
@@ -61,7 +65,7 @@ UserSchema.methods.toJSON = function () {
     let user = this;
     let userObject = user.toObject();
 
-    return _.pick(userObject, ['_id', 'name', 'email', 'company', 'address', 'delivery_instructions'])
+    return _.pick(userObject, ['_id', 'name', 'email', 'company', 'address', 'deliveryInstructions', 'phoneNumber'])
 };
 
 UserSchema.methods.generateAuthToken = function () {
