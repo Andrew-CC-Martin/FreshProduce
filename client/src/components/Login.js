@@ -54,17 +54,18 @@ class Login extends Component {
     const { email, password, message } = this.state;
     return (
 
-      <div className="container">
-        <form className="form-signin" onSubmit={this.onSubmit}>
+      <div className="login">
+        <form className="form-user" onSubmit={this.onSubmit}>
           {message !== '' && (
             <div className="alert alert-warning alert-dismissible" role="alert">
               {message}
             </div>
           )}
-          <h2 className="form-signin-heading">Please Log in</h2>
+          <h2 className="form-signin-heading">Login </h2>
           <label htmlFor="inputEmail" className="sr-only">
             Email address
           </label>
+          <div className="field">
           <TextField 
             id="email"
             name="email"
@@ -74,6 +75,8 @@ class Login extends Component {
             required
             margin="normal"
           />
+        </div>
+        <div className="field">
           <TextField
             id="password-input"
             label="Password"
@@ -84,6 +87,7 @@ class Login extends Component {
             required
             margin="normal"
           />
+        </div>
             <Button color="light" type="submit">
               Login
               </Button>
