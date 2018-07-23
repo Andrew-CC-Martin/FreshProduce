@@ -194,7 +194,10 @@ class App extends Component {
             <Route exact path="/forgotpass" component={ForgotPass} />
             <Route exact path="/reset/:token" component={ResetPass} />
             
-            <Route exact path="/checkout" component={Checkout} />
+            {/* <Route exact path="/checkout" component={Checkout} /> */}
+            <Route exact path="/checkout" render={() => {
+              return <Checkout someProps={this.state} />;
+            }} />
             <Route
               exact
               path="/register"

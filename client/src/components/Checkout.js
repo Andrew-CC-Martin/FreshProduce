@@ -29,8 +29,8 @@ class Checkout extends React.Component {
 
     componentDidMount() {
         // console.log(this.props.match.params.id)
-        // console.log(this.props)
-        console.log(localStorage.id)
+        console.log(this.props.someProps.cartObject)
+        console.log(localStorage)
         axios.get(`${ process.env.REACT_APP_API_URL }/users/`+localStorage.id )
             .then(res => {
             this.setState({ user: res.data.user });
@@ -45,6 +45,8 @@ class Checkout extends React.Component {
     onSubmit = (e) => {
         this.props.onSubmit()
         console.log(this.state)
+        
+
     }
 
     render() {
@@ -52,7 +54,7 @@ class Checkout extends React.Component {
         return (
             <div>
                 <div id="container">
-                    <h4>Order Summary</h4>
+                    
                 </div>
                 <CheckoutTable />
                 <form>

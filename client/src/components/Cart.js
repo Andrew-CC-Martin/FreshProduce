@@ -70,6 +70,7 @@ class Cart extends React.Component {
     const style = {
       width: 100
     }
+    console.log(this.state.cartObject[0])
     if(this.state.cartObject.length === 0) {
       cartOutput = 
         <h2>Cart is empty</h2>
