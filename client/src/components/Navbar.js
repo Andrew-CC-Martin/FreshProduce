@@ -115,7 +115,7 @@ class MenuAppBar extends React.Component {
               {isLoggedIn?
               <MenuItem onClick={this.handleClose}><Link to='/profile' className="link">Profile</Link></MenuItem>:''}
               {isLoggedIn?
-              <MenuItem onClick={this.handleClose}> {localStorage.getItem('jwtToken') && (
+              <MenuItem onClick={this.handleClose && this.logout}> {localStorage.getItem('jwtToken') && (
                 <button onClick={this.logout}>
                   Logout
                 </button>

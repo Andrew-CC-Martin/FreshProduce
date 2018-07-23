@@ -1,14 +1,15 @@
 .product {
-    margin: 10px;
+    /* margin: 10px;
     flex-basis: calc(50% - 20px);
     flex-direction: column;
-    align-content: flex-start;
+    align-content: flex-start; */
   }
-  
+/*   
   .product-picture {
     height: 200px;
     background-size: cover;
     background-position: center
+
   }
 
-
+ */

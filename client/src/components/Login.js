@@ -61,7 +61,7 @@ class Login extends Component {
               {message}
             </div>
           )}
-          <h2 className="form-signin-heading">Login or Die</h2>
+          <h2 className="form-signin-heading">Login </h2>
           <label htmlFor="inputEmail" className="sr-only">
             Email address
           </label>
