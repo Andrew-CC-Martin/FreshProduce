@@ -41,6 +41,9 @@ class Checkout extends React.Component {
     render() {
         return (
             <div>
+                <div id="container">
+                    <h4>Order Summary</h4>
+                </div>
                 <CheckoutTable />
                 <form>
                 <TextField

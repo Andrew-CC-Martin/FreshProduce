@@ -6,6 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import TableFooter from '@material-ui/core/TableFooter'
 import Paper from '@material-ui/core/Paper';
 import App from '../App'
 
@@ -61,11 +62,24 @@ class CheckoutTable extends React.Component {
                     {item.name}
                   </TableCell>
                   <TableCell numeric>{item.quantity}</TableCell>
-                  <TableCell numeric>{`$${item.quantity * item.price}`}</TableCell>
+                  <TableCell numeric>{`$${(item.quantity * item.price).toFixed(2)}`}</TableCell>
                 </TableRow>
               );
             })}
           </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell>
+              </TableCell>
+              <TableCell>
+              </TableCell>
+              <TableCell numeric>
+                <strong>
+                  Total: ${this.state.cartObject.reduce((total, item) => total + (item.price * item.quantity), 0)}
+                </strong>
+              </TableCell>
+            </TableRow>
+          </TableFooter>
         </Table>
       </Paper>
     );
