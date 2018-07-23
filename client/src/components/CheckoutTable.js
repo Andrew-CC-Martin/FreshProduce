@@ -8,7 +8,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter'
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import App from '../App'
+
+const pdfConverter = require('jspdf');
+
 
 class CheckoutTable extends React.Component {
   constructor(props) {
@@ -17,6 +21,12 @@ class CheckoutTable extends React.Component {
       cartObject: App.getCart()
     }
   }
+  generatePdf = () => {
+    const pdf = new pdfConverter('p', 'mm', 'a4');
+    console.log('pdf')
+    pdf.fromHTML(window.document.getElementById("divToPDF"), 10, 10,{'width': 180});
+    pdf.save('order-summary.pdf');
+} 
 
   render () {
     const styles = theme => ({
@@ -31,6 +41,8 @@ class CheckoutTable extends React.Component {
     });
 
     return (
+      <div id="divToPDF">
+      <h4 style={{textAlign:'left'}}>Order Summary</h4>
       <Paper>
         <Table>
           <TableHead>
@@ -67,7 +79,9 @@ class CheckoutTable extends React.Component {
             </TableRow>
           </TableFooter>
         </Table>
+        <Button onClick={this.generatePdf}> Pdf </Button>
       </Paper>
+      </div>
     );
   }
 
