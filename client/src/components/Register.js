@@ -15,7 +15,10 @@ import Button from '@material-ui/core/Button';
         email: '',
         password: '',
         confirmPassword: '',
-        message: ''
+        message: '',
+        company: '',
+        address: '',
+        delivery_instructions: ''
       }
       this.handleSubmit = this.handleSubmit.bind(this)
 
@@ -33,7 +36,7 @@ import Button from '@material-ui/core/Button';
       }
   
     render () {
-      const { name, email, password, confirmPassword, message } = this.state;
+      const { name, email, password, confirmPassword, message, company, address, delivery_instructions } = this.state;
       return (
         <div className="register">
           <form className="form-user" onSubmit={this.handleSubmit}>
@@ -91,8 +94,40 @@ import Button from '@material-ui/core/Button';
             margin="normal"
             />
           </div>
+          <div className="field">
+            <TextField 
+            id="company"
+            name="company"
+            label="Company"
+            value={company}
+            onChange={this.onChange}
+            required
+            margin="normal"
+            />
+          </div>
+          <div className="field">
+            <TextField
+            id="address"
+            name="address"
+            label="Address"
+            value={address}
+            onChange={this.onChange}
+            required
+            margin="normal"
+            />
+          </div>
+          <div className="field">
+            <TextField
+            id="deliery_instructions"
+            name="delivery_instructions"
+            label="Delivery Instructions"
+            value={delivery_instructions}
+            onChange={this.onChange}
+            margin="normal"
+            />
+          </div>
             <br />
-            <Button color="light" type="submit">
+             <Button color="light" type="submit">
               Register
               </Button>
             {/* <h5><Link to='/'>HomePage</Link></h5>

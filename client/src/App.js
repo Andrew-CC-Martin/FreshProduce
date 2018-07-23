@@ -110,14 +110,17 @@ class App extends Component {
       this.setState({ message: 'Password does not match!' });
       console.log(this.state.message);
     } else {
-      const { name, email, password, confirmPassword } = user;
+      const { name, email, password, confirmPassword, company, address, delivery_instructions } = user;
       console.log(user);
 
       axios
         .post(`${process.env.REACT_APP_API_URL}/register`, {
           name,
           email,
-          password
+          password,
+          company,
+          address,
+          delivery_instructions
         })
         .then(result => {
           console.log(result.data)

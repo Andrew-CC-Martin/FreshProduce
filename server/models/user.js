@@ -36,7 +36,21 @@ const UserSchema = new mongoose.Schema({
             }
         }],
         resetPasswordToken: String,
-        resetPasswordExpires: Date
+        resetPasswordExpires: Date,
+        company: {
+            type: String,
+            required: true,
+            trim: true,
+            minlength: 3
+        },
+        address: {
+            type: String,
+            required: true,
+            minlength: 10
+        },
+        delivery_instructions: {
+            type: String
+        }
         }
 )
 
@@ -47,7 +61,7 @@ UserSchema.methods.toJSON = function () {
     let user = this;
     let userObject = user.toObject();
 
-    return _.pick(userObject, ['_id', 'name', 'email'])
+    return _.pick(userObject, ['_id', 'name', 'email', 'company', 'address', 'delivery_instructions'])
 };
 
 UserSchema.methods.generateAuthToken = function () {
