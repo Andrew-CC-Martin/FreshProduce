@@ -136,7 +136,7 @@ import Button from '@material-ui/core/Button';
             />
           </div>
             <br />
-             <Button color="light" type="submit">
+             <Button color="inherit" type="submit">
               Register
               </Button>
             {/* <h5><Link to='/'>HomePage</Link></h5>

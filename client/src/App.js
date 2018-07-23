@@ -56,7 +56,21 @@ class App extends Component {
     localStorage.removeItem('cart')
   }
 
-  static addToCart = (id, quantity, name, price) => {
+  static removeItem = id => {
+    let cartObject = App.getCart()
+    for(let i = 0; i < cartObject.length; i++) {
+      if(cartObject[i].id === id) {
+        cartObject.splice(i, 1)
+      }
+    }
+    App.saveCart(cartObject)
+  }
+
+  static saveCart = (cartObject) => {
+    localStorage.setItem('cart', JSON.stringify(cartObject))
+  }
+
+  static addToCart = (id, quantity, name, price, imgUrl) => {
     if(typeof quantity != "number") {
       quantity = Number(quantity)
     }
@@ -71,7 +85,7 @@ class App extends Component {
         }
       }
     } else {
-      cartObject.push({id: id, quantity: quantity, name: name, price: price})
+      cartObject.push({id: id, quantity: quantity, name: name, price: price, imgUrl: imgUrl})
     }
     localStorage.removeItem('cart')
     localStorage.setItem('cart', JSON.stringify(cartObject))
