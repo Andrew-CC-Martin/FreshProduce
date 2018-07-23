@@ -47,7 +47,6 @@ class Product extends React.Component {
     // }
 
     const style = {
-      height: 200,
       width: 200
     }
 

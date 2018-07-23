@@ -26,7 +26,7 @@ class Cart extends React.Component {
   handleSubmit(event) {
     alert(`you added ${this.state.value} ${this.props.name} to the cart`)
     console.log(`product id is ${this.props.id}`)
-    App.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl)
+    App.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl )
     event.preventDefault()
   }
 
@@ -63,6 +63,9 @@ class Cart extends React.Component {
 
   render () {
     let cartOutput
+    const style = {
+      width: 100
+    }
     if(this.state.cartObject.length === 0) {
       cartOutput = 
         <h2>Cart is empty</h2>
@@ -71,11 +74,11 @@ class Cart extends React.Component {
       cartOutput = 
         <TableBody>
           {this.state.cartObject.map(item => {
-              console.log(item.id)
+              console.log(item)
               return (
                 <TableRow key={item.id.toString()}>
                   <TableCell>
-                    <img src={item.imgUrl} />
+                    <img src={item.imgUrl} style={style} />
                   </TableCell>
                   <TableCell component="th" scope="row">
                     {item.name}
@@ -98,6 +101,7 @@ class Cart extends React.Component {
         <Table>
           <TableHead>
             <TableRow>
+              <TableCell></TableCell>
               <TableCell>Product</TableCell>
               <TableCell>Price</TableCell>
               <TableCell>Quantity</TableCell>

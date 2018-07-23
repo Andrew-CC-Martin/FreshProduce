@@ -71,9 +71,9 @@ class Profile extends Component {
                   <td>{this.state.deliveryInstructions}</td>
                   <td>{this.state.phoneNumber}</td>
                 </tr>
-                <Link to={`/update/${localStorage.id}`} class="btn btn-success">Edit Profile</Link>&nbsp;
               </tbody>
             </table>
+            <Link to={`/update/${localStorage.id}`} className="btn btn-success">Edit Profile</Link>&nbsp;
           </div>
         </div>
       </div>

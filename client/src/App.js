@@ -70,7 +70,7 @@ class App extends Component {
     localStorage.setItem('cart', JSON.stringify(cartObject))
   }
 
-  static addToCart = (id, quantity, name, price) => {
+  static addToCart = (id, quantity, name, price, imgUrl) => {
     if(typeof quantity != "number") {
       quantity = Number(quantity)
     }
@@ -85,7 +85,7 @@ class App extends Component {
         }
       }
     } else {
-      cartObject.push({id: id, quantity: quantity, name: name, price: price})
+      cartObject.push({id: id, quantity: quantity, name: name, price: price, imgUrl: imgUrl})
     }
     localStorage.removeItem('cart')
     localStorage.setItem('cart', JSON.stringify(cartObject))
