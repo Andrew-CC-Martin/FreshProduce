@@ -20,6 +20,7 @@ import Catalogue from './components/Catalogue';
 import UpdateUser from './components/UpdateUser';
 import UsersList from './components/UsersList';
 import UserInvoice from './components/UserInvoice';
+// import ProductCategory from './ProductCategory';
 import ContactUs from './components/ContactUs';
 import Cart from './components/Cart'
 import ForgotPass from './components/ForgotPass'
@@ -153,11 +154,11 @@ class App extends Component {
             {/* <Header /> */}
            <Navbar />
           </header>
-          {localStorage.getItem('jwtToken') && (
+          {/* {localStorage.getItem('jwtToken') && (
             <button className="btn btn-primary" onClick={this.logout}>
               Logout
             </button>
-          )}
+          )} */}
           {this.state.message !== '' && (
             <div className="alert alert-warning alert-dismissible" role="alert">
               {this.state.message}

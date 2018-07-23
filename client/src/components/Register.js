@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import './Register.css';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
@@ -34,13 +35,17 @@ import Button from '@material-ui/core/Button';
     render () {
       const { name, email, password, confirmPassword, message } = this.state;
       return (
-        <div className="container">
-          <form className="form-signin" onSubmit={this.handleSubmit}>
+        <div className="register">
+          <form className="form-user" onSubmit={this.handleSubmit}>
           {message !== '' &&
               <div className="alert alert-warning alert-dismissible" role="alert">
                 { message }
               </div>
             }
+          <div className="registerHeader">
+            <h2>Register Today! </h2>
+          </div>
+          <div className="field">
             <TextField 
             id="name"
             name="name"
@@ -50,6 +55,8 @@ import Button from '@material-ui/core/Button';
             required
             margin="normal"
             />
+          </div>
+          <div className="field">
             <TextField 
             id="email"
             name="email"
@@ -59,6 +66,8 @@ import Button from '@material-ui/core/Button';
             required
             margin="normal"
             />
+          </div>
+          <div className="field">
             <TextField 
             id="password"
             name="password"
@@ -69,6 +78,8 @@ import Button from '@material-ui/core/Button';
             required
             margin="normal"
             />
+          </div>
+          <div className="field">
             <TextField 
             id="confirmPassword"
             name="confirmPassword"
@@ -79,7 +90,9 @@ import Button from '@material-ui/core/Button';
             required
             margin="normal"
             />
-             <Button color="light" type="submit">
+          </div>
+            <br />
+            <Button color="light" type="submit">
               Register
               </Button>
             {/* <h5><Link to='/'>HomePage</Link></h5>
@@ -94,6 +107,7 @@ import Button from '@material-ui/core/Button';
             <input type="password" className="form-control" placeholder="Confirm Password" name="confirmPassword" value={confirmPassword} onChange={this.onChange} required/>
             <button className="btn btn-lg btn-primary btn-block" type="submit">Register</button> */}
           </form>
+        
         </div>
       );
     }

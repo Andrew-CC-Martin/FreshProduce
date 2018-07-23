@@ -1,8 +1,8 @@
 .product {
   margin: 10px;
   flex-basis: calc(50% - 20px);
-  flex-direction: column;
-  align-content: flex-start;
+  /* flex-direction: row;
+  align-content: flex-start; */
 }
 
 .product-picture {
