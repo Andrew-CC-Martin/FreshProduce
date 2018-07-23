@@ -10,6 +10,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter'
 import Paper from '@material-ui/core/Paper';
+import Button from  '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
 
 class Cart extends React.Component {
   constructor(props) {
@@ -17,6 +19,8 @@ class Cart extends React.Component {
     this.state = {
       cartObject: App.getCart()
     }
+    this.deleteRow = this.deleteRow.bind(this)
+    
   }
 
   handleChange(event) {
@@ -80,11 +84,18 @@ class Cart extends React.Component {
                   <TableCell>
                     <img src={item.imgUrl} style={style} />
                   </TableCell>
+                  <TableCell>
+                    <Button onClick={event => this.deleteRow(item.id, event)} color="secondary" variant="contained">X</Button>
+                  </TableCell>
                   <TableCell component="th" scope="row">
                     {item.name}
                   </TableCell>
                   <TableCell>${item.price.toFixed(2)}</TableCell>
-                  <TableCell>{item.quantity}</TableCell>
+                  <TableCell>
+                    <Button onClick={event => this.removeOne(item.id, event)}>-</Button>
+                    &nbsp;&nbsp;&nbsp;{item.quantity}&nbsp;&nbsp;&nbsp;
+                    <Button onClick={event => this.addOne(item.id, event)}>+</Button>
+                  </TableCell>
                   <TableCell>${(item.quantity * item.price).toFixed(2)}</TableCell>
                 </TableRow>
               )
@@ -102,6 +113,7 @@ class Cart extends React.Component {
           <TableHead>
             <TableRow>
               <TableCell></TableCell>
+              <TableCell></TableCell>
               <TableCell>Product</TableCell>
               <TableCell>Price</TableCell>
               <TableCell>Quantity</TableCell>
@@ -109,8 +121,21 @@ class Cart extends React.Component {
               <TableCell>Total</TableCell>
             </TableRow>
           </TableHead>
-            {cartOutput}
+          {cartOutput}
+          <TableFooter>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell variant="header" >${this.state.cartObject.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)}</TableCell>
+            </TableRow>
+          </TableFooter>
         </Table>
+        <Button><Link to="/catalogue">continue shopping</Link></Button>
+        <Button><Link to="/checkout">finalise order</Link></Button>
       </Paper>
     )
 
