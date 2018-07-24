@@ -368,6 +368,55 @@ app.post('/reset/:token', function(req, res) {
     });
   });
 
+  app.post('/ordersummary', (req, res) => {
+    let order = req.body.order;
+    var today = new Date();
+    const total = order.reduce((total, item) => total + (item.price * item.quantity), 0)
+    let htmlEmail = 
+        `<h3> Name: ${req.body.user.user.name.toUpperCase()} </h3>
+        <h3> Company: ${req.body.user.user.company.toUpperCase()} </h3>
+        <h3> Date: ${today} </h3>
+        <table>
+        <h3> Order Summary </h3>
+        <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        </tr>
+        `
+    for (var key in order){
+        htmlEmail += '<tr>' + '<td>' + order[key].name.toUpperCase() + '</td>' + '<td>' + '$' + order[key].price + '</td>' + '<td>' + order[key].quantity + '</td>' + '</tr>'
+    } 
+   htmlEmail += `</table>`
+   htmlEmail += `<h4> GRAND TTL:$ ${total} </h4>`
+   let transporter = nodemailer.createTransport({
+    host: 'smtp.zoho.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.EMAIL_COMPANY,
+        pass: process.env.PASS
+    }
+});
+
+let mailOptions = {
+    from: process.env.EMAIL_COMPANY,
+    to: process.env.EMAIL_USER,
+    replyTo: process.env.EMAIL_COMPANY,
+    subject: 'Your Order Summary',
+    text: 'Order',
+    html: htmlEmail
+};
+transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId, info.response);
+        res.send('ok')
+    // console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+});
+});
+
 
 //Call back to know when the server is running
 app.listen(port, () => {
