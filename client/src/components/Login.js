@@ -66,7 +66,7 @@ class Login extends Component {
             Email address
           </label>
           <div className="field">
-          <TextField 
+          <TextField
             id="email"
             name="email"
             label="Email Address"
@@ -88,7 +88,7 @@ class Login extends Component {
             margin="normal"
           />
         </div>
-            <Button color="light" type="submit">
+            <Button color="primary" type="submit">
               Login
               </Button>
           {/* <input
