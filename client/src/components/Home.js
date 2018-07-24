@@ -27,11 +27,7 @@ const Home = (props) => {
             <h2> Our Current Specials </h2> 
           <div className="specialscard">
             <Specials />
-            <Specials />
-            <Specials />
-            <Specials />
-            <Specials />
-            <Specials />
+            
           </div>
           </section> 
           <section id="section-c">

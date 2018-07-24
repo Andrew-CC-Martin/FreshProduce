@@ -1,6 +1,9 @@
 import React from 'react';
 import Product from './Product.js'
 import CatalogueTitle from './CatalogueTitle'
+import App from '../App.js';
+import Grid from '@material-ui/core/Grid';
+// import Axios from '../../node_modules/axios';
 
 class Catalogue extends React.Component {
   constructor(props) {

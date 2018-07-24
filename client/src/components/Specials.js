@@ -30,7 +30,7 @@ class Specials extends React.Component {
     }
     render() {
         return(
-            <div>
+            <div className="child">
             {/* <Card> */}
                 <CardMedia>
                 {this.state.products.map((product)=> {
