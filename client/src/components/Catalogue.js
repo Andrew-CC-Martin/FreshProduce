@@ -1,9 +1,6 @@
 import React from 'react';
 import Product from './Product.js'
 import CatalogueTitle from './CatalogueTitle'
-import './Catalogue.css'
-import App from '../App.js';
-// import Axios from '../../node_modules/axios';
 
 class Catalogue extends React.Component {
   constructor(props) {
@@ -29,7 +26,6 @@ class Catalogue extends React.Component {
         this.setState({
           products: data
          })
-        //  console.log(this.state.products)
       })
       .catch(err => {
         console.log(err)
@@ -39,7 +35,6 @@ class Catalogue extends React.Component {
   render () {
     const {term} = this.state
     const filteredProducts = this.state.products.filter(product => product.name.toLowerCase().includes(this.state.term));
-    // console.log(filteredProducts)
     return (
         <div>
           <form>
@@ -48,10 +43,9 @@ class Catalogue extends React.Component {
           </form>
           <CatalogueTitle title="Fruit" />
           <div className="catalogue">
-            {/* {console.log(this.state.products)} */}
             {filteredProducts.map((product) => {
               if(product.group_name === "fruit") {
-                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} />
+                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
                 
               }
             })}
@@ -61,7 +55,7 @@ class Catalogue extends React.Component {
           <div className="catalogue">
             {filteredProducts.map((product) => {
               if(product.group_name === "vegetable") {
-                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} />
+                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
               }
             })}
           </div>
@@ -70,7 +64,7 @@ class Catalogue extends React.Component {
           <div className="catalogue">
             {filteredProducts.map((product) => {
               if((product.group_name === "beef") || (product.group_name === "chicken")) {
-                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} />
+                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
               }
             })}
           </div>
@@ -79,7 +73,7 @@ class Catalogue extends React.Component {
           <div className="catalogue">
             {filteredProducts.map((product) => {
               if(product.group_name === "fish") {
-                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} />
+                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
               }
             })}
           </div>

@@ -18,7 +18,7 @@ class CheckoutTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      cartObject: App.getCart()
+      cartObject: this.props.getCart()
     }
   }
   generatePdf = () => {

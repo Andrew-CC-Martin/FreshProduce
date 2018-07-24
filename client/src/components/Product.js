@@ -5,16 +5,11 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia';
 import FormControl from '@material-ui/core/FormControl';
-
 import CardActions from '@material-ui/core/CardActions';
-
 import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
-
-// import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
-import App from '../App'
 
 class Product extends React.Component {
   constructor(props) {
@@ -36,16 +31,11 @@ class Product extends React.Component {
 
   handleSubmit(event) {
     alert(`you added ${this.state.value} ${this.props.name} to the cart`)
-    console.log(`product id is ${this.props.id}`)
-    App.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl)
+    this.props.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl)
     event.preventDefault()
   }
 
   render () {
-    // const style = {
-    //   backgroundImage: `url("${this.props.imgUrl}")`
-    // }
-
     const style = {
       width: 200
     }
@@ -59,9 +49,7 @@ class Product extends React.Component {
       <div className="product">
         <Card>
           <CardMedia>
-          {/* <div className="product-picture"></div> */}
             <img src={this.props.imgUrl} style={style}/>
-            {/* <br /> */}
           </CardMedia>
           <CardContent>
             <div className="Product-info">
@@ -87,15 +75,6 @@ class Product extends React.Component {
             <IconButton type="submit" value="Add to cart" color="primary" aria-label="Add to shopping cart" onClick={e => this.handleSubmit(e)}>
                 <AddShoppingCartIcon />
             </IconButton>
-  
-            {/* <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Input type="select" name="select" value={this.state.value} onChange={this.handleChange} >
-                  {options}
-                </Input>
-              </FormGroup>
-              <input type="submit" value="Add to cart" />
-            </Form> */}
           </CardActions>
         </Card>
       </div>

@@ -42,39 +42,34 @@ class App extends Component {
       confirmPassword: '',
       message: '',
       token: '',
-      cartObject: App.getCart()
+      cartObject: this.getCart()
     };
   }
 
-  //Static method to retrieve the cart from local storage and convert into a javascript object.
-  //Can be called from any file by importing App.js, and then calling App.getCart()
-  static getCart = () => {
+  getCart = () => {
     return (JSON.parse(localStorage.getItem('cart')) || [])
   }
 
-  static emptyCart = () => {
-    localStorage.removeItem('cart')
-  }
-
-  static removeItem = id => {
-    let cartObject = App.getCart()
+  removeItem = id => {
+    let cartObject = this.getCart()
     for(let i = 0; i < cartObject.length; i++) {
       if(cartObject[i].id === id) {
         cartObject.splice(i, 1)
       }
     }
-    App.saveCart(cartObject)
+    this.saveCart(cartObject)
+    this.setState({cartObject: cartObject})
   }
 
-  static saveCart = (cartObject) => {
+  saveCart = (cartObject) => {
     localStorage.setItem('cart', JSON.stringify(cartObject))
   }
 
-  static addToCart = (id, quantity, name, price, imgUrl) => {
+  addToCart = (id, quantity, name, price, imgUrl) => {
     if(typeof quantity != "number") {
       quantity = Number(quantity)
     }
-    let cartObject = App.getCart()
+    let cartObject = this.getCart()
     let alreadyInCart = cartObject.some(item => {
       return item.id === id
     })
@@ -89,6 +84,7 @@ class App extends Component {
     }
     localStorage.removeItem('cart')
     localStorage.setItem('cart', JSON.stringify(cartObject))
+    this.setState({cartObject: this.getCart()})
   }
 
   logout = () => {
@@ -157,11 +153,6 @@ class App extends Component {
   };
 
   render() {
-    // // console.log(this.state);
-    // console.log(localStorage);
-    // console.log(this.state);
-    // console.log(localStorage);
-
     return (
       
       <Router>
@@ -171,7 +162,7 @@ class App extends Component {
           <CssBaseline />
           <header>
             {/* <Header /> */}
-           <Navbar />
+           <Navbar cartIconNumber={this.state.cartObject.length}/>
           </header>
           {/* {localStorage.getItem('jwtToken') && (
             <button className="btn btn-primary" onClick={this.logout}>
@@ -186,10 +177,11 @@ class App extends Component {
           
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/catalogue" component={Catalogue} />
+            <Route exact path="/catalogue" render={() => <Catalogue getCart={this.getCart.bind(this)} addToCart={this.addToCart} />} />
             <Route exact path="/update/:id" component={UpdateUser} />
             <Route exact path="/user/inv" component={UserInvoice} />
             <Route exact path="/contactus/" component={ContactUs} />
+            <Route exact path="/cart" render={() => <Cart getCart={this.getCart} removeItem={this.removeItem} saveCart={this.saveCart} addToCart={this.addToCart} />} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/forgotpass" component={ForgotPass} />
             <Route exact path="/reset/:token" component={ResetPass} />
