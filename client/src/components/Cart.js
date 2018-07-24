@@ -1,7 +1,6 @@
 import React from 'react';
-import CartItem from './CartItem'
 import CartFooter from './CartFooter'
-import App from '../App'
+// import App from '../App'
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -18,10 +17,8 @@ class Cart extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      cartObject: App.getCart()
+      cartObject: this.props.getCart()
     }
-    this.deleteRow = this.deleteRow.bind(this)
-    
   }
 
   handleChange(event) {
@@ -31,29 +28,29 @@ class Cart extends React.Component {
   handleSubmit(event) {
     alert(`you added ${this.state.value} ${this.props.name} to the cart`)
     console.log(`product id is ${this.props.id}`)
-    App.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl )
+    this.props.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl )
     event.preventDefault()
   }
 
   deleteRow(id) {
-    App.removeItem(id)
-    this.setState({cartObject: App.getCart()})
+    this.props.removeItem(id)
+    this.setState({cartObject: this.props.getCart()})
   }
 
   //increases quantity of item #id by 1
   addOne(id) {
-    let cartObject = App.getCart()
+    let cartObject = this.props.getCart()
     for(let i = 0; i < cartObject.length; i++) {
       if(cartObject[i].id === id) {
         cartObject[i].quantity += 1
       }
     }
-    App.saveCart(cartObject)
-    this.setState({cartObject: App.getCart()})
+    this.props.saveCart(cartObject)
+    this.setState({cartObject: cartObject})
   }
 
   removeOne(id) {
-    let cartObject = App.getCart()
+    let cartObject = this.props.getCart()
     for(let i = 0; i < cartObject.length; i++) {
       if(cartObject[i].id === id) {
         if(cartObject[i].quantity != 1) {
@@ -61,8 +58,8 @@ class Cart extends React.Component {
         }
       }
     }
-    App.saveCart(cartObject)
-    this.setState({cartObject: App.getCart()})
+    this.props.saveCart(cartObject)
+    this.setState({cartObject: cartObject})
   }
 
 
@@ -71,7 +68,6 @@ class Cart extends React.Component {
     const style = {
       width: 100
     }
-    console.log(this.state.cartObject[0])
     if(this.state.cartObject.length === 0) {
       cartOutput = 
         <h2>Cart is empty</h2>
@@ -80,7 +76,6 @@ class Cart extends React.Component {
       cartOutput = 
         <TableBody>
           {this.state.cartObject.map(item => {
-              console.log(item)
               return (
                 <TableRow key={item.id.toString()}>
                   <TableCell>
@@ -88,7 +83,7 @@ class Cart extends React.Component {
                       Remove
                       <DeleteIcon />
                     </Button>
-                  </TableCell> <TableCell>
+                  </TableCell><TableCell>
                     <img src={item.imgUrl} style={style} />
                   </TableCell>
                   <TableCell component="th" scope="row">
@@ -104,10 +99,6 @@ class Cart extends React.Component {
                 </TableRow>
               )
             })}
-
-          {/* {this.state.cartObject.map(item => {
-            return <CartItem key={item.id} cartObject={item} deleteRow={this.deleteRow.bind(this)} addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} />
-          })} */}
         </TableBody>
     }
 
@@ -143,27 +134,6 @@ class Cart extends React.Component {
         <Button><Link to="/checkout">finalise order</Link></Button>
       </Paper>
     )
-
-    // return (
-    //     <div>
-    //       <h1>Cart</h1>
-    //       <Table>
-    //         <thead>
-    //           <tr>
-    //             <th></th>
-    //             <th></th>
-    //             <th>Product Title</th>
-    //             <th>Price</th>
-    //             <th>Quantity</th>
-    //             <th>Subtotal</th>
-    //             <th>Total</th>
-    //           </tr>
-    //         </thead>
-    //       </Table>
-    //       {cartOutput}
-    //       <CartFooter total={this.state.cartObject.reduce((total, item) => total + (item.price * item.quantity), 0)} />
-    //     </div>
-    // )
   }
 }
 

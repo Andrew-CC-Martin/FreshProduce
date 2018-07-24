@@ -15,6 +15,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Badge from '@material-ui/core/Badge'
+import App from '../App';
+import ReactDOM from 'react-dom'
 
 const isLoggedIn = localStorage.jwtToken !== undefined ? true : false;
 
@@ -33,10 +37,27 @@ const styles = {
 };
 
 class MenuAppBar extends React.Component {
+  constructor(props) {
+    super(props)
+    // this.state = {
+    //   shoppingCartBadge: ''
+    // }
+  }
+
+  componentDidMount() {
+    // this.shoppingCartBadge.addEventListener('storage')
+    // window.addEventListener('storage', this.handleCartChange)
+    ReactDOM.findDOMNode(this).addEventListener('storage', this.handleCartChange)
+  }
+
   state = {
     auth: true,
     anchorEl: null,
   };
+
+  handleCartChange = event => {
+    this.setState({cartIconNumber: this.props.getCart().length})
+  }
 
   handleChange = (event, checked) => {
     this.setState({ auth: checked });
@@ -126,7 +147,15 @@ class MenuAppBar extends React.Component {
             <Typography variant="title" color="inherit" >
               Food Forum
             </Typography>
-            {/* {auth && ( */}
+            <IconButton color="inherit" aria-label="Cart">
+              {/* <Badge ref={elem => this.shoppingCartBadge = elem} badgeContent={this.props.cartIconNumber}> */}
+              <Badge badgeContent={this.props.cartIconNumber}>
+                <Link to="/cart">
+                  <ShoppingCartIcon color="inherit"/>
+                </Link>
+              </Badge>
+            </IconButton>
+             {/* {auth && ( */}
               {/* <div>
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : null}
