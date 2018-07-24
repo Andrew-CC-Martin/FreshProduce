@@ -37,16 +37,16 @@ class Checkout extends React.Component {
         });
     }
 
-    onChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+    // onChange = e => {
+    //     this.setState({
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
 
-    onSubmit = (e) => {
-        this.props.onSubmit()
-        console.log(this.state)
-    }
+    // onSubmit = (e) => {
+    //     this.props.onSubmit()
+    //     console.log(this.state)
+    // }
 
     emailOrder = () => {
         const order = this.props.someProps.cartObject
@@ -55,8 +55,8 @@ class Checkout extends React.Component {
     axios
       .post(`${process.env.REACT_APP_API_URL}/ordersummary`, { order, user })
       .then(result => {
-        console.log(result.data);
-        console.log(localStorage);
+        console.log(result);
+        window.location.assign('/')
       })
       .catch(e => {
         console.log('errorrrrrr')
@@ -65,14 +65,13 @@ class Checkout extends React.Component {
     
 
     render() {
-        console.log(this.props.getCart)
         return (
             <div>
                 <div id="container">
                     
                 </div>
                 <CheckoutTable getCart={this.props.getCart} />
-                <form>
+                {/* <form> */}
                 {/* <TextField
                     id="firstName"
                     label="First Name"
@@ -80,13 +79,13 @@ class Checkout extends React.Component {
                     onChange={e => this.onChnge(e)}
                     margin="normal"
                     /> */}
-                    <input
+                    {/* <input
                         name="name"
                         placeholder="Name"
                         value={this.state.user.name}
                         onChange={e => this.onChnge(e)}
                     />
-                    <br/>
+                    <br/> */}
                     {/* <input
                         name="lastName"
                         // placeholder="Last Name"
@@ -94,22 +93,22 @@ class Checkout extends React.Component {
                         onChange={e => this.onChnge(e)}
                     />
                     <br/> */}
-                    <input
+                    {/* <input
                         name="companyName"
                         placeholder="Company Name"
                         value={this.state.user.company}
                         // onChange={e => this.onChnge(e)}
                     />
                     <br/>
-                    <input
-                        name="address"
+                    <input */}
+                        {/* name="address"
                         placeholder="Address"
                         value={this.state.user.address}
                         onChange={e => this.onChnge(e)}
                     />
                     <br/>
-                    <input
-                        name="phoneNumber"
+                    <input */}
+                        {/* name="phoneNumber"
                         placeholder="Phone Number"
                         value={this.state.user.phoneNumber}
                         onChange={e => this.onChnge(e)}
@@ -121,9 +120,10 @@ class Checkout extends React.Component {
                         value={this.state.user.email}
                         onChange={e => this.onChnge(e)}
                     />
-                    <button onClick={e => this.onSubmit(e)}> Submit </button>
+                    {/* <button onClick={e => this.onSubmit(e)}> Submit </button> */}
                     <button onClick={this.emailOrder}> Email Order </button>
-                </form>
+                {/* </form>  */}
+                {/* } */}
             </div>
         )
     }

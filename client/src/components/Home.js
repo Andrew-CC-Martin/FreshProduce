@@ -39,15 +39,6 @@ const Home = (props) => {
               crafted an expanded product range.</p>
             </div> 
           </section>
-          <section id="section-c">
-            <div className="box">
-              <h2 class="content-title">Our Story</h2>
-              <p>>For three generations Food Forum have been passionately supplying the people of Canberra with 
-              exceptional produce. From humble beginnings freighting oranges directly from 
-              the farm in Corbie Hill back in 1952 our family-focused company has carefully 
-              crafted an expanded product range</p>
-            </div> 
-          </section>
         </main>
       </div>
     
