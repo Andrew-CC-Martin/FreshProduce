@@ -61,11 +61,22 @@ class App extends Component {
     this.setState({cartObject: cartObject})
   }
 
+  updateQuantity = (id, newQuantity) => {
+    let cartObject = this.getCart()
+    for(let i = 0; i < cartObject.length; i++) {
+      if(cartObject[i].id === id) {
+        cartObject[i].quantity = newQuantity
+      }
+    }
+    this.saveCart(cartObject)
+    this.setState({cartObject: cartObject})
+  }
+
   saveCart = (cartObject) => {
     localStorage.setItem('cart', JSON.stringify(cartObject))
   }
 
-  addToCart = (id, quantity, name, price, imgUrl) => {
+  addToCart = (id, quantity, name, price, imgUrl, uom) => {
     if(typeof quantity != "number") {
       quantity = Number(quantity)
     }
@@ -80,7 +91,7 @@ class App extends Component {
         }
       }
     } else {
-      cartObject.push({id: id, quantity: quantity, name: name, price: price, imgUrl: imgUrl})
+      cartObject.push({id: id, quantity: quantity, name: name, price: price, imgUrl: imgUrl, uom: uom})
     }
     localStorage.removeItem('cart')
     localStorage.setItem('cart', JSON.stringify(cartObject))
@@ -182,11 +193,14 @@ class App extends Component {
             <Route exact path="/user/inv" component={UserInvoice} />
             <Route exact path="/contactus/" component={ContactUs} />
             <Route exact path="/cart" render={() => <Cart
-               getCart={this.getCart}
-                removeItem={this.removeItem}
-                 saveCart={this.saveCart}
-                  addToCart={this.addToCart}
-                   getCart={this.getCart} />} />
+              getCart={this.getCart}
+              removeItem={this.removeItem}
+              saveCart={this.saveCart}
+              addToCart={this.addToCart}
+              getCart={this.getCart}
+              updateQuantity={this.updateQuantity}
+              />} 
+            />
             {/* <Route exact path="/cart" component={Cart} /> */}
             <Route exact path="/forgotpass" component={ForgotPass} />
             <Route exact path="/reset/:token" component={ResetPass} />

@@ -1,6 +1,5 @@
 import React from 'react';
-import CartFooter from './CartFooter'
-// import App from '../App'
+import CartInput from './CartInput'
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -14,7 +13,6 @@ import { Link } from 'react-router-dom'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { FormControl } from '../../node_modules/@material-ui/core';
 import TextField from '@material-ui/core/TextField'
-import InputAdornment from '@material-ui/core/InputAdornment'
 
 class Cart extends React.Component {
   constructor(props) {
@@ -25,23 +23,28 @@ class Cart extends React.Component {
   }
 
   // handleChange(event) {
-  //   this.setState({value: event.target.value})
+  //   const value = +event.target.value
+  //   console.log(`handleChange triggered; value=${value}`)
+  //   if(isNaN(value) || value < 0 || value%1 !== 0  ) {
+  //     this.setState({value: this.state.value})
+  //   } else {
+  //     this.setState({value})
+  //   }
+  //   console.log(`this.state.value = ${this.state.value}`)
   // }
 
   handleChange(event) {
-    const value = +event.target.value
-    if(isNaN(value) || value < 0 || value%1 !== 0  ) {
-      this.setState({value: this.state.value})
-    } else {
-      this.setState({value})
-
-    }
+    console.log(`handleChange triggered; value=${event.target.value}`)
+    this.setState({value: event.target.value})
+    console.log(`this.state.value = ${this.state.value}`)
   }
 
   handleSubmit(event) {
-    alert(`you added ${this.state.value} ${this.props.name} to the cart`)
-    console.log(`product id is ${this.props.id}`)
-    this.props.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl )
+    console.log(`quantity: ${this.state.value}, id: ${this.props.id}`)
+    this.props.updateQuantity(this.props.id, this.state.value)
+    this.setState({cartObject: this.props.getCart()})
+    this.setState({quantity: this.state.value})
+    this.setState({value: 0})
     event.preventDefault()
   }
 
@@ -50,32 +53,6 @@ class Cart extends React.Component {
     this.setState({cartObject: this.props.getCart()})
   }
 
-  //increases quantity of item #id by 1
-  addOne(id) {
-    let cartObject = this.props.getCart()
-    for(let i = 0; i < cartObject.length; i++) {
-      if(cartObject[i].id === id) {
-        cartObject[i].quantity += 1
-      }
-    }
-    this.props.saveCart(cartObject)
-    this.setState({cartObject: cartObject})
-  }
-
-  removeOne(id) {
-    let cartObject = this.props.getCart()
-    for(let i = 0; i < cartObject.length; i++) {
-      if(cartObject[i].id === id) {
-        if(cartObject[i].quantity != 1) {
-          cartObject[i].quantity -= 1
-        }
-      }
-    }
-    this.props.saveCart(cartObject)
-    this.setState({cartObject: cartObject})
-  }
-
-
   render () {
     let cartOutput
     const style = {
@@ -83,7 +60,15 @@ class Cart extends React.Component {
     }
     if(this.state.cartObject.length === 0) {
       cartOutput = 
-        <h2>Cart is empty</h2>
+        <TableBody>
+          <TableRow></TableRow>
+          <TableRow>
+            <TableCell></TableCell>
+            <TableCell>
+              <strong>Cart is empty</strong>
+            </TableCell>
+          </TableRow>
+        </TableBody>
       
     } else {
       cartOutput = 
@@ -102,25 +87,11 @@ class Cart extends React.Component {
                   <TableCell component="th" scope="row">
                     {item.name}
                   </TableCell>
-                  <TableCell>${item.price.toFixed(2)}</TableCell>
+                  <TableCell>{`$${item.price.toFixed(2)}/${item.uom}`}</TableCell>
                   <TableCell>
-                    <FormControl onSubmit={this.handleSubmit}>
-                      <TextField
-                        label="Select Your Quantity"
-                        id="simple-start-adornment"
-                        value= {this.state.value}
-                        onChange={this.handleChange}
-                        // InputProps={{
-                        //   startAdornment: <InputAdornment position="start">{item.uom}</InputAdornment>,
-                        // }}
-                      />
-                    </FormControl>
+                    <CartInput quantity={item.quantity} uom={item.uom} id={item.id} getCart={this.props.getCart.bind(this)} handleChange={this.handleChange.bind(this)} handleSubmit={this.handleSubmit.bind(this)} />
                   </TableCell>
-                  {/* <TableCell>
-                    <Button onClick={event => this.removeOne(item.id, event)}>-</Button>
-                    &nbsp;&nbsp;&nbsp;{item.quantity}&nbsp;&nbsp;&nbsp;
-                    <Button onClick={event => this.addOne(item.id, event)}>+</Button>
-                  </TableCell> */}
+                  {/* subtotal */}
                   <TableCell>${(item.quantity * item.price).toFixed(2)}</TableCell>
                 </TableRow>
               )
@@ -151,7 +122,9 @@ class Cart extends React.Component {
               <TableCell></TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
-              <TableCell variant="header" >${this.state.cartObject.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)}</TableCell>
+              <TableCell>
+                <h5>${this.state.cartObject.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)}</h5>
+              </TableCell>
             </TableRow>
           </TableFooter>
         </Table>
