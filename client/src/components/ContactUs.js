@@ -6,8 +6,8 @@ import UpdateUser from "./UpdateUser";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class  Contactus extends Component {
   constructor () {
@@ -20,7 +20,7 @@ class  Contactus extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange = (e) => {
+  onChange = (e) => {
       const state = this.state
       state[e.target.name] = e.target.value;
       this.setState(state);
@@ -58,42 +58,53 @@ class  Contactus extends Component {
   }
 
   render() {
-      return (
-        <Card>
-          <CardContent>
-            <Input
-              type="name"
-              defaultValue={this.state.user} //autofill information or put label
-              placeholder="Name"
-              onChange={this.handleChange}
-              fullWidth={true}
-            />
-            <Input
-              type="email"
-              defaultValue="{email}"
-              placeholder="Email"
-              onChange={this.handleChange} required
-              fullWidth={true}
-            />
-            <Input
-              type="message"
-              placeholder="Message"
-              onChange={this.handleChange}
-              fullWidth={true}
-              multiline={true}
-            />
-          </CardContent>
-          <CardActions>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              fullWidth={true}
-              onClick={this.handleSubmit}>
-              Confirm
-            </Button>
-          </CardActions>
-        </Card>
+    const { name, email, message } = this.state;
+    return (
+      <div className="contactUs">
+        <form className="form-contactUs" onSubmit={this.handleSubmit}>
+        <h2 className="form-contactus-heading">Contact Us</h2>
+        <label htmlFor="inputName" className="sr-only">
+          Name
+        </label>
+        <div className="field">
+        <TextField
+          id="name"
+          name="name"
+          label="Name"
+          value={name}
+          onChange={this.onChange}
+          margin="normal"
+        />
+      </div>
+      <div className="field">
+          <TextField
+            id="email"
+            name="email"
+            label="Email Address"
+            value={email}
+            onChange={this.onChange}
+            margin="normal"
+          />
+        </div>
+      <div className="field">
+        <TextField
+          id="message-input"
+          label="Message"
+          name="message"
+          type="message"
+          value={message}
+          onChange={this.onChange}
+          multiLine={true}
+          rows={2}
+          rowsMax={4}
+        />
+      </div>
+          <Button color="primary" type="submit">
+            Send Message
+          </Button>
+        </form >
+      </div>
+
       );
   }
 }
