@@ -115,12 +115,10 @@ p {
 }
 
 .specialscard {
-    display: flex; 
-
+    display: flex !important; 
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap; 
-
 }
 
 /* Media Queries */
@@ -156,19 +154,3 @@ p {
         width: 31%
     }
 }
-
-
-/* .aboutbox {
-    width: 50vw;
-    height: 50vh;
-}
-.AboutUs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-align: center ; 
-}
-
-.specials {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  } */
