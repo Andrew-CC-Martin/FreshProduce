@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import Specials from './Specials';
 import Grid from '@material-ui/core/Grid'
+import CardMedia from '@material-ui/core/CardMedia';
 const Home = (props) => {
 
   
@@ -25,12 +26,9 @@ const Home = (props) => {
 
           <section id="section-b">
             <h2> Our Current Specials </h2> 
-          <div className="card">
+          <CardMedia className="specialscard">
             <Specials />
-            <Specials />
-            <Specials />
-
-          </div>
+          </CardMedia>
           </section> 
           <section id="section-c">
             <div className="box">

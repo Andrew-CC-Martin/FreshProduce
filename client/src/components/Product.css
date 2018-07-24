@@ -1,6 +1,8 @@
 .product {
   margin: 10px;
-  flex-basis: calc(50% - 20px);
+  flex-basis: 25%;
+  
+  
   /* flex-direction: row;
   align-content: flex-start; */
 }
@@ -9,7 +11,8 @@
   height: 200px;
   width: 200px;
   margin:  auto;
-  background-position: center
+  background-position: center;
+  padding-top: 16px;
 }
 
 .Product-info {

@@ -15,12 +15,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge'
 import App from '../App';
 import ReactDOM from 'react-dom'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 
-const isLoggedIn = localStorage.jwtToken !== undefined ? true : false;
+const isLoggedIn = localStorage.getItem('jwtToken') ? true : false;
 
 
 const styles = {
@@ -31,7 +31,7 @@ const styles = {
     flexGrow: 1,
   },
   menuButton: {
-    marginLeft: -12,
+    marginLeft: -20,
     marginRight: 20,
   },
 };
@@ -127,20 +127,19 @@ class MenuAppBar extends React.Component {
               onClose={this.handleClose}
             >
               <MenuItem onClick={this.handleClose}><Link to='/' className="link">Home</Link></MenuItem>
-              <MenuItem onClick={this.handleClose}><Link to='/contactus' className="link">ContactUs</Link></MenuItem>
               <MenuItem onClick={this.handleClose}><Link to='/catalogue' className="link">Catalogue</Link></MenuItem>
+              <MenuItem onClick={this.handleClose}><Link to='/contactus' className="link">Contact us</Link></MenuItem>  
               {!isLoggedIn ?
               <MenuItem onClick={this.handleClose}><Link to='/login' className="link">Login</Link></MenuItem>: '' }
               {!isLoggedIn?
               <MenuItem onClick={this.handleClose}><Link to='/register' className="link">Register</Link></MenuItem>: ''}
               {isLoggedIn?
               <MenuItem onClick={this.handleClose}><Link to='/profile' className="link">Profile</Link></MenuItem>:''}
-              {isLoggedIn?
-              <MenuItem onClick={this.handleClose && this.logout}> {localStorage.getItem('jwtToken') && (
+              {localStorage.getItem('jwtToken')?
+              <MenuItem onClick={this.handleClose}> 
                 <button onClick={this.logout}>
                   Logout
                 </button>
-              )}
               </MenuItem>:''}
 
             </Menu>
@@ -156,6 +155,36 @@ class MenuAppBar extends React.Component {
               </Badge>
             </IconButton>
              {/* {auth && ( */}
+           
+            {/* <div>
+                <IconButton
+                  aria-owns={open ? 'menu-account' : null}
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-account"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={open}
+                  onClose={this.handleClose}
+                >
+                 
+                </Menu>
+              </div> */}
+              
+            
+            {/* {auth && ( */}
               {/* <div>
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : null}
