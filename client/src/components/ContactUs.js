@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import UpdateUser from "./UpdateUser";
+
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -61,7 +63,7 @@ class  Contactus extends Component {
           <CardContent>
             <Input
               type="name"
-              defaultValue="{name}" //autofill information or put label
+              defaultValue={this.state.user} //autofill information or put label
               placeholder="Name"
               onChange={this.handleChange}
               fullWidth={true}

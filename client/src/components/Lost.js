@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
-const Lost = () => {
-    return (
-    <div>
-        <h1 style={{color: 'grey'}}>
-            Wrong way, go back to the homepage!!
-        </h1>
-    </div>
-    )
+class Lost extends Component {
+  render() {
+      return (
+        <Card>
+          <CardContent>
+            <h1> Wrong way, please go back!</h1>
+          </CardContent>
+        </Card>
+      )
+  }
 }
 
 export default Lost;
