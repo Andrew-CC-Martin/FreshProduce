@@ -26,9 +26,9 @@ const Home = (props) => {
 
           <section id="section-b">
             <h2> Our Current Specials </h2> 
-          <CardMedia className="specialscard">
+          <div className="cards">
             <Specials />
-          </CardMedia>
+          </div>
           </section> 
           <section id="section-c">
             <div className="box">

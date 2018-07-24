@@ -51,42 +51,42 @@ class Catalogue extends React.Component {
             <label htmlFor="search">Search for Product: </label>
             <input type='text' onChange={this.searchHandler} value={term} />
           </form>
-          <CatalogueTitle title="Fruit" />
-          <div className="catalogue">
-            {filteredProducts.map((product) => {
-              if(product.group_name === "fruit") {
-                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
-                
-              }
-            })}
-          </div>
-
-          <CatalogueTitle title="Vegetables" />
-          <div className="catalogue">
-            {filteredProducts.map((product) => {
-              if(product.group_name === "vegetable") {
-                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
-              }
-            })}
-          </div>
-
-          <CatalogueTitle title="Meat" />
-          <div className="catalogue">
-            {filteredProducts.map((product) => {
-              if((product.group_name === "beef") || (product.group_name === "chicken")) {
-                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
-              }
-            })}
-          </div>
-
-          <CatalogueTitle title="Seafood" />
-          <div className="catalogue">
-            {filteredProducts.map((product) => {
-              if(product.group_name === "fish") {
-                return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
-              }
-            })}
-          </div>
+          <section id="section-b" >
+            <CatalogueTitle title="Fruit" />
+            <div className="cards">
+              {filteredProducts.map((product) => {
+                if(product.group_name === "fruit") {
+                  return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
+                  
+                }
+              })}
+            </div>
+            <CatalogueTitle title="Vegetables" />
+            <div className="cards">
+              {filteredProducts.map((product) => {
+                if(product.group_name === "vegetable") {
+                  return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
+                }
+              })}
+            </div>
+            <CatalogueTitle title="Meat" />
+            <div className="cards">
+              {filteredProducts.map((product) => {
+                if((product.group_name === "beef") || (product.group_name === "chicken" || (product.group_name === "lamb"))) {
+                  return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
+                }
+              })}
+            </div>
+            
+            <CatalogueTitle title="Seafood" />
+            <div className="cards">
+              {filteredProducts.map((product) => {
+                if(product.group_name === "fish") {
+                  return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
+                }
+              })}
+            </div>
+          </section>
         </div>
     )
   }

@@ -46,21 +46,47 @@ class Product extends React.Component {
     )
 
     return (
-      <div className="product">
-        <Card>
-          <CardMedia>
-            <img src={this.props.imgUrl} style={style}/>
-          </CardMedia>
-          <CardContent>
-            <div className="Product-info">
-              {this.props.name}
-            </div>
-            <div>
-              {`Price: $${this.props.price}/${this.props.uom}`}
-            </div>
-          </CardContent>
-          <br></br>
-          <CardActions>
+      // <div className="product">
+      //   <Card>
+      //     <CardMedia>
+      //       <img src={this.props.imgUrl} style={style}/>
+      //     </CardMedia>
+      //     <CardContent>
+      //       <div className="Product-info">
+      //         {this.props.name}
+      //       </div>
+      //       <div>
+      //         {`Price: $${this.props.price}/${this.props.uom}`}
+      //       </div>
+      //     </CardContent>
+      //     <br></br>
+      //     <CardActions>
+      //       <FormControl onSubmit={this.handleSubmit}>
+      //         <TextField
+      //             label="Select Your Quantity"
+      //             id="simple-start-adornment"
+      //             value= {this.state.value}
+      //             onChange={this.handleChange}
+      //             InputProps={{
+      //               startAdornment: <InputAdornment position="start">{this.props.uom}</InputAdornment>,
+      //             }}
+      //         />
+      //       </FormControl>  
+      //       <IconButton type="submit" value="Add to cart" color="secondary" aria-label="Add to shopping cart" onClick={e => this.handleSubmit(e)}>
+      //           <AddShoppingCartIcon />
+      //       </IconButton>
+      //     </CardActions>
+      //   </Card>
+      // </div>
+      <div className="card">
+        <img src={this.props.imgUrl} />
+        <div className="card-title">
+          {this.props.name}
+        </div>
+        <div>
+          {`Price: $${this.props.price}/${this.props.uom}`}
+        </div>
+        <CardActions>
             <FormControl onSubmit={this.handleSubmit}>
               <TextField
                   label="Select Your Quantity"
@@ -72,11 +98,11 @@ class Product extends React.Component {
                   }}
               />
             </FormControl>  
-            <IconButton type="submit" value="Add to cart" color="primary" aria-label="Add to shopping cart" onClick={e => this.handleSubmit(e)}>
+            <IconButton type="submit" value="Add to cart" color="secondary" aria-label="Add to shopping cart" onClick={e => this.handleSubmit(e)}>
                 <AddShoppingCartIcon />
             </IconButton>
           </CardActions>
-        </Card>
+
       </div>
     )
   }
