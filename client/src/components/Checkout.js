@@ -46,9 +46,23 @@ class Checkout extends React.Component {
     onSubmit = (e) => {
         this.props.onSubmit()
         console.log(this.state)
-        
-
     }
+
+    emailOrder = () => {
+        const order = this.props.someProps.cartObject
+        const user = this.state
+
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/ordersummary`, { order, user })
+      .then(result => {
+        console.log(result.data);
+        console.log(localStorage);
+      })
+      .catch(e => {
+        console.log('errorrrrrr')
+      });
+  };
+    
 
     render() {
         console.log(this.props.getCart)
@@ -108,6 +122,7 @@ class Checkout extends React.Component {
                         onChange={e => this.onChnge(e)}
                     />
                     <button onClick={e => this.onSubmit(e)}> Submit </button>
+                    <button onClick={this.emailOrder}> Email Order </button>
                 </form>
             </div>
         )
