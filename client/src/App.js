@@ -181,8 +181,13 @@ class App extends Component {
             <Route exact path="/update/:id" component={UpdateUser} />
             <Route exact path="/user/inv" component={UserInvoice} />
             <Route exact path="/contactus/" component={ContactUs} />
-            <Route exact path="/cart" render={() => <Cart getCart={this.getCart} removeItem={this.removeItem} saveCart={this.saveCart} addToCart={this.addToCart} />} />
-            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/cart" render={() => <Cart
+               getCart={this.getCart}
+                removeItem={this.removeItem}
+                 saveCart={this.saveCart}
+                  addToCart={this.addToCart}
+                   getCart={this.getCart} />} />
+            {/* <Route exact path="/cart" component={Cart} /> */}
             <Route exact path="/forgotpass" component={ForgotPass} />
             <Route exact path="/reset/:token" component={ResetPass} />
             
@@ -192,7 +197,7 @@ class App extends Component {
              <Route
               exact
               path="/checkout"
-              render={() => (!!localStorage.id ? <Checkout someProps={this.state}/> : <Login />)}
+              render={() => (!!localStorage.id ? <Checkout someProps={this.state} getCart={this.getCart} /> : <Login />)}
             />
             <Route
               exact

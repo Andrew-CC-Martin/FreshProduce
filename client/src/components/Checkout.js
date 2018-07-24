@@ -42,6 +42,7 @@ class Checkout extends React.Component {
             [e.target.name]: e.target.value
         })
     }
+
     onSubmit = (e) => {
         this.props.onSubmit()
         console.log(this.state)
@@ -50,13 +51,13 @@ class Checkout extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        console.log(this.props.getCart)
         return (
             <div>
                 <div id="container">
                     
                 </div>
-                <CheckoutTable />
+                <CheckoutTable getCart={this.props.getCart} />
                 <form>
                 {/* <TextField
                     id="firstName"

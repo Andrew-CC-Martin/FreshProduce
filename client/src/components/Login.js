@@ -88,7 +88,7 @@ class Login extends Component {
             margin="normal"
           />
         </div>
-            <Button color="light" type="submit">
+            <Button color="inherit" type="submit">
               Login
               </Button>
           {/* <input

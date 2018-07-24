@@ -12,6 +12,9 @@ import Paper from '@material-ui/core/Paper';
 import Button from  '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import DeleteIcon from '@material-ui/icons/Delete'
+import { FormControl } from '../../node_modules/@material-ui/core';
+import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@material-ui/core/InputAdornment'
 
 class Cart extends React.Component {
   constructor(props) {
@@ -21,8 +24,18 @@ class Cart extends React.Component {
     }
   }
 
+  // handleChange(event) {
+  //   this.setState({value: event.target.value})
+  // }
+
   handleChange(event) {
-    this.setState({value: event.target.value})
+    const value = +event.target.value
+    if(isNaN(value) || value < 0 || value%1 !== 0  ) {
+      this.setState({value: this.state.value})
+    } else {
+      this.setState({value})
+
+    }
   }
 
   handleSubmit(event) {
@@ -91,10 +104,23 @@ class Cart extends React.Component {
                   </TableCell>
                   <TableCell>${item.price.toFixed(2)}</TableCell>
                   <TableCell>
+                    <FormControl onSubmit={this.handleSubmit}>
+                      <TextField
+                        label="Select Your Quantity"
+                        id="simple-start-adornment"
+                        value= {this.state.value}
+                        onChange={this.handleChange}
+                        // InputProps={{
+                        //   startAdornment: <InputAdornment position="start">{item.uom}</InputAdornment>,
+                        // }}
+                      />
+                    </FormControl>
+                  </TableCell>
+                  {/* <TableCell>
                     <Button onClick={event => this.removeOne(item.id, event)}>-</Button>
                     &nbsp;&nbsp;&nbsp;{item.quantity}&nbsp;&nbsp;&nbsp;
                     <Button onClick={event => this.addOne(item.id, event)}>+</Button>
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell>${(item.quantity * item.price).toFixed(2)}</TableCell>
                 </TableRow>
               )
