@@ -16,21 +16,21 @@ class Specials extends React.Component {
     }
 
     componentDidMount() {
-        // const url = "https://rawgit.com/stemshell/ed489a4e0fe8703fab32fb31f2099654/raw/e549c4db0ffb64715b72c69ff43937d61e4c46a5/products.json"
+        const url = "https://api.myjson.com/bins/7mvru"
 
-        // fetch(url) 
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         this.setState({
-        //         products: data
-        //         })
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
-        this.setState({
-            products 
-          })
+        fetch(url) 
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                products: data
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        // this.setState({
+        //     products 
+        //   })
     }
     render() {
         return(

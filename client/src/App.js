@@ -27,10 +27,10 @@ import ForgotPass from './components/ForgotPass'
 import ResetPass from './components/ResetPass'
 import { get } from 'https';
 import Checkout from './components/Checkout';
-import Footer from './components/Footer'
-import Navbar from './components/Navbar'
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 
-const theme = createMuiTheme();
+
 
 class App extends Component {
   constructor(props) {
