@@ -199,6 +199,7 @@ class App extends Component {
               addToCart={this.addToCart}
               getCart={this.getCart}
               updateQuantity={this.updateQuantity}
+              total={this.state.cartObject.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)}
               />} 
             />
             {/* <Route exact path="/cart" component={Cart} /> */}
