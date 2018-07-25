@@ -3,6 +3,7 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .App-main-content {
@@ -35,4 +36,8 @@
 .catalogue {
   flex-wrap: wrap;
   display: flex;
+}
+
+.h1 {
+  font-family: 'Rasa', serif;
 }

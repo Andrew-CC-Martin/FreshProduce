@@ -1,6 +1,11 @@
 .footercontent {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    background-color: grey;
+    font-family: 'Rasa', serif;
+    font-weight: bold;
+    color: white;
+    height: 90px;
 }
 
 .contact {
@@ -9,4 +14,9 @@ flex-basis: 25%;
 
 .hours {
     flex-basis: 25%;
+    font-weight: bold;
+}
+
+.copyright {
+  color:lightgrey;
 }

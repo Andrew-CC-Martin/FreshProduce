@@ -102,7 +102,7 @@ class MenuAppBar extends React.Component {
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
     const img = <img style={{marginTop:10}} src= "../images/food_forum_black" />
- 
+
     return (
       <div>
         <AppBar position="static" color="default" title={img}>
@@ -131,7 +131,7 @@ class MenuAppBar extends React.Component {
             >
               <MenuItem onClick={this.handleClose}><Link to='/' className="link">Home</Link></MenuItem>
               <MenuItem onClick={this.handleClose}><Link to='/catalogue' className="link">Catalogue</Link></MenuItem>
-              <MenuItem onClick={this.handleClose}><Link to='/contactus' className="link">Contact us</Link></MenuItem>  
+              <MenuItem onClick={this.handleClose}><Link to='/contactus' className="link">Contact us</Link></MenuItem>
               {!isLoggedIn ?
               <MenuItem onClick={this.handleClose}><Link to='/login' className="link">Login</Link></MenuItem>: '' }
               {!isLoggedIn?
@@ -139,7 +139,7 @@ class MenuAppBar extends React.Component {
               {isLoggedIn?
               <MenuItem onClick={this.handleClose}><Link to='/profile' className="link">Profile</Link></MenuItem>:''}
               {localStorage.getItem('jwtToken')?
-              <MenuItem onClick={this.handleClose} onClick={this.logout}> 
+              <MenuItem onClick={this.handleClose} onClick={this.logout}>
                 <Link to='/' onClick={this.logout}>
                   Logout
                 </Link>
@@ -159,7 +159,7 @@ class MenuAppBar extends React.Component {
               </Badge>
             </IconButton>
              {/* {auth && ( */}
-           
+
             {/* <div>
                 <IconButton
                   aria-owns={open ? 'menu-account' : null}
@@ -183,11 +183,11 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                 
+
                 </Menu>
               </div> */}
-              
-            
+
+
             {/* {auth && ( */}
               {/* <div>
                 <IconButton

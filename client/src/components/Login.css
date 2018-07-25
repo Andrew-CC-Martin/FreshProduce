@@ -1,4 +1,8 @@
 .login{
+<<<<<<< HEAD
+  background-color: lightgrey;
+=======
+>>>>>>> 8d56ca0be3c7ede38349acb506d3864be2ea4c0c
   padding: 0.5em;
 }
 
@@ -15,7 +19,11 @@ box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 
 }
 
 .field {
-  position: relative; 
+  position: relative;
+}
+
+.forgot-pass-link{
+  color: #c13426;
 }
 
 .bg-image {
