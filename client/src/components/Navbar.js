@@ -94,7 +94,7 @@ class MenuAppBar extends React.Component {
         this.setState({ message: msg });
       }
     })
-    window.location.assign('/');
+    // window.location.assign('/');
   };
 
   render() {
