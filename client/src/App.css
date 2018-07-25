@@ -13,7 +13,9 @@
 .App-footer {
   margin: 1%;
 }
-
+body{
+  background-color: #fff;
+}
 
 .App-header {
   background-color: #222;

@@ -192,7 +192,7 @@ class App extends Component {
         <div className="App">
         {/* create this div so that footer is separate - necessary for sticky footer */}
         <div className="App-main-content">
-          <CssBaseline />
+          {/* <CssBaseline /> */}
           <header>
             {/* <Header /> */}
            <Navbar cartIconNumber={this.state.cartObject.length}/>
@@ -210,7 +210,7 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" render={() => <Home addToCart={this.addToCart} />} />
-            <Route exact path="/catalogue" render={() => <Catalogue getCart={this.getCart.bind(this)} addToCart={this.addToCart} />} />
+            <Route path="/catalogue" render={() => <Catalogue getCart={this.getCart.bind(this)} addToCart={this.addToCart} />} />
             <Route exact path="/update/:id" component={UpdateUser} />
             <Route exact path="/user/inv" component={UserInvoice} />
             <Route exact path="/contactus/" component={ContactUs} />

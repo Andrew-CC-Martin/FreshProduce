@@ -5,7 +5,7 @@
 } */
 #showcase .bg-image {
     position: absolute;
-    background: #333 url('../images/elaine-casap-86020-unsplash-min.jpg');
+    background: #fff url('../images/elaine-casap-86020-unsplash-min.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,6 +19,9 @@
     padding-top: 100px;
     padding-bottom: 0;
 }
+#section-a {
+    min-height: 300px;
+}
 
 #showcase .content-wrap, 
 #section-a .content-wrap {
@@ -30,7 +33,6 @@
 body{
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #333;
     color: #000;
     font-size: 1.1em;
     line-height: 1.5;
@@ -56,6 +58,103 @@ p {
     color: #fff;
     font-size: 20px;
 }
+/* Buttons */
+.btnlink{
+    margin: 2.5em 0;
+
+}
+
+.button--container{
+    width: calc(25% - 1em); 
+    margin: 0 0.25em;
+    border-radius:2%;
+    height: 130px;
+    position: relative;
+    overflow: hidden;
+    color:#fff;
+    text-decoration: none;
+    padding:   1.5em 2em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(50,50,50);
+
+    font-weight: bold;
+
+}
+.button--link{
+    position: relative;
+    z-index: 10;
+    color: white;
+}
+.button--link:hover{
+    color: white;
+    text-decoration: none;
+}
+.button--image{
+    position: absolute;
+    opacity: 0.7;
+    filter: blur(0px);
+    top: 0;
+    left: 0;
+    height: auto;
+    width: 100%;
+}
+.button--container .button--image {
+    transition: all 0.5s ease;
+
+}
+.button--container:hover .button--image{
+    filter: blur(2px);
+    opacity: 0.4
+}
+
+
+.btn-common{
+    width: calc(25% - 1em); 
+    margin: 0 0.25em;
+    border-radius:2%;
+    
+    color:#fff;
+    text-decoration: none;
+    padding:   1em 2em;
+    display: inline-block;
+    font-weight: bold;
+
+}
+.btn-common:hover{
+    transition: 0.2s background-color;
+    color: #333; 
+}
+.btnmeat {
+    background: url('../images/markus-spiske-680194-unsplash-min.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.btnfruit {
+    background: url('../images/jakub-kapusnak-296131-unsplash-min.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+
+.btnveg {
+    background: url('../images/sharon-pittaway-562631-unsplash-min.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btnseafood {
+    background: url('../images/erwan-hesry-209418-unsplash-min.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .btn {
     display: inline-block;
@@ -69,7 +168,10 @@ p {
 .btn:hover {
     background: #eaeaea;
     color: #333;
+    text-decoration: none !important;
 }
+
+
 
 #showcase {
     min-height: 600px;
@@ -104,6 +206,9 @@ p {
     background: #fff;
     color: #333;
     padding: 2em;
+}
+#section-c p {
+    color: #808080;
 }
 
 
