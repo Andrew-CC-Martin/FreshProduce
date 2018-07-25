@@ -55,6 +55,7 @@ class Login extends Component {
     return (
 
       <div className="login">
+        <div className="bg-image"></div>
         <form className="form-user" onSubmit={this.onSubmit}>
           {message !== '' && (
             <div className="alert alert-warning alert-dismissible" role="alert">
@@ -66,7 +67,7 @@ class Login extends Component {
             Email address
           </label>
           <div className="field">
-          <TextField
+          <TextField 
             id="email"
             name="email"
             label="Email Address"
@@ -75,8 +76,8 @@ class Login extends Component {
             required
             margin="normal"
           />
-        </div>
-        <div className="field">
+          </div>
+          <div className="field">
           <TextField
             id="password-input"
             label="Password"
@@ -88,7 +89,7 @@ class Login extends Component {
             margin="normal"
           />
         </div>
-            <Button color="primary" type="submit">
+            <Button color="light" type="submit">
               Login
               </Button>
           {/* <input
