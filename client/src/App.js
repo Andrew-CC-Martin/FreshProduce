@@ -45,6 +45,10 @@ class App extends Component {
       cartObject: this.getCart()
     };
     this.validateEmail = this.validateEmail.bind(this)
+    //Initiated cart
+    if(!localStorage.cart) {
+      localStorage.setItem('cart', JSON.stringify([]))
+    }
   }
 
   getCart = () => {
@@ -205,7 +209,8 @@ class App extends Component {
           )}
 
           <Switch>
-            <Route exact path="/" component={Home} />
+            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path="/" render={() => <Home addToCart={this.addToCart} />} />
             <Route exact path="/catalogue" render={() => <Catalogue getCart={this.getCart.bind(this)} addToCart={this.addToCart} />} />
             <Route exact path="/update/:id" component={UpdateUser} />
             <Route exact path="/user/inv" component={UserInvoice} />

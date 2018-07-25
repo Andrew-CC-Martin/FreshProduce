@@ -3,9 +3,13 @@ import './Home.css';
 import Specials from './Specials';
 import Grid from '@material-ui/core/Grid'
 import CardMedia from '@material-ui/core/CardMedia';
-const Home = (props) => {
 
-  
+class Home extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  render() { 
+    // console.log(this.props.addToCart)
     return (
       <div className="Products">
         <header id="showcase" className="grid">
@@ -20,19 +24,19 @@ const Home = (props) => {
           <section id="section-a">
             <div className="content-wrap">
               <h2 className="content-title"> What we offer </h2>
-              <div class="content-text"> </div>
+              <div className="content-text"> </div>
             </div>
           </section>
 
           <section id="section-b">
             <h2> Our Current Specials </h2> 
           <div className="cards">
-            <Specials />
+            <Specials addToCart={this.props.addToCart} />
           </div>
           </section> 
           <section id="section-c">
             <div className="box">
-              <h2 class="content-title">Our Story</h2>
+              <h2 className="content-title">Our Story</h2>
               <p>For three generations Food Forum have been passionately supplying the people of Canberra with 
               exceptional produce. From humble beginnings freighting oranges directly from 
               the farm in Corbie Hill back in 1952 our family-focused company has carefully 
@@ -44,5 +48,6 @@ const Home = (props) => {
     
   )
   }
+}
    
   export default Home;

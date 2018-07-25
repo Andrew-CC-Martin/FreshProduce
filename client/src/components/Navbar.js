@@ -151,7 +151,9 @@ class MenuAppBar extends React.Component {
             {/* <Typography variant="title" color="inherit" >
               Food Forum
             </Typography> */}
-            <img src={logo} style={{"width": 150}} />
+            <Link to='/' className="link">
+              <img src={logo} style={{"width": 150}} />
+            </Link>
             <IconButton color="inherit" aria-label="Cart" style = {{"justifyContent":"right"}}>
               {/* <Badge ref={elem => this.shoppingCartBadge = elem} badgeContent={this.props.cartIconNumber}> */}
               <Badge badgeContent={this.props.cartIconNumber}>

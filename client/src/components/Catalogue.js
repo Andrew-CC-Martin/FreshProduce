@@ -37,7 +37,7 @@ class Catalogue extends React.Component {
         this.setState({
           products: data
          })
-        //  console.log(this.state.products)
+         console.log(this.state.products)
       })
       .catch(err => {
         console.log(err)

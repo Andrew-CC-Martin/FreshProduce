@@ -7,7 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import products from '../products.json'
 
 class Specials extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {
             products: [],
@@ -16,6 +16,7 @@ class Specials extends React.Component {
     }
 
     componentDidMount() {
+        // console.log(this.props.addToCart)
         const url = "https://api.myjson.com/bins/7mvru"
 
         fetch(url) 
@@ -32,18 +33,23 @@ class Specials extends React.Component {
         //     products 
         //   })
     }
+
     render() {
         return(
 
             <React.Fragment>
+            {/* {console.log(this.props.addToCart)} */}
             {this.state.products.map((product)=> {
                 if(product.on_special) {
                     return <Product  
                     key={product.id} 
+                    id={product.id}
                     imgUrl={product.img_path} 
                     name={product.name} 
                     uom={product.uom} 
-                    price={product.unit_sell_price} />
+                    price={product.unit_sell_price}
+                    addToCart={this.props.addToCart.bind(this)}
+                    />
                 }
             })} 
             </React.Fragment>
