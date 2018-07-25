@@ -48,6 +48,35 @@ class Catalogue extends React.Component {
   render () {
     const {term} = this.state
     const filteredProducts = this.state.products.filter(product => product.name.toLowerCase().includes(this.state.term));
+
+    let fruitTitle
+    if(filteredProducts.some(product => {return product.group_name === "fruit"})) {
+      fruitTitle = <CatalogueTitle title="Fruit" />
+    } else {
+      fruitTitle = null
+    }
+
+    let vegeTitle
+    if(filteredProducts.some(product => {return product.group_name === "vegetable"})) {
+      vegeTitle = <CatalogueTitle title="Vegetables" />
+    } else {
+      vegeTitle = null
+    }
+
+    let meatTitle
+    if(filteredProducts.some(product => {return (product.group_name === "beef") || (product.group_name === "chicken") || (product.group_name === "lamb") })) {
+      meatTitle = <CatalogueTitle title="Meat" />
+    } else {
+      meatTitle = null
+    }
+
+    let seafoodTitle
+    if(filteredProducts.some(product => {return product.group_name === "fish"})) {
+      seafoodTitle = <CatalogueTitle title="Seafood" />
+    } else {
+      seafoodTitle = null
+    }
+
     return (
         <div>
           <FormControl  >
@@ -66,7 +95,12 @@ class Catalogue extends React.Component {
         {/* Below is the section for all produce categories */}
           <section id="fruit" >
             <CatalogueTitle title="Fruit" />
+            {fruitTitle}
             <div className="cards">
+          {/* <form>
+            <label htmlFor="search">Search for Product: </label>
+            <input type='text' onChange={this.searchHandler} value={term} />
+          </form> */}
               {filteredProducts.map((product) => {
                 if(product.group_name === "fruit") {
                   return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
@@ -76,7 +110,8 @@ class Catalogue extends React.Component {
             </div>
           </section> 
           <section id="vegetable">              
-            <CatalogueTitle title="Vegetables" />
+            {vegeTitle}
+
             <div className="cards">
               {filteredProducts.map((product) => {
                 if(product.group_name === "vegetable") {
@@ -86,7 +121,8 @@ class Catalogue extends React.Component {
             </div>
           </section>
           <section id="meat">
-            <CatalogueTitle title="Meat" />
+            {meatTitle}
+
             <div className="cards">
               {filteredProducts.map((product) => {
                 if((product.group_name === "beef") || (product.group_name === "chicken" || (product.group_name === "lamb"))) {
@@ -96,7 +132,8 @@ class Catalogue extends React.Component {
             </div>
           </section>
           <section id="seafood">
-            <CatalogueTitle title="Seafood" />
+            {seafoodTitle}
+            
             <div className="cards">
               {filteredProducts.map((product) => {
                 if(product.group_name === "fish") {

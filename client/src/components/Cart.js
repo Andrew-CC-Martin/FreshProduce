@@ -71,7 +71,7 @@ class Cart extends React.Component {
               <TableCell>Total</TableCell>
             </TableRow>
           </TableHead>
-            {cartOutput}
+          {cartOutput}
           <TableFooter>
             <TableRow>
               <TableCell></TableCell>
