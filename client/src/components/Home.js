@@ -21,7 +21,7 @@ class Home extends React.Component {
           <div className="bg-image"></div>
           <div className="content-wrap">
             <h1> Welcome to Food Forum </h1>
-            <p> We are a locally owned, family run business. With over 60 years experience in the food industry, from farming to retail, we know a bit about good produce.  We pride ourselves on sourcing only the best quality seasonal produce from the finest growers and producers our nation has to offer. </p>
+            <p className="p-open"> We are a locally owned, family run business. With over 60 years experience in the food industry, from farming to retail, we know a bit about good produce.  We pride ourselves on sourcing only the best quality seasonal produce from the finest growers and producers our nation has to offer. </p>
             <a href="#section-b" className="btn"> See our Specials</a>
           </div>
         </header>
