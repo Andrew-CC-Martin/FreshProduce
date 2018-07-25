@@ -197,11 +197,6 @@ class App extends Component {
             {/* <Header /> */}
            <Navbar cartIconNumber={this.state.cartObject.length}/>
           </header>
-          {/* {localStorage.getItem('jwtToken') && (
-            <button className="btn btn-primary" onClick={this.logout}>
-              Logout
-            </button>
-          )} */}
           {this.state.message !== '' && (
             <div className="alert alert-warning alert-dismissible" role="alert">
               {this.state.message}
@@ -251,7 +246,6 @@ class App extends Component {
                 )
               }
             />
-            {/* <Route exact path="/login" component={Login} /> */}
             <Route
               exact
               path="/login"

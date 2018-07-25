@@ -52,6 +52,7 @@ class Checkout extends React.Component {
     emailOrder = () => {
         const order = this.props.someProps.cartObject
         const user = this.state
+        localStorage.cart = '[]'
 
     axios
       .post(`${process.env.REACT_APP_API_URL}/ordersummary`, { order, user })
