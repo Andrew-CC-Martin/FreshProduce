@@ -122,7 +122,7 @@ class Checkout extends React.Component {
                         onChange={e => this.onChnge(e)}
                     />
                     {/* <button onClick={e => this.onSubmit(e)}> Submit </button> */}
-                    <Button onClick={this.emailOrder} style={{margin: '1%'}} > Email Order </Button>
+                    <Button variant="contained" color="secondary" onClick={this.emailOrder} style={{margin: '1%'}} > Email Order </Button>
                 {/* </form>  */}
                 {/* } */}
             </div>
