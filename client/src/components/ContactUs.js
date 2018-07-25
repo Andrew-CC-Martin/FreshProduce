@@ -26,18 +26,6 @@ class  Contactus extends Component {
     //   console.log(this.state)
   }
 
-    // async handleSubmit(e) {
-    //     e.preventDefault();
-    //     const { name, email, message } = this.state;
-    //     const form = await axios.post(`${process.env.REACT_APP_API_URL}/contactus`, {
-    //         name,
-    //         email,
-    //         message
-    //     })
-    //     this.props.history.push('/')
-    // }
-
-
   handleSubmit= (e) => {
       e.preventDefault();
       const { name, email, message } = this.state;

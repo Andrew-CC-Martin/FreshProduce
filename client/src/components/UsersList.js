@@ -33,7 +33,6 @@ class UsersList extends React.Component {
             })
             .catch(error => {
                 if (error.response.status === 401) {
-                    // this.props.history.push("/login");
                 }
             });
 
@@ -43,7 +42,6 @@ class UsersList extends React.Component {
         // console.log('profile');
         console.log(localStorage);
         // console.log(token)
-        // const { name, email } = props.details;
         return (
             <div class="panel-body">
                 <table class="table table-stripe">

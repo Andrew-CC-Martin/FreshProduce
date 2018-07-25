@@ -43,12 +43,6 @@ class Profile extends Component {
       <div className="container">
         <div className="panel panel-default">
           <div className="panel-heading">
-            {/* <h3 class="panel-title">
-                  User Profile &nbsp;
-                  {localStorage.getItem('jwtToken') &&
-                    <button class="btn btn-primary" onClick={this.logout}>Logout</button>
-                  }
-                </h3> */}
           </div>
           <div className="panel-body">
             <table className="table table-stripe">

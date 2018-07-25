@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Login.css';
-import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -92,30 +90,6 @@ class Login extends Component {
             <Button color="light" type="submit">
               Login
               </Button>
-          {/* <input
-            type="email"
-            className="form-control"
-            placeholder="Email address"
-            name="email"
-            value={email}
-            onChange={this.onChange}
-            required
-          />
-          <label htmlFor="inputPassword" className="sr-only">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Password"
-            name="password"
-            value={password}
-            onChange={this.onChange}
-            required
-          />
-          <button className="btn btn-lg btn-primary btn-block" type="submit">
-            Login
-          </button> */}
           <p>
             <Link to="/forgotpass" className='forgot-pass-link message'>Forgot Password?</Link>
           </p>
