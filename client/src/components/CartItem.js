@@ -12,7 +12,29 @@ class CartItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: 0,
+      value: '',
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(event) {
+    const value = +event.target.value
+    if((isNaN(value) && (value !== '')) || value < 0 || value%1 !== 0  ) {
+      this.setState({value: this.state.value})
+    } else {
+      this.setState({value})
+    }
+  }
+
+  handleSubmit(event) {
+    const value = this.state.value
+    if(value > 0) {
+      console.log(`quantity: ${value}, id: ${this.props.id}`)
+      this.props.updateQuantity(this.props.id, value)
+      this.setState({cartObject: this.props.getCart()})
+      this.setState({value: ''})
+      event.preventDefault()
     }
   }
 
@@ -36,18 +58,18 @@ class CartItem extends React.Component {
         </TableCell>
         <TableCell>{`$${this.props.price.toFixed(2)}/${this.props.uom}`}</TableCell>
         <TableCell>
-        <FormControl onSubmit={this.props.handleSubmit}>
+        <FormControl onSubmit={this.handleSubmit}>
           <TextField
             label={`Current quantity: ${this.props.quantity}${this.props.uom}`}
             id="multiline-static"
             multiline
             rowsMax="2"
             value={this.state.value}
-            onChange={this.props.handleChange}
+            onChange={this.handleChange}
             margin="normal"
           />
         </FormControl>
-        <IconButton type="submit" value="Update Quantity" color="primary" onClick={e => this.props.handleSubmit(e)}>
+        <IconButton type="submit" value="Update Quantity" color="primary" onClick={e => this.handleSubmit(e)}>
           <CachedIcon />
         </IconButton>
         </TableCell>
