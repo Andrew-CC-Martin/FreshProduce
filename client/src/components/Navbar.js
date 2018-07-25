@@ -76,11 +76,11 @@ class MenuAppBar extends React.Component {
   logout = () => {
     this.setState({token: ''})
     // console.log(this.state)
-    // console.log(localStorage, 'with');
+    console.log(localStorage, 'with');
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('name');
     // localStorage.removeItem('id');
-    // console.log(localStorage, 'deleted');
+    console.log(localStorage, 'deleted');
     axios
     .delete(`${process.env.REACT_APP_API_URL}/users/token/`+ localStorage.id)
     .then(result => {
