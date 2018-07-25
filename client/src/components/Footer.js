@@ -16,12 +16,14 @@ class Footer extends React.Component {
                 Sat-Sun: 7.30am-6pm
                 </h5>
             </div>
-                <div className="contact">
-                    <h5> Shop MM07 level 2
-                    Westfield Belconnen ACT 2617
-                    Phone 02 6251 0366</h5>
-                </div>
-
+            <div className="contact">
+              <h5> Shop MM07 level 2
+                Westfield Belconnen ACT 2617
+                Phone 02 6251 0366</h5>
+            </div>
+            <div>
+              <h6 className="copyright">©Straight A's, 2018 </h6>
+            </div>
            </div>
         </div>
         )
