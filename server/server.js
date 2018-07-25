@@ -102,7 +102,7 @@ app.get('/users/:id', (req, res) => {
   app.patch('/users/:id', (req, res) => {
     console.log(req.body)
     var id = req.params.id;
-    var body = _.pick(req.body, ['name', 'email', 'company', 'address', 'deliveryInstructions']);
+    var body = _.pick(req.body, ['name', 'email', 'company', 'address', 'deliveryInstructions', 'phoneNumber']);
     if (!ObjectID.isValid(id)) {
       return res.status(404).send();
     }
