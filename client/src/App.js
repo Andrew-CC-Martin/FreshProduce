@@ -154,7 +154,7 @@ class App extends Component {
 
   render() {
     return (
-      
+
       <Router>
         <div className="App">
         {/* create this div so that footer is separate - necessary for sticky footer */}
@@ -174,7 +174,7 @@ class App extends Component {
               {this.state.message}
             </div>
           )}
-          
+
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/catalogue" render={() => <Catalogue getCart={this.getCart.bind(this)} addToCart={this.addToCart} />} />
@@ -190,7 +190,7 @@ class App extends Component {
             {/* <Route exact path="/cart" component={Cart} /> */}
             <Route exact path="/forgotpass" component={ForgotPass} />
             <Route exact path="/reset/:token" component={ResetPass} />
-            
+
             {/* <Route exact path="/checkout" render={() => {
               return <Checkout someProps={this.state} />;
             }} /> */}
@@ -239,7 +239,7 @@ class App extends Component {
           </div>
         </div>
       </Router>
-     
+
     );
   }
 
