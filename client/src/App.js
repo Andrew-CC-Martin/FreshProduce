@@ -232,7 +232,7 @@ class App extends Component {
             <Route
               exact
               path="/login"
-              render={() => (!!localStorage.cartObject ? <Checkout /> : <Login />)}
+              render={() => (!!localStorage.cart && !!localStorage.id ? <Checkout someProps={this.state} getCart={this.getCart} /> : <Login />)}
             />
             <Route
               exact
