@@ -19,6 +19,7 @@ import Badge from '@material-ui/core/Badge'
 import App from '../App';
 import ReactDOM from 'react-dom'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import Button from '@material-ui/core/Button'
 
 const isLoggedIn = localStorage.getItem('jwtToken') ? true : false;
 
@@ -137,10 +138,10 @@ class MenuAppBar extends React.Component {
               {isLoggedIn?
               <MenuItem onClick={this.handleClose}><Link to='/profile' className="link">Profile</Link></MenuItem>:''}
               {localStorage.getItem('jwtToken')?
-              <MenuItem onClick={this.handleClose}> 
-                <button onClick={this.logout}>
+              <MenuItem onClick={this.handleClose} onClick={this.logout}> 
+                <Link to='/' onClick={this.logout}>
                   Logout
-                </button>
+                </Link>
               </MenuItem>:''}
 
             </Menu>
