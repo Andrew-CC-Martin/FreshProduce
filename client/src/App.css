@@ -38,6 +38,11 @@ body{
 .catalogue {
   flex-wrap: wrap;
   display: flex;
+  margin: 1%;
+}
+
+.catalogue-wrapper {
+  margin: 1%;
 }
 
 .h1 {
