@@ -211,6 +211,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Home addToCart={this.addToCart} />} />
             <Route path="/catalogue" render={() => <Catalogue getCart={this.getCart.bind(this)} addToCart={this.addToCart} />} />
+            {/* <Route path="/catalogue/fruit" render={() => <Catalogue getCart={this.getCart.bind(this)} addToCart={this.addToCart} />} /> */}
             <Route exact path="/update/:id" component={UpdateUser} />
             <Route exact path="/user/inv" component={UserInvoice} />
             <Route exact path="/contactus/" component={ContactUs} />

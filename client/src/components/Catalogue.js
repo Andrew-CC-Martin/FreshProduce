@@ -92,9 +92,10 @@ class Catalogue extends React.Component {
               }
             />
           </FormControl>
-        {/* Below is the section for all produce categories */}
+        {/* Below is the section for all produce categories (endpoint /catalogue) */}
+        <Route exact path='/catalogue' render={() => (
+          <div>
           <section id="fruit" >
-            <CatalogueTitle title="Fruit" />
             {fruitTitle}
             <div className="cards">
           {/* <form>
@@ -142,6 +143,8 @@ class Catalogue extends React.Component {
               })}
             </div>
           </section>
+          </div>
+          )}/>
           {/* Below is the Route paths to individual categories */}
           
           <Route path='/catalogue/fruit' render={
