@@ -37,8 +37,8 @@ class Login extends Component {
         localStorage.setItem('id', result.data._id);
         this.setState({ message: '' });
         window.location.reload();
-        this.props.history.push('/')
-        // window.location.assign('/');
+        window.location.assign('/catalogue');
+        this.props.history.push('/catalogue')
         console.log(localStorage);
       })
       .catch(e => {
