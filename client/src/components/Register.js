@@ -45,7 +45,7 @@ import Button from '@material-ui/core/Button';
               <div className="alert alert-warning alert-dismissible" role="alert">
                 { message }
               </div>
-            }
+          }
           <div className="registerHeader">
             <h2>Register Today! </h2>
           </div>
