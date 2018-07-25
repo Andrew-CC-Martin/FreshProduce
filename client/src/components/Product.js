@@ -1,9 +1,9 @@
 import React from 'react'
 import './Product.css'
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia';
+// import Card from '@material-ui/core/Card';
+// import CardHeader from '@material-ui/core/CardHeader';
+// import CardContent from '@material-ui/core/CardContent'
+// import CardMedia from '@material-ui/core/CardMedia';
 import FormControl from '@material-ui/core/FormControl';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
@@ -39,44 +39,7 @@ class Product extends React.Component {
       width: 200
     }
 
-    let numberArray = [...Array(20).keys()].map(i => i + 1)
-    let options = numberArray.map(x => 
-      (<option key={x}>{x}</option>)
-    )
-
     return (
-      // <div className="product">
-      //   <Card>
-      //     <CardMedia>
-      //       <img src={this.props.imgUrl} style={style}/>
-      //     </CardMedia>
-      //     <CardContent>
-      //       <div className="Product-info">
-      //         {this.props.name}
-      //       </div>
-      //       <div>
-      //         {`Price: $${this.props.price}/${this.props.uom}`}
-      //       </div>
-      //     </CardContent>
-      //     <br></br>
-      //     <CardActions>
-      //       <FormControl onSubmit={this.handleSubmit}>
-      //         <TextField
-      //             label="Select Your Quantity"
-      //             id="simple-start-adornment"
-      //             value= {this.state.value}
-      //             onChange={this.handleChange}
-      //             InputProps={{
-      //               startAdornment: <InputAdornment position="start">{this.props.uom}</InputAdornment>,
-      //             }}
-      //         />
-      //       </FormControl>  
-      //       <IconButton type="submit" value="Add to cart" color="secondary" aria-label="Add to shopping cart" onClick={e => this.handleSubmit(e)}>
-      //           <AddShoppingCartIcon />
-      //       </IconButton>
-      //     </CardActions>
-      //   </Card>
-      // </div>
       <div className="card">
         <img src={this.props.imgUrl} />
         <div className="card-title">

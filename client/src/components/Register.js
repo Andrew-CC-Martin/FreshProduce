@@ -45,56 +45,59 @@ import Button from '@material-ui/core/Button';
               <div className="alert alert-warning alert-dismissible" role="alert">
                 { message }
               </div>
-            }
+          }
           <div className="registerHeader">
             <h2>Register Today! </h2>
           </div>
-          <div className="field">
-            <TextField 
-            id="name"
-            name="name"
-            label="Name"
-            value={name}
-            onChange={this.onChange}
-            required
-            margin="normal"
-            />
+          <div className="column">
+            <div className="field">
+              <TextField 
+              id="name"
+              name="name"
+              label="Name"
+              value={name}
+              onChange={this.onChange}
+              required
+              margin="normal"
+              />
+            </div>
+            <div className="field">
+              <TextField 
+              id="email"
+              name="email"
+              label="Email Address"
+              value={email}
+              onChange={this.onChange}
+              required
+              margin="normal"
+              />
+            </div>
+            <div className="field">
+              <TextField 
+              id="password"
+              name="password"
+              label="Password"
+              type="password"
+              value={password}
+              onChange={this.onChange}
+              required
+              margin="normal"
+              />
+            </div>
+            <div className="field">
+              <TextField 
+              id="confirmPassword"
+              name="confirmPassword"
+              label="Confirm Password"
+              type="password"
+              value={confirmPassword}
+              onChange={this.onChange}
+              required
+              margin="normal"
+              />
+            </div>
           </div>
-          <div className="field">
-            <TextField 
-            id="email"
-            name="email"
-            label="Email Address"
-            value={email}
-            onChange={this.onChange}
-            required
-            margin="normal"
-            />
-          </div>
-          <div className="field">
-            <TextField 
-            id="password"
-            name="password"
-            label="Password"
-            type="password"
-            value={password}
-            onChange={this.onChange}
-            required
-            margin="normal"
-            />
-          </div>
-          <div className="field">
-            <TextField 
-            id="confirmPassword"
-            name="confirmPassword"
-            label="Confirm Password"
-            type="password"
-            value={confirmPassword}
-            onChange={this.onChange}
-            required
-            margin="normal"
-            />
-          </div>
+          <div className="column">
           <div className="field">
             <TextField 
             id="company"
@@ -135,6 +138,7 @@ import Button from '@material-ui/core/Button';
             required
             margin="normal"
             />
+          </div>
           </div>
             <br />
              <Button color="inherit" type="submit">

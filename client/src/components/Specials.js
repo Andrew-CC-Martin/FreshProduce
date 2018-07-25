@@ -1,13 +1,12 @@
 import React from 'react';
 import Product from './Product';
 import './Specials.css';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import products from '../products.json'
+// import Card from '@material-ui/core/Card';
+// import CardHeader from '@material-ui/core/CardHeader';
+// import CardMedia from '@material-ui/core/CardMedia';
 
 class Specials extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {
             products: [],
@@ -28,10 +27,8 @@ class Specials extends React.Component {
             .catch(err => {
                 console.log(err)
             })
-        // this.setState({
-        //     products 
-        //   })
     }
+
     render() {
         return(
 
@@ -40,10 +37,13 @@ class Specials extends React.Component {
                 if(product.on_special) {
                     return <Product  
                     key={product.id} 
+                    id={product.id}
                     imgUrl={product.img_path} 
                     name={product.name} 
                     uom={product.uom} 
-                    price={product.unit_sell_price} />
+                    price={product.unit_sell_price}
+                    addToCart={this.props.addToCart.bind(this)}
+                    />
                 }
             })} 
             </React.Fragment>

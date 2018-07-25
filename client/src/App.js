@@ -44,6 +44,11 @@ class App extends Component {
       token: '',
       cartObject: this.getCart()
     };
+    this.validateEmail = this.validateEmail.bind(this)
+    //Initiated cart
+    if(!localStorage.cart) {
+      localStorage.setItem('cart', JSON.stringify([]))
+    }
   }
 
   getCart = () => {
@@ -123,6 +128,11 @@ class App extends Component {
     // window.location.assign('/');
   };
 
+  validateEmail(email) {
+    var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+    return re.test(String(email).toLowerCase());
+  }
+
   handleRegister = user => {
     console.log(user);
     console.log(this.props)
@@ -130,6 +140,18 @@ class App extends Component {
     if (user.password !== user.confirmPassword) {
       this.setState({ message: 'Password does not match!' });
       console.log(this.state.message);
+    } else if(isNaN(Number(user.phoneNumber))) {
+      this.setState({ message: 'Invalid phone number' })
+    } else if((user.phoneNumber.length < 8)){
+      this.setState({ message: 'Phone number must be at least 8 digits' })
+    } else if(!this.validateEmail(user.email)) {
+      this.setState({ message: 'Invalid email' })
+    } else if(user.password.length < 6) {
+      this.setState({ message: 'Password must be at least 6 characters long'})
+    } else if(user.company.length < 3) {
+      this.setState({ message: 'Company name must be at least 3 characters long'})
+    } else if(user.address.length < 10) {
+      this.setState({ message: 'Address must be at least 10 characters long' })
     } else {
       const { name, email, password, confirmPassword, company, address, deliveryInstructions, phoneNumber } = user;
       console.log(user);
@@ -187,7 +209,7 @@ class App extends Component {
           )}
 
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={() => <Home addToCart={this.addToCart} />} />
             <Route exact path="/catalogue" render={() => <Catalogue getCart={this.getCart.bind(this)} addToCart={this.addToCart} />} />
             <Route exact path="/update/:id" component={UpdateUser} />
             <Route exact path="/user/inv" component={UserInvoice} />

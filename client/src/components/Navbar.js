@@ -151,15 +151,17 @@ class MenuAppBar extends React.Component {
             {/* <Typography variant="title" color="inherit" >
               Food Forum
             </Typography> */}
-            <img src={logo} style={{"width": 150}} />
-            <IconButton color="inherit" aria-label="Cart" style = {{"justifyContent":"right"}}>
-              {/* <Badge ref={elem => this.shoppingCartBadge = elem} badgeContent={this.props.cartIconNumber}> */}
-              <Badge badgeContent={this.props.cartIconNumber}>
-                <Link to="/cart">
-                  <ShoppingCartIcon color="inherit"/>
-                </Link>
-              </Badge>
-            </IconButton>
+            <Link to='/' className="link">
+              <img src={logo} style={{"width": 150}} />
+            </Link>
+            <Link to="/cart">
+              <IconButton color="inherit" aria-label="Cart" style = {{"justifyContent":"right"}}>
+                {/* <Badge ref={elem => this.shoppingCartBadge = elem} badgeContent={this.props.cartIconNumber}> */}
+                <Badge badgeContent={this.props.cartIconNumber}>
+                    <ShoppingCartIcon color="inherit"/>
+                </Badge>
+              </IconButton>
+            </Link>
              {/* {auth && ( */}
 
             {/* <div>
