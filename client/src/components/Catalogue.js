@@ -78,7 +78,7 @@ class Catalogue extends React.Component {
     }
 
     return (
-        <div>
+        <div className="catalogue-wrapper">
           <FormControl  >
             <InputLabel htmlFor="search" color="secondary"></InputLabel>
             <Input
@@ -91,7 +91,7 @@ class Catalogue extends React.Component {
                 </InputAdornment>
               }
             />
-      </FormControl>
+          </FormControl>
         {/* Below is the section for all produce categories */}
           <section id="fruit" >
             <CatalogueTitle title="Fruit" />
