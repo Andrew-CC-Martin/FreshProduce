@@ -1,15 +1,20 @@
-.footercontent {
-    /* display: flex; */
-    /* justify-content: space-between; */
+.footerwrapper {
     background-color: grey;
     font-family: 'Rasa', serif;
     font-weight: bold;
     color: white;
-    height: 90px;
+    min-height: 90px;
+}
+
+.footercontact{
+    display:flex;
+    justify-content: space-between;
+    margin: 5px 0 0 5px;
 }
 
 .contact {
 flex-basis: 25%;
+margin: 5px 0 5px 0;
 }
 
 .hours {
