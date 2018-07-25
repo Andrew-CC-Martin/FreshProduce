@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import CheckoutTable from './CheckoutTable'
 import axios from 'axios'
+import Button from '@material-ui/core/Button'
 
 const fakeAuth = {
     isAuthenticated: false,
@@ -121,7 +122,7 @@ class Checkout extends React.Component {
                         onChange={e => this.onChnge(e)}
                     />
                     {/* <button onClick={e => this.onSubmit(e)}> Submit </button> */}
-                    <button onClick={this.emailOrder}> Email Order </button>
+                    <Button onClick={this.emailOrder} style={{margin: '1%'}} > Email Order </Button>
                 {/* </form>  */}
                 {/* } */}
             </div>

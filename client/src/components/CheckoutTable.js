@@ -70,13 +70,14 @@ class CheckoutTable extends React.Component {
               </TableCell>
               <TableCell numeric>
                 <strong>
-                  Total: ${this.state.cartObject.reduce((total, item) => total + (item.price * item.quantity), 0)}
+                  {`Total: ${this.state.cartObject.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)}`}
                 </strong>
               </TableCell>
             </TableRow>
           </TableFooter>
         </Table>
-        <Button style={{backgroundColor:'#98FB98'}} onClick={this.generatePdf}> Download PDF file </Button>
+        {/* <Button style={{backgroundColor:'#98FB98', margin:'1%'}} onClick={this.generatePdf}> Download PDF file </Button> */}
+        <Button style={{margin:'1%'}} onClick={this.generatePdf}> Download PDF file </Button>
       </Paper>
       </div>
     );
