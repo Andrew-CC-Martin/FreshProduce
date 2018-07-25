@@ -1,6 +1,10 @@
 .footercontent {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    background-color: grey;
+    font-family: 'Rasa', serif;
+    font-weight: bold;
+    
 }
 
 .contact {
