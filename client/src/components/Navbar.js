@@ -20,6 +20,7 @@ import App from '../App';
 import ReactDOM from 'react-dom'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import Button from '@material-ui/core/Button'
+import logo from '../images/title_red.png'
 
 const isLoggedIn = localStorage.getItem('jwtToken') ? true : false;
 
@@ -145,9 +146,10 @@ class MenuAppBar extends React.Component {
               </MenuItem>:''}
 
             </Menu>
-            <Typography variant="title" color="inherit" >
+            {/* <Typography variant="title" color="inherit" >
               Food Forum
-            </Typography>
+            </Typography> */}
+            <img src={logo} style={{"width": 150}} />
             <IconButton color="inherit" aria-label="Cart" style = {{"justifyContent":"right"}}>
               {/* <Badge ref={elem => this.shoppingCartBadge = elem} badgeContent={this.props.cartIconNumber}> */}
               <Badge badgeContent={this.props.cartIconNumber}>
