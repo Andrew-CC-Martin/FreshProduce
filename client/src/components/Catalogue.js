@@ -70,7 +70,7 @@ class Catalogue extends React.Component {
             <input type='text' onChange={this.searchHandler} value={term} />
           </form> */}
           <section id="section-b" >
-            <CatalogueTitle style={{padding:'2rem'}} title="Fruit" />
+            <CatalogueTitle title="Fruit" />
             <div className="cards">
               {filteredProducts.map((product) => {
                 if(product.group_name === "fruit") {
