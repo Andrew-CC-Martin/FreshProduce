@@ -92,6 +92,7 @@ class Cart extends React.Component {
           
           {localStorage.cart.length > 2 ?
           <Button><Link to="/checkout">finalise order</Link> </Button> : ""}
+          <br/><br/><br/>
       </Paper>
     )
   }
