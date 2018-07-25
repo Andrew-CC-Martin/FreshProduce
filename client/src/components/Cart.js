@@ -86,8 +86,11 @@ class Cart extends React.Component {
           </TableFooter>
         </Table>
         <Button>
-          <Link to="/catalogue">continue shopping</Link></Button>
-        <Button><Link to="/checkout">finalise order</Link></Button>
+        {localStorage.cart.length > 2 ?
+        <Link to="/catalogue">continue shopping</Link> : <Link to="/catalogue">Start shopping</Link>} </Button>
+          
+          {localStorage.cart.length > 2 ?
+          <Button><Link to="/checkout">finalise order</Link> </Button> : ""}
       </Paper>
     )
   }
