@@ -87,7 +87,7 @@ class Login extends Component {
             margin="normal"
           />
         </div>
-            <Button color="light" type="submit">
+            <Button color="primary" type="submit">
               Login
               </Button>
           <p>
