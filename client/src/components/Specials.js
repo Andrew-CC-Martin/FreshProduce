@@ -14,6 +14,8 @@ class Specials extends React.Component {
         }
     }
 
+    
+
     componentDidMount() {
         const url = "https://api.myjson.com/bins/7mvru"
 
