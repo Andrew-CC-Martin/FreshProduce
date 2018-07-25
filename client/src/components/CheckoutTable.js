@@ -39,7 +39,7 @@ class CheckoutTable extends React.Component {
 
     return (
       <div id="divToPDF">
-      <h4 style={{textAlign:'left'}}>Order Summary</h4>
+      <h4 style={{textAlign:'left', margin:'1%'}}>Order Summary</h4>
       <Paper>
         <Table>
           <TableHead>

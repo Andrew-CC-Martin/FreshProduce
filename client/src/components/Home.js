@@ -47,7 +47,7 @@ class Home extends React.Component {
                     <img src={ seafoodImage} className='button--image' />
                   </div>
                 </div>
-              <div class="content-text"> </div>
+              <div className="content-text"> </div>
             </div>
           </section>
 

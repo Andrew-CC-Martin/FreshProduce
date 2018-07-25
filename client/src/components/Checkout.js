@@ -30,8 +30,8 @@ class Checkout extends React.Component {
 
     componentDidMount() {
         // console.log(this.props.match.params.id)
-        console.log(this.props.someProps.cartObject)
-        console.log(localStorage)
+        // console.log(this.props.someProps.cartObject)
+        // console.log(localStorage)
         axios.get(`${ process.env.REACT_APP_API_URL }/users/`+localStorage.id )
             .then(res => {
             this.setState({ user: res.data.user });

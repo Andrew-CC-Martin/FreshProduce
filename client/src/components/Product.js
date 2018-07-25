@@ -29,10 +29,13 @@ class Product extends React.Component {
   }
 
   handleSubmit(event) {
-    alert(`you added ${this.state.value} ${this.props.name} to the cart`)
-    this.props.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl, this.props.uom)
-    this.setState({value: 0})
-    event.preventDefault()
+    const value = this.state.value
+    if(value != 0) {
+      alert(`you added ${value} ${this.props.name} to the cart`)
+      this.props.addToCart(this.props.id, this.state.value, this.props.name, this.props.price, this.props.imgUrl, this.props.uom)
+      this.setState({value: 0})
+      event.preventDefault()
+    }
   }
 
   render () {

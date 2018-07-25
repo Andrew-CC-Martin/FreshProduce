@@ -110,12 +110,12 @@ class App extends Component {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('name');
     // localStorage.removeItem('id');
-    console.log(localStorage, 'deleted');
+    // console.log(localStorage, 'deleted');
     axios
     .delete(`${process.env.REACT_APP_API_URL}/users/token/`+ localStorage.id)
     .then(result => {
       // console.log(result.data)
-      console.log(this.state)
+      // console.log(this.state)
       localStorage.removeItem('id');
       console.log(localStorage);
     })
