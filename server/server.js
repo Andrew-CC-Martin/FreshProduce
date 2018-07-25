@@ -10,6 +10,7 @@ const cors = require('cors');
 const nodemailer = require('nodemailer')
 const crypto = require('crypto');
 const async = require('async');
+const favicon = require('serve-favicon');
 // const flash = require('express-flash-notification');
 // const cookieParser = require('cookie-parser');
 // const session = require('express-session');
@@ -25,7 +26,10 @@ const {ObjectID} = require('mongodb');
 //External imports
 var app = express();
 const port = process.env.PORT;
-//add middleware using bodyparser returns a function sending json to the app 
+
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+//add middleware using bodyparser returns a function sending json to the app
 app.use(bodyParser.json());
 app.use(cors({origin: '*'}));
 // set the view engine to ejs
@@ -45,7 +49,7 @@ app.post('/register', (req, res) => {
 
     user.save().then((user) => {
         return user.generateAuthToken();
-    }).then((token) => {        
+    }).then((token) => {
         res.json(Object.assign({ token }, { _id: user.id, email: user.email, name: user.name, company: user.company, address: user.address, deliveryInstructions: user.deliveryInstructions, phoneNumber: user.phoneNumber }))
         console.log('hi register', user)
     }).catch((e) => {
@@ -78,16 +82,16 @@ app.post('/users/login', (req, res) => {
 //Request a user by id
 app.get('/users/:id', (req, res) => {
     var id = req.params.id;
-  
+
     if (!ObjectID.isValid(id)) {
       return res.status(404).send();
     }
-  
+
     User.findById(id).then((user) => {
       if (!user) {
         return res.status(404).send();
       }
-  
+
       res.send({user});
     }).catch((e) => {
       res.status(400).send();
@@ -102,12 +106,12 @@ app.get('/users/:id', (req, res) => {
     if (!ObjectID.isValid(id)) {
       return res.status(404).send();
     }
-  
+
     User.findOneAndUpdate({_id: id}, {$set: body}, {new: true}).then((user) => {
       if (!user) {
         return res.status(404).send();
       }
-  
+
       res.send({user});
     }).catch((e) => {
       res.status(400).send();
@@ -121,7 +125,7 @@ app.delete('/users/token/:id', (req, res) => {
     if (!ObjectID.isValid(id)) {
         return res.status(404).send();
     }
-    
+
     User.findById(id)
     .then((user) => { user.removeToken(user.tokens[0].token).then(() => {
         console.log('without token',user)
@@ -133,8 +137,8 @@ app.delete('/users/token/:id', (req, res) => {
         res.status(400).send();
      })
   });
-  
-  
+
+
 
 //Delete a user by id
 app.delete('/users/:id', (req, res) => {
@@ -171,7 +175,7 @@ app.post('/contactus', (req, res) => {
             <h3>Message</h3>
             <p>${req.body.message} </p>
         `
-    
+
     let transporter = nodemailer.createTransport({
         host: 'smtp.zoho.com',
         port: 465,
@@ -210,7 +214,7 @@ app.post('/user/inv', (req, res) => {
             <h3>Invoice Component</h3>
             <p>Products Ordered</p>
         `
-    
+
     let transporter = nodemailer.createTransport({
         host: 'smtp.zoho.com',
         port: 465,
@@ -263,7 +267,7 @@ app.post('/forgot', function(req, res, next) {
   user.resetPasswordToken = token;
   user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
         console.log('user token--- ',user)
-  
+
           user.save(function(err) {
             done(err, token, user);
             console.log('save ---  ', user)
@@ -422,5 +426,5 @@ transporter.sendMail(mailOptions, (error, info) => {
 app.listen(port, () => {
     console.log(`Started up at port ${port}`);
   });
-  
+
   module.exports = {app};

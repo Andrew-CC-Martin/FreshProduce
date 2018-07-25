@@ -42,7 +42,7 @@
 } */
 
 .login{
-  background-color: #D3F3EE;
+  background-color: lightgrey;
   padding: 0.5em;
 }
 
@@ -56,5 +56,9 @@ box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 
 }
 
 .field {
-  position: relative; 
+  position: relative;
+}
+
+.forgot-pass-link{
+  color: #c13426;
 }
