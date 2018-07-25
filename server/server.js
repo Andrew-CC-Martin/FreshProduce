@@ -10,7 +10,7 @@ const cors = require('cors');
 const nodemailer = require('nodemailer')
 const crypto = require('crypto');
 const async = require('async');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 // const flash = require('express-flash-notification');
 // const cookieParser = require('cookie-parser');
 // const session = require('express-session');
@@ -27,7 +27,7 @@ const {ObjectID} = require('mongodb');
 var app = express();
 const port = process.env.PORT;
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 //add middleware using bodyparser returns a function sending json to the app
 app.use(bodyParser.json());

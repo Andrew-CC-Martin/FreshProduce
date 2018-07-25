@@ -138,6 +138,8 @@ class MenuAppBar extends React.Component {
               <MenuItem onClick={this.handleClose}><Link to='/register' className="link">Register</Link></MenuItem>: ''}
               {isLoggedIn?
               <MenuItem onClick={this.handleClose}><Link to='/profile' className="link">Profile</Link></MenuItem>:''}
+              {localStorage.id === process.env.REACT_APP_HOST_ADMIN ?
+              <MenuItem onClick={this.handleClose}><Link to='/users' className="link">Users List</Link></MenuItem>:''}
               {localStorage.getItem('jwtToken')?
               <MenuItem onClick={this.handleClose} onClick={this.logout}>
                 <Link to='/' onClick={this.logout}>
