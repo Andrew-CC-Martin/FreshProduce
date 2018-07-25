@@ -9,7 +9,6 @@ class Home extends React.Component {
     super(props)
   }
   render() { 
-    // console.log(this.props.addToCart)
     return (
       <div className="Products">
         <header id="showcase" className="grid">

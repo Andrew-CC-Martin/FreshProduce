@@ -30,7 +30,7 @@ class CartItem extends React.Component {
   handleSubmit(event) {
     const value = this.state.value
     if(value > 0) {
-      console.log(`quantity: ${value}, id: ${this.props.id}`)
+      // console.log(`quantity: ${value}, id: ${this.props.id}`)
       this.props.updateQuantity(this.props.id, value)
       this.setState({cartObject: this.props.getCart()})
       this.setState({value: ''})

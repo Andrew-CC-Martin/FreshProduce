@@ -209,7 +209,6 @@ class App extends Component {
           )}
 
           <Switch>
-            {/* <Route exact path="/" component={Home} /> */}
             <Route exact path="/" render={() => <Home addToCart={this.addToCart} />} />
             <Route exact path="/catalogue" render={() => <Catalogue getCart={this.getCart.bind(this)} addToCart={this.addToCart} />} />
             <Route exact path="/update/:id" component={UpdateUser} />

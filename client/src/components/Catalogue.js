@@ -1,10 +1,10 @@
 import React from 'react';
 import Product from './Product.js'
 import CatalogueTitle from './CatalogueTitle'
-import App from '../App.js';
-import Grid from '@material-ui/core/Grid';
-import products from '../products.json';
-import TextField from '@material-ui/core/TextField';
+// import App from '../App.js';
+// import Grid from '@material-ui/core/Grid';
+// import products from '../products.json';
+// import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
@@ -37,14 +37,10 @@ class Catalogue extends React.Component {
         this.setState({
           products: data
          })
-         console.log(this.state.products)
       })
       .catch(err => {
         console.log(err)
       })
-      // this.setState({
-      //   products 
-      // })
   }
 
   render () {

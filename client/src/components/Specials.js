@@ -1,10 +1,9 @@
 import React from 'react';
 import Product from './Product';
 import './Specials.css';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import products from '../products.json'
+// import Card from '@material-ui/core/Card';
+// import CardHeader from '@material-ui/core/CardHeader';
+// import CardMedia from '@material-ui/core/CardMedia';
 
 class Specials extends React.Component {
     constructor(props) {
@@ -16,7 +15,6 @@ class Specials extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(this.props.addToCart)
         const url = "https://api.myjson.com/bins/7mvru"
 
         fetch(url) 
@@ -29,16 +27,12 @@ class Specials extends React.Component {
             .catch(err => {
                 console.log(err)
             })
-        // this.setState({
-        //     products 
-        //   })
     }
 
     render() {
         return(
 
             <React.Fragment>
-            {/* {console.log(this.props.addToCart)} */}
             {this.state.products.map((product)=> {
                 if(product.on_special) {
                     return <Product  
