@@ -63,10 +63,50 @@ class Catalogue extends React.Component {
               }
             />
       </FormControl>
-          {/* <form>
-            <label htmlFor="search">Search for Product: </label>
-            <input type='text' onChange={this.searchHandler} value={term} />
-          </form> */}
+        {/* Below is the section for all produce categories */}
+          <section id="fruit" >
+            <CatalogueTitle title="Fruit" />
+            <div className="cards">
+              {filteredProducts.map((product) => {
+                if(product.group_name === "fruit") {
+                  return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
+                  
+                }
+              })}
+            </div>
+          </section> 
+          <section id="vegetable">              
+            <CatalogueTitle title="Vegetables" />
+            <div className="cards">
+              {filteredProducts.map((product) => {
+                if(product.group_name === "vegetable") {
+                  return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
+                }
+              })}
+            </div>
+          </section>
+          <section id="meat">
+            <CatalogueTitle title="Meat" />
+            <div className="cards">
+              {filteredProducts.map((product) => {
+                if((product.group_name === "beef") || (product.group_name === "chicken" || (product.group_name === "lamb"))) {
+                  return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
+                }
+              })}
+            </div>
+          </section>
+          <section id="seafood">
+            <CatalogueTitle title="Seafood" />
+            <div className="cards">
+              {filteredProducts.map((product) => {
+                if(product.group_name === "fish") {
+                  return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
+                }
+              })}
+            </div>
+          </section>
+          {/* Below is the Route paths to individual categories */}
+          
           <Route path='/catalogue/fruit' render={
             () => (
               <section id="fruit" >
@@ -83,17 +123,7 @@ class Catalogue extends React.Component {
             )
           }
           />
-          {/* <section id="fruit" >
-            <CatalogueTitle title="Fruit" />
-            <div className="cards">
-              {filteredProducts.map((product) => {
-                if(product.group_name === "fruit") {
-                  return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
-                  
-                }
-              })}
-            </div>
-          </section> */}
+        
           <Route path='/catalogue/vegetable' render={
             () => (
               <section id="vegetable">              
@@ -135,16 +165,7 @@ class Catalogue extends React.Component {
               </div>
             </section>
             )} />
-          {/* <section id="seafood">
-            <CatalogueTitle title="Seafood" />
-            <div className="cards">
-              {filteredProducts.map((product) => {
-                if(product.group_name === "fish") {
-                  return <Product key={product.id} id={product.id} imgUrl={product.img_path} name={product.name} uom={product.uom} price={product.unit_sell_price} addToCart={this.props.addToCart}/>
-                }
-              })}
-            </div>
-          </section> */}
+        
         </div>
     )
   }
