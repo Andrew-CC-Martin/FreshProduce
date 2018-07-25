@@ -4,7 +4,7 @@
 }
 
 .form-user {
-    width: 380px;
+    width: 500px;
 	margin: 0.5em auto;
 	padding: 3em 2em 2em 2em;
 	background: #fafafa;
@@ -14,4 +14,10 @@
 
 .field {
     position: relative; 
+}
+
+.column {
+	float: left;
+	width: 40%;
+	margin: 5%
 }
