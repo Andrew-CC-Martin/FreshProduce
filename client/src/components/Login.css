@@ -1,58 +1,21 @@
-/* body {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  background-color: #eee;
-}
-
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.form-signin p {
-  margin-top: 10px;
-} */
-
 .login{
+<<<<<<< HEAD
   background-color: lightgrey;
+=======
+>>>>>>> 8d56ca0be3c7ede38349acb506d3864be2ea4c0c
   padding: 0.5em;
 }
 
 .form-user {
   width: 380px;
 margin: 0.5em auto;
-padding: 3em 2em 2em 2em;
+padding: 1em;
 background: #fafafa;
 border: 1px solid #ebebeb;
 box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+.form-user-heading h2 {
+  padding: 0.2em 0;
 }
 
 .field {
@@ -61,4 +24,15 @@ box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 
 
 .forgot-pass-link{
   color: #c13426;
+}
+
+.bg-image {
+  position: absolute;
+  background: #333 url('../images/lukas-budimaier-93293-unsplash-min.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 480px;
+  z-index: -1;
 }

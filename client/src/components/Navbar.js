@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-
+import './Navbar.css'
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
@@ -99,11 +99,12 @@ class MenuAppBar extends React.Component {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
-
+    const img = <img style={{marginTop:10}} src= "../images/food_forum_black" />
+ 
     return (
       <div>
-        <AppBar position="static">
-          <Toolbar>
+        <AppBar position="static" color="default" title={img}>
+          <Toolbar title={img} style = {{"justifyContent":"space-between"}}>
             <IconButton
               aria-owns={open ? 'menu-appbar' : null}
               aria-haspopup="true"
@@ -146,7 +147,7 @@ class MenuAppBar extends React.Component {
             <Typography variant="title" color="inherit" >
               Food Forum
             </Typography>
-            <IconButton color="inherit" aria-label="Cart">
+            <IconButton color="inherit" aria-label="Cart" style = {{"justifyContent":"right"}}>
               {/* <Badge ref={elem => this.shoppingCartBadge = elem} badgeContent={this.props.cartIconNumber}> */}
               <Badge badgeContent={this.props.cartIconNumber}>
                 <Link to="/cart">
