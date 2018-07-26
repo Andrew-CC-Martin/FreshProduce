@@ -393,7 +393,7 @@ The main legal obligation we need to be in compliance with is the privacy act. D
 
 We are not affected by General Data Protection Regulation (GDPR) today as all of our customers and services provided are in southern regional NSW. As there is a low likelihood and an inability to service customers located in the EU,  we have not addressed GDPR today. 
 
-### <a id ="bq1></a> 1.Record interactions with your client in a diary format
+### <a id ="bq1"></a> 1.Record interactions with your client in a diary format
 See diary. 
 [Client Interaction Diary - Google Docs](https://docs.google.com/document/d/1Tg2m_KE3JQ6sk4KiW-TVW7Bl2Cs48wjXYDpj0bIB4P8/edit?usp=sharing)
 
@@ -403,7 +403,7 @@ Logo about email
 Survey Response 
 [Straight A's Project Review by Food Forum - Google Forms.pdf](https://github.com/JamesApple/FreshProduce/files/2227546/Straight.A.s.Project.Review.by.Food.Forum.-.Google.Forms.pdf)
 
-### <a id ="bq2></a> 2. Plan information gathering activities to determine project requirements, constraints and risks
+### <a id ="bq2"></a> 2. Plan information gathering activities to determine project requirements, constraints and risks
 Our information gathering acitivities mainly consisted of questionnaires. Screenshots can be seen here. 
 
 <img width="759" alt="cq1top" src="https://user-images.githubusercontent.com/35912668/42730969-bcb89208-8846-11e8-82eb-65dc37c08e31.png">
@@ -414,7 +414,7 @@ Our information gathering acitivities mainly consisted of questionnaires. Screen
 
 <img width="704" alt="cq3" src="https://user-images.githubusercontent.com/35912668/42730981-ea98f776-8846-11e8-8113-12318c32f7f5.png">
 
-### <a id ="bq3></a> 3. Develop project charter, including preliminary statement of project scope and obtain sign-off
+### <a id ="bq3"></a> 3. Develop project charter, including preliminary statement of project scope and obtain sign-off
 Please see at
 [Straight A’s Project Charter - Google Docs](https://docs.google.com/document/d/19sDFtbz8ihcnDQnv93GQbKffrgJoPQUgUjIQ6E8xZV0/edit?usp=sharing)
 
@@ -607,20 +607,27 @@ Desktop Home
 
 #### Desktop Cart
 <img width="1107" alt="desktop_cart" src="https://user-images.githubusercontent.com/35912668/42721581-8846b778-8780-11e8-9e06-df5808efbe5d.png">
+
 #### Mobile Landing page
-![landing view](https://user-images.githubusercontent.com/35912668/43042907-4d048234-8dcb-11e8-98e7-ed85e6a01c9f.jpg)
+<img src="https://user-images.githubusercontent.com/35912668/43042907-4d048234-8dcb-11e8-98e7-ed85e6a01c9f.jpg">
+
 #### Mobile Sign in
-![sign in-sign up view](https://user-images.githubusercontent.com/35912668/43042913-6548c31e-8dcb-11e8-9221-24af119f9cbc.jpg)
+<img src="https://user-images.githubusercontent.com/35912668/43042913-6548c31e-8dcb-11e8-9221-24af119f9cbc.jpg">
+
 #### Mobile Profile view
-![profile view](https://user-images.githubusercontent.com/35912668/43042920-7ce45ec0-8dcb-11e8-86fc-72896d932210.jpg)
+<img src="https://user-images.githubusercontent.com/35912668/43042920-7ce45ec0-8dcb-11e8-86fc-72896d932210.jpg">
+
 #### Mobile Contact Form
-![i contact form edit](https://user-images.githubusercontent.com/35912668/43042931-aa3c5706-8dcb-11e8-90b4-e4482d049218.jpg)
+<img src="https://user-images.githubusercontent.com/35912668/43042931-aa3c5706-8dcb-11e8-90b4-e4482d049218.jpg">
+
 #### Mobile Catalogue view
-![catalogue view](https://user-images.githubusercontent.com/35912668/43042935-be468c62-8dcb-11e8-84c7-b61e2536ef50.jpg)
+<img src="https://user-images.githubusercontent.com/35912668/43042935-be468c62-8dcb-11e8-84c7-b61e2536ef50.jpg">
+
 #### Mobile Order Confirmation
-![cart view -order confirmation](https://user-images.githubusercontent.com/35912668/43042941-d7c9ed5a-8dcb-11e8-99a6-a2a008da4015.jpg)
+<img src="https://user-images.githubusercontent.com/35912668/43042941-d7c9ed5a-8dcb-11e8-99a6-a2a008da4015.jpg">
+
 #### Mobile Cart Edit
-![cart edit](https://user-images.githubusercontent.com/35912668/43042948-f63e9c4a-8dcb-11e8-90d0-9b2b0b7d283d.jpg)
+<img src="https://user-images.githubusercontent.com/35912668/43042948-f63e9c4a-8dcb-11e8-90d0-9b2b0b7d283d.jpg">
 
 
 ### <a id="cq6"></a>6. Entity Relationship Diagram (ERD)
